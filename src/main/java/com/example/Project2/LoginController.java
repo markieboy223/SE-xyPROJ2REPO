@@ -33,6 +33,7 @@ public class LoginController {
             validateLogin();
         } else {
             invalidLoginMessageLabel.setText("Voer een gebruikersnaam en wachtwoord in.");
+            invalidLoginMessageLabel.setTextFill(Color.RED);
             CornerRadii corn = new CornerRadii(4);
             invalidLoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
         }
@@ -50,8 +51,14 @@ public class LoginController {
             while (queryResult.next()){
                 if (queryResult.getInt(1) == 1){
                     invalidLoginMessageLabel.setText("Ingelogd!");
+                    invalidLoginMessageLabel.setTextFill(Color.GREEN);
+                    CornerRadii corn = new CornerRadii(4);
+                    invalidLoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
                 } else {
                     invalidLoginMessageLabel.setText("Ongeldige login, probeer het opnieuw!");
+                    invalidLoginMessageLabel.setTextFill(Color.RED);
+                    CornerRadii corn = new CornerRadii(4);
+                    invalidLoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
                 }
             }
 
