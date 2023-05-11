@@ -13,9 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class LoginController {
     @FXML
@@ -39,17 +37,14 @@ public class LoginController {
         }
     }
 
-    public void validateLogin(){
+    public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
-        Connection connectDB = connection.getConnection();
-
-        String verifyLogin = "SELECT count(1) FROM docassistent.user WHERE gebruikersnaam = '" + gebruikersnaamTextField.getText() + "' AND wachtwoord = '" + passwordTextField.getText() + "'";
-        try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
-
-            while (queryResult.next()){
-                if (queryResult.getInt(1) == 1){
+        try (Connection connectDB = connection.getConnection();
+             PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1) FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
+            statement.setString(1, gebruikersnaamTextField.getText());
+            statement.setString(2, passwordTextField.getText());
+            try (ResultSet queryResult = statement.executeQuery()) {
+                if (queryResult.next() && queryResult.getInt(1) == 1) {
                     invalidLoginMessageLabel.setText("Ingelogd!");
                     invalidLoginMessageLabel.setTextFill(Color.GREEN);
                     CornerRadii corn = new CornerRadii(4);
@@ -61,12 +56,9 @@ public class LoginController {
                     invalidLoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
                 }
             }
-
-        }catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-            e.getCause();
         }
-
     }
 
     public void closeButtonOnAction(ActionEvent event) {
