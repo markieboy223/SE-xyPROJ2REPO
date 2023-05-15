@@ -24,7 +24,7 @@ public class LoginController {
     @FXML
     private Button closeButton;
     @FXML
-    private Label invalidLoginMessageLabel;
+    private Label LoginMessageLabel;
     @FXML
     private TextField gebruikersnaamTextField;
     @FXML
@@ -43,10 +43,10 @@ public class LoginController {
         if (gebruikersnaamTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false){
             validateLogin();
         } else {
-            invalidLoginMessageLabel.setText("Voer een gebruikersnaam en wachtwoord in.");
-            invalidLoginMessageLabel.setTextFill(Color.RED);
+            LoginMessageLabel.setText("Voer een gebruikersnaam en wachtwoord in.");
+            LoginMessageLabel.setTextFill(Color.RED);
             CornerRadii corn = new CornerRadii(4);
-            invalidLoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
+            LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
         }
     }
     public void redirectToNewScene() {
@@ -64,23 +64,23 @@ public class LoginController {
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnection();
-             PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1) FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
+            PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1) FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
             statement.setString(1, gebruikersnaamTextField.getText());
             statement.setString(2, passwordTextField.getText());
             try (ResultSet queryResult = statement.executeQuery()) {
                 if (queryResult.next() && queryResult.getInt(1) == 1) {
-                    invalidLoginMessageLabel.setText("Ingelogd!");
-                    invalidLoginMessageLabel.setTextFill(Color.GREEN);
+                    LoginMessageLabel.setText("Ingelogd!");
+                    LoginMessageLabel.setTextFill(Color.GREEN);
                     CornerRadii corn = new CornerRadii(4);
-                    invalidLoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
+                    LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
                     //Nieuwe scene wanneer de login succesvol is.
                     redirectToNewScene();
                     closeCurrentWindow();
                 } else {
-                    invalidLoginMessageLabel.setText("Ongeldige login, probeer het opnieuw!");
-                    invalidLoginMessageLabel.setTextFill(Color.RED);
+                    LoginMessageLabel.setText("Ongeldige login, probeer het opnieuw!");
+                    LoginMessageLabel.setTextFill(Color.RED);
                     CornerRadii corn = new CornerRadii(4);
-                    invalidLoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
+                    LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
                 }
             }
         } catch (SQLException e) {
