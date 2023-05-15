@@ -51,7 +51,7 @@ public class LoginController {
     }
     public void redirectToNewScene() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
