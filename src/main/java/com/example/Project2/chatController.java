@@ -17,19 +17,16 @@ public class chatController {
     private TextField inputTekst;
     @FXML
     private Button sendButton;
-
     public void SendButtonOnAction(ActionEvent event){
         String input = inputTekst.getText();
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnection()){
-
         }
          catch (SQLException e) {
             throw new RuntimeException(e);
         }
 }
-
-    public void closeButtonOnAction(ActionEvent event) {
+public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
