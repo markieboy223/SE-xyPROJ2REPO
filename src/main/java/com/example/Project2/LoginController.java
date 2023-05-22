@@ -20,7 +20,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.sql.*;
 
-public class LoginController {
+public class LoginController{
     @FXML
     private Button closeButton;
     @FXML

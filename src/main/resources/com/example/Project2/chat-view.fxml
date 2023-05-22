@@ -34,7 +34,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="sendButton" layoutX="444.0" layoutY="265.0" mnemonicParsing="false" onAction="#SendButtonOnAction" onMouseClicked="#closeButtonOnAction" text="Verstuur" />
+                        <Button fx:id="sendButton" defaultButton="true" layoutX="444.0" layoutY="265.0" mnemonicParsing="false" onAction="#SendButtonOnAction" onMouseClicked="#closeButtonOnAction" text="Verstuur" />
                         <Label fx:id="outputTekst" layoutX="53.0" layoutY="34.0" prefHeight="138.0" prefWidth="295.0" text="Over welk onderwerp wilt u het hebben?" />
                      </children>
                   </AnchorPane>
