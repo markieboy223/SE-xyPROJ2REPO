@@ -4,48 +4,69 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Project2.chatController">
-   <top>
-      <MenuBar prefHeight="39.0" prefWidth="600.0" style="-fx-background-color: #0e82c9;" BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Chats" />
-          <Menu mnemonicParsing="false" text="Geschiedenis" />
-          <Menu mnemonicParsing="false" text="Profiel" />
-        </menus>
-      </MenuBar>
-   </top>
-   <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab text="chat">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="inputTekst" layoutX="172.0" layoutY="265.0" prefHeight="25.0" prefWidth="256.0" />
-                        <Button fx:id="closeButton" layoutX="444.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="25.0" prefWidth="85.0" text="Afsluiten">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="sendButton" layoutX="444.0" layoutY="265.0" mnemonicParsing="false" onAction="#SendButtonOnAction" onMouseClicked="#closeButtonOnAction" text="Verstuur" />
-                        <Label fx:id="outputTekst" layoutX="53.0" layoutY="34.0" prefHeight="138.0" prefWidth="295.0" text="Over welk onderwerp wilt u het hebben?" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="chat">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </center>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Project2.chatController">
+    <children>
+        <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0" style="-fx-background-color: white;">
+            <menus>
+                <Menu mnemonicParsing="false" text="Chats">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Instellingen">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Profiel">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TabPane layoutY="27.0" prefHeight="573.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Chat 1">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextField layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" />
+                                <Button fx:id="sendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" text="Verstuur" />
+                                <Label layoutX="50.0" layoutY="45.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="closeButton" layoutX="675.0" layoutY="25.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="40.0" prefWidth="100.0" text="Afsluiten" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Chat 2">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextField layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" text="Stel uw vraag." />
+                                <Button layoutX="675.0" layoutY="450.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Verstuur" />
+                                <Label layoutX="50.0" layoutY="45.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Button layoutX="675.0" layoutY="25.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Afsluiten" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
