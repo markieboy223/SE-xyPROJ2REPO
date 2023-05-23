@@ -33,6 +33,7 @@ public class chatController extends onderwerp{
     private String onderwerp1 = null;
     private String keuzes = null;
     private String keuze = null;
+    private String jaar = null;
     private ArrayList<String> check = new ArrayList<>();
 
 
@@ -41,6 +42,7 @@ public class chatController extends onderwerp{
         onderwerp2 = false;
         keuze = null;
         keuzes = null;
+        jaar = null;
         check.clear();
         tabellen.clear();
         Honderwerp.setText("");
@@ -100,6 +102,12 @@ public class chatController extends onderwerp{
             String keuzes2 = "";
             try (Connection connectDB = connection.getConnection2()){
                 PreparedStatement statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
+                if (jaar != null){
+                    statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE id = " + jaar);
+                }
+                else{
+                    statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
+                }
                 //"select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = " + onderwerp
                 //"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'documentatie' AND TABLE_NAME = 'kosten'"
                 //PreparedStatement statement = connectDB.prepareStatement("SELECT * FROM " + onderwerp);
@@ -147,6 +155,19 @@ public class chatController extends onderwerp{
     }
     public String vindOnderwerp(String input){
         String [] apart = input.split(" ");
+        String [] jaartallen = {"2023", "2022", "2021", "2020", "2019"};
+        jaar = null;
+        int teller = 1;
+        for (String jaarC : apart){
+            teller = 1;
+            for (String jaarT : jaartallen){
+                if (jaarC.equals(jaarT)) {
+                    jaar = Integer.toString(teller);
+                    break;
+                }
+                teller++;
+            }
+        }
 
         if (!onderwerp2){
             for (String woord : apart){
