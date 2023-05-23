@@ -14,8 +14,8 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
-//      stage.setScene(new Scene(root, 1920, 1080));
-        stage.setScene(new Scene(root, 520, 400));
+//        stage.setScene(new Scene(root, 1920, 1080));
+        stage.setScene(new Scene(root, 800, 600));
         stage.show();
     }
 
