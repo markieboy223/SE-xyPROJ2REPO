@@ -34,6 +34,7 @@ public class chatController extends onderwerp{
     private String keuzes = null;
     private String keuze = null;
     private String jaar = null;
+    boolean heeftJaar = false;
     private ArrayList<String> check = new ArrayList<>();
 
 
@@ -43,6 +44,7 @@ public class chatController extends onderwerp{
         keuze = null;
         keuzes = null;
         jaar = null;
+        heeftJaar = false;
         check.clear();
         tabellen.clear();
         Honderwerp.setText("");
@@ -88,6 +90,13 @@ public class chatController extends onderwerp{
                         teller++;
                     }
                     onderwerp2 = true;
+                    for (String check1 : check){
+                        if (check1.equalsIgnoreCase("jaartal")){
+                            getJaartallen(onderwerp1);
+                            heeftJaar = true;
+                        }
+                    }
+
                     Honderwerp.setText(onderwerp1);
                     chatTab.setText(onderwerp1);
                     outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes + "\n");
@@ -102,8 +111,11 @@ public class chatController extends onderwerp{
             String keuzes2 = "";
             try (Connection connectDB = connection.getConnection2()){
                 PreparedStatement statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
-                if (jaar != null){
-                    statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE id = " + jaar);
+                if (jaar != null && jaren.contains(jaar + "-01-01")){
+                    statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar);
+                }
+                else if (jaar != null && !jaren.contains(jaar + "-01-01")){
+                    statement = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp1);
                 }
                 else{
                     statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
@@ -155,19 +167,28 @@ public class chatController extends onderwerp{
     }
     public String vindOnderwerp(String input){
         String [] apart = input.split(" ");
-        String [] jaartallen = {"2023", "2022", "2021", "2020", "2019"};
         jaar = null;
-        int teller = 1;
-        for (String jaarC : apart){
-            teller = 1;
-            for (String jaarT : jaartallen){
-                if (jaarC.equals(jaarT)) {
-                    jaar = Integer.toString(teller);
-                    break;
+        char [] jaartallen = new char[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        int teller = 0;
+
+        if (heeftJaar){
+            for (String jaarC : apart){
+                if (jaarC.length() == 4){
+                    for (int i = 0; i < jaarC.length(); i++){
+                        char c = jaarC.charAt(i);
+                        for (char j : jaartallen){
+                            if (c == j){
+                                teller++;
+                            }
+                        }
+                    }
+                    if (teller == 4){
+                        jaar = jaarC;
+                    }
                 }
-                teller++;
             }
         }
+
 
         if (!onderwerp2){
             for (String woord : apart){

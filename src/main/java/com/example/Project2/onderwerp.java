@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class onderwerp {
     protected ArrayList<String> tabellen = new ArrayList<>();
+    protected ArrayList<String> jaren = new ArrayList<>();
     public void maakOnderwerpen(){
         DatabaseConnection connection = new DatabaseConnection();
         StringBuilder tableCheck = new StringBuilder();
@@ -19,6 +20,25 @@ public class onderwerp {
                     tableCheck.append(queryResult2.getString(1));
                     tabellen.add(String.valueOf(tableCheck));
                     tableCheck.setLength(0);
+                }
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void getJaartallen(String onderwerp){
+        DatabaseConnection connection = new DatabaseConnection();
+        StringBuilder jarenCheck = new StringBuilder();
+
+        try (Connection connectDB = connection.getConnection2()){
+            PreparedStatement tableNames = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp);
+            try (ResultSet queryResult2 = tableNames.executeQuery()){
+                while (queryResult2.next()){
+                    jarenCheck.append(queryResult2.getString(1));
+                    jaren.add(String.valueOf(jarenCheck));
+                    jarenCheck.setLength(0);
                 }
             }
         }
