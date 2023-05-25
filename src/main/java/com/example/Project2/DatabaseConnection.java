@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DatabaseConnection {
     public Connection databaseGebruiker;
     public Connection databaseDocumentatie;
-    public Connection getConnection(){
+    public Connection getConnectionGebruiker(){
         String databaseName = "docassistent";
         String databaseUser = "root";
         String databasePassword = "";
@@ -24,7 +24,7 @@ public class DatabaseConnection {
 
     }
 
-    public Connection getConnection2(){
+    public Connection getConnectionDoc(){
         String databaseName = "documentatie";
         String databaseUser = "root";
         String databasePassword = "";
