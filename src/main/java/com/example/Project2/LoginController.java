@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -26,9 +23,30 @@ public class LoginController {
     @FXML
     private Label LoginMessageLabel;
     @FXML
+    private Label usernameLabel;
+    @FXML
     private TextField gebruikersnaamTextField;
     @FXML
+    private Label passwordLabel;
+    @FXML
     private PasswordField passwordTextField;
+    @FXML
+    private ComboBox<String> languageComboBox;
+    public void initialize() {
+        // Add language options to the ComboBox
+        languageComboBox.getItems().addAll("Nederlands", "English");
+        // Set the default selected language
+        languageComboBox.getSelectionModel().selectFirst();
+    }
+
+    public void handleLanguageSelection(ActionEvent event) {
+        String selectedLanguage = languageComboBox.getValue();
+        if (selectedLanguage.equals("Nederlands")) {
+            usernameLabel.setText("Gebruikersnaam");
+        } else if (selectedLanguage.equals("English")) {
+            usernameLabel.setText("Username");
+        }
+    }
 
     public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
