@@ -51,11 +51,11 @@ public class LoginController {
     }
     public void redirectToNewScene() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 520, 400));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
