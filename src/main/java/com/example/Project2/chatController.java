@@ -29,7 +29,7 @@ public class chatController {
         String query = onderwerp;
 
         DatabaseConnection connection = new DatabaseConnection();
-        try (Connection connectDB = connection.getConnection2()){
+        try (Connection connectDB = connection.getConnectionDoc()){
             PreparedStatement tableNames = connectDB.prepareStatement("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = " + query + "WHERE TABLE_SCHEMA = 'documentatie'");
             PreparedStatement statement = connectDB.prepareStatement("SELECT * FROM " + query);
 
