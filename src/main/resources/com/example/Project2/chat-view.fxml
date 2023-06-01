@@ -13,50 +13,50 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Project2.chatController">
     <children>
-        <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0" style="-fx-background-color: white;">
+        <MenuBar prefHeight="27.0" prefWidth="800.0" style="-fx-background-color: #0e82c9;">
             <menus>
-                <Menu mnemonicParsing="false" text="Chats">
+                <Menu mnemonicParsing="false" style="-fx-background-color: #0e82c9;" text="Chats">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Close" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Instellingen">
+                <Menu mnemonicParsing="false" style="-fx-background-color: #0e82c9;" text="Instellingen">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Profiel">
+                <Menu mnemonicParsing="false" style="-fx-background-color: #0e82c9;" text="Profiel">
                     <items>
                         <MenuItem mnemonicParsing="false" text="About" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <TabPane layoutY="27.0" prefHeight="573.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane layoutY="27.0" prefHeight="573.0" prefWidth="800.0" style="-fx-background-color: #454545;" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="Chat 1">
+                <Tab style="-fx-background-color: #0e82c9;" text="Chat 1">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <TextField layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" />
-                                <Button fx:id="sendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" text="Verstuur" />
-                                <Label layoutX="50.0" layoutY="45.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?">
+                                <Button fx:id="sendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Verstuur" />
+                                <Label layoutX="50.0" layoutY="45.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?" textFill="WHITE">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="closeButton" layoutX="675.0" layoutY="25.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="40.0" prefWidth="100.0" text="Afsluiten" />
+                                <Button fx:id="closeButton" layoutX="675.0" layoutY="25.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Afsluiten" />
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Chat 2">
+                <Tab style="-fx-background-color: #0e82c9;" text="Chat 2">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <TextField layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" text="Stel uw vraag." />
                                 <Button layoutX="675.0" layoutY="450.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Verstuur" />
-                                <Label layoutX="50.0" layoutY="45.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?">
+                                <Label layoutX="50.0" layoutY="45.0" prefHeight="50.0" prefWidth="200.0" style="-fx-font-style: white;" text="Waar kan ik u mee helpen?" textFill="WHITE">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -70,4 +70,3 @@
         </TabPane>
     </children>
 </AnchorPane>
-

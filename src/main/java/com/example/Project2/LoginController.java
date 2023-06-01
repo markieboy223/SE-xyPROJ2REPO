@@ -17,7 +17,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.sql.*;
 
-public class LoginController {
+public class LoginController{
     @FXML
     private Button closeButton;
     @FXML
@@ -69,7 +69,7 @@ public class LoginController {
     }
     public void redirectToNewScene() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
@@ -81,7 +81,7 @@ public class LoginController {
     }
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
-        try (Connection connectDB = connection.getConnection();
+        try (Connection connectDB = connection.getConnectionGebruiker();
             PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1) FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
             statement.setString(1, gebruikersnaamTextField.getText());
             statement.setString(2, passwordTextField.getText());
