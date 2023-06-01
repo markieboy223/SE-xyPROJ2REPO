@@ -72,7 +72,7 @@
                   <Font size="22.0" />
                </font>
             </Button>
-            <ComboBox fx:id="languageComboBox" layoutX="6.0" layoutY="19.0" prefWidth="150.0" onAction="#handleLanguageSelection"/>
+            <ComboBox fx:id="languageComboBox" layoutX="6.0" layoutY="19.0" onAction="#handleLanguageSelection" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </center>

@@ -36,8 +36,6 @@ public class chatController extends onderwerp{
     private String jaar = null;
     boolean heeftJaar = false;
     private ArrayList<String> check = new ArrayList<>();
-
-
     public void VonderwerpOnAction(ActionEvent event){
         onderwerp1 = null;
         onderwerp2 = false;
