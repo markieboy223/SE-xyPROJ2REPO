@@ -2,28 +2,19 @@ package com.example.Project2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class chatController extends onderwerp{
-    private String selectedLanguage;
     @FXML
     private Button closeButton;
     @FXML
@@ -45,65 +36,6 @@ public class chatController extends onderwerp{
     private String jaar = null;
     boolean heeftJaar = false;
     private ArrayList<String> check = new ArrayList<>();
-    @FXML
-    private Button btnMode;
-    @FXML
-    private ImageView imgMode;
-    @FXML
-    private AnchorPane anchorPane;
-
-    private boolean isLightMode = true;
-
-    public void changeMode(ActionEvent event) {
-        isLightMode = !isLightMode;
-        if (isLightMode) {
-            setLightMode();
-        } else {
-            setDarkMode();
-        }
-    }
-
-    public void profileScene(ActionEvent event){
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setLightMode() {
-        anchorPane.getStylesheets().remove(getClass().getResource("/styles/darkMode.css").toExternalForm());
-        anchorPane.getStylesheets().add(getClass().getResource("/styles/lightMode.css").toExternalForm());
-        Image image = new Image(getClass().getResource("/Images/ic_dark.png").toExternalForm());
-        imgMode.setImage(image);
-        outputTekst.setTextFill(new Color(0,0,0,1));
-    }
-
-    private void setDarkMode() {
-        anchorPane.getStylesheets().remove(getClass().getResource("/styles/lightMode.css").toExternalForm());
-        anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
-        Image image = new Image(getClass().getResource("/Images/ic_light.png").toExternalForm());
-        imgMode.setImage(image);
-        outputTekst.setTextFill(new Color(1,1,1,1));
-    }
-
-    public void handleLanguageSelection() {
-        if (selectedLanguage != null) {
-            if (selectedLanguage.equals("Nederlands")) {
-                sendButton.setText("Verstuur");
-                closeButton.setText("Afsluiten");
-            } else if (selectedLanguage.equals("English")) {
-                sendButton.setText("Send");
-                closeButton.setText("Close");
-            }
-        }
-    }
     public void VonderwerpOnAction(ActionEvent event){
         onderwerp1 = null;
         onderwerp2 = false;
@@ -282,23 +214,4 @@ public class chatController extends onderwerp{
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-
-    public void createAccountForm(){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
-            Stage registerStage = new Stage();
-            registerStage.initStyle(StageStyle.UNDECORATED);
-            registerStage.setScene(new Scene(root, 800, 600));
-            registerStage.show();
-        } catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-    }
-
-    public void setSelectedLanguage(String language) {
-        selectedLanguage = language;
-        handleLanguageSelection();
-    }
-
 }
