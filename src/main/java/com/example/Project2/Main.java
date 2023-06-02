@@ -15,7 +15,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
 //        stage.setScene(new Scene(root, 1920, 1080));
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 

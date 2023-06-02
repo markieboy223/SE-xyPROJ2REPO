@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -36,7 +39,34 @@ public class chatController extends onderwerp{
     private String jaar = null;
     boolean heeftJaar = false;
     private ArrayList<String> check = new ArrayList<>();
+    @FXML
+    private Button btnMode;
+    @FXML
+    private ImageView imgMode;
+    @FXML
+    private AnchorPane parent;
 
+    private boolean isLightmode = true;
+    public void changeMode(ActionEvent event){
+        isLightmode = !isLightmode;
+        if(isLightmode){
+            setLightmode();
+        }else{
+            setDarkmode();
+        }
+    }
+    private void setLightmode(){
+        parent.getStylesheets().remove("@../../../../java/styles/darkMode.css");
+        parent.getStylesheets().add("@../../../../java/styles/lightMode.css");
+        Image image = new Image("@../../../../../../Images/ic_dark.png");
+        imgMode.setImage(image);
+    }
+    private void setDarkmode(){
+        parent.getStylesheets().remove("@../../../../java/styles/lightMode.css");
+        parent.getStylesheets().add("@../../../../java/styles/darkMode.css");
+        Image image = new Image("@../../../../../../Images/ic_dark.png");
+        imgMode.setImage(image);
+    }
 
     public void VonderwerpOnAction(ActionEvent event){
         onderwerp1 = null;
