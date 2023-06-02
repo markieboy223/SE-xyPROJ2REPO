@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class chatController extends onderwerp{
     @FXML
@@ -35,6 +36,11 @@ public class chatController extends onderwerp{
     private String keuze = null;
     private String jaar = null;
     boolean heeftJaar = false;
+    boolean keuze2 = false;
+    boolean checkDoor = false;
+    int index;
+    ArrayList<String> keuzes2 = new ArrayList<>();
+    ArrayList<String> att = new ArrayList<>();
     private ArrayList<String> check = new ArrayList<>();
     public void VonderwerpOnAction(ActionEvent event){
         onderwerp1 = null;
@@ -43,8 +49,14 @@ public class chatController extends onderwerp{
         keuzes = null;
         jaar = null;
         heeftJaar = false;
+        tabellenInhoud.clear();
+        tabellenNaam.clear();
+        keuze2 = false;
+        index = 0;
+        keuzes2.clear();
         check.clear();
         tabellen.clear();
+        att.clear();
         Honderwerp.setText("");
         chatTab.setText("chat");
         outputTekst.setText("Over welk onderwerp wilt u het hebben?");
@@ -65,9 +77,6 @@ public class chatController extends onderwerp{
         if (onderwerp1 != null && keuzes == null){
             try (Connection connectDB = connection.getConnectionDoc()){
                 PreparedStatement statement = connectDB.prepareStatement("DESCRIBE " + onderwerp1);
-                //"select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = " + onderwerp
-                //"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'documentatie' AND TABLE_NAME = 'kosten'"
-                //PreparedStatement statement = connectDB.prepareStatement("SELECT * FROM " + onderwerp);
                 int teller = 0;
                 try (ResultSet queryResult = statement.executeQuery()) {
                     while (queryResult.next()){
@@ -89,7 +98,8 @@ public class chatController extends onderwerp{
                     }
                     onderwerp2 = true;
                     for (String check1 : check){
-                        if (check1.equalsIgnoreCase("jaartal")){
+                        getTabbelen(check1, onderwerp1);
+                        if (check1.equalsIgnoreCase("Jaartal")){
                             getJaartallen(onderwerp1);
                             heeftJaar = true;
                         }
@@ -105,40 +115,143 @@ public class chatController extends onderwerp{
                 throw new RuntimeException(e);
             }
         }
-        else if (onderwerp2 && keuze != null){
-            String keuzes2 = "";
+
+        else if (onderwerp2 && keuze != null && !keuze2){
+            String fuck = "";
+            boolean buitenTermijn = false;
             try (Connection connectDB = connection.getConnectionDoc()){
                 PreparedStatement statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
                 if (jaar != null && jaren.contains(jaar + "-01-01")){
                     statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar);
+                    index = tabellenNaam.indexOf(keuze);
+                    keuze2 = true;
                 }
                 else if (jaar != null && !jaren.contains(jaar + "-01-01")){
                     statement = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp1);
+                    buitenTermijn = true;
+                    index = tabellenNaam.indexOf(keuze);
+                    keuze2 = true;
                 }
                 else{
                     statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
+                    index = tabellenNaam.indexOf(keuze);
+                    keuze2 = true;
                 }
-                //"select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = " + onderwerp
-                //"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'documentatie' AND TABLE_NAME = 'kosten'"
-                //PreparedStatement statement = connectDB.prepareStatement("SELECT * FROM " + onderwerp);
                 int teller = 0;
                 try (ResultSet queryResult = statement.executeQuery()) {
                     while (queryResult.next()){
                         teller++;
                         if (teller > 0){
                             antwoord.append(queryResult.getString(1));
-                            antwoord.append(" ");
-                            keuzes2 = keuzes2 + antwoord.toString() + "\n";
+                            keuzes2.add(antwoord.toString());
                             antwoord.setLength(0);
                         }
                     }
-                    outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes2 + "\n");
+                    for (String x : keuzes2){
+                        fuck = fuck + x + "\n";
+                    }
+                    if (!buitenTermijn){
+                        outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                    }
+                    else{
+                        outputTekst.setText("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
+                                            + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
+                    }
+                    fuck = "";
                     inputTekst.clear();
                 }
             }
             catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+        }
+
+        else if (onderwerp2 && keuze != null){
+            String fuck = "";
+            boolean buitenTermijn = false;
+            System.out.println(checkDoor);
+            if (!checkDoor){
+                keuzes2.clear();
+                try (Connection connectDB = connection.getConnectionDoc()){
+                    PreparedStatement statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
+                    if (jaar != null && jaren.contains(jaar + "-01-01")){
+                        statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar);
+                        index = tabellenNaam.indexOf(keuze);
+                        keuze2 = true;
+                    }
+                    else if (jaar != null && !jaren.contains(jaar + "-01-01")){
+                        statement = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp1);
+                        buitenTermijn = true;
+                        index = tabellenNaam.indexOf(keuze);
+                        keuze2 = true;
+                    }
+                    else{
+                        statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
+                        index = tabellenNaam.indexOf(keuze);
+                        keuze2 = true;
+                    }
+                    int teller = 0;
+                    try (ResultSet queryResult = statement.executeQuery()) {
+                        while (queryResult.next()){
+                            teller++;
+                            if (teller > 0){
+                                antwoord.append(queryResult.getString(1));
+                                keuzes2.add(antwoord.toString());
+                                antwoord.setLength(0);
+                            }
+                        }
+                        for (String x : keuzes2){
+                            fuck = fuck + x + "\n";
+                        }
+                        if (!buitenTermijn){
+                            outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                        }
+                        else{
+                            outputTekst.setText("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
+                                    + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
+                        }
+                        fuck = "";
+                        inputTekst.clear();
+                    }
+                }
+                catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            else{
+                int index2 = tabellenInhoud.get(index).indexOf(keuze) + 1;
+                System.out.println(index2);
+                try (Connection connectDB = connection.getConnectionDoc()){
+                    PreparedStatement statement = connectDB.prepareStatement("SELECT *  FROM " + onderwerp1 + " WHERE " + onderwerp1 + ".id = " + index2);
+                    try (ResultSet queryResult = statement.executeQuery()) {
+                        while (queryResult.next()){
+                            for (String x : tabellenNaam){
+                                if (!Objects.equals(x, "id")){
+                                    antwoord.append(queryResult.getString(x));
+                                    att.add(antwoord.toString());
+                                    antwoord.setLength(0);
+                                }
+                            }
+                        }
+                        for (String x : att){
+                            System.out.println(x);
+                            fuck = fuck + x + "\n";
+                        }
+                        outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                        att.clear();
+                        fuck = "";
+                        keuzes2.clear();
+                        checkDoor = false;
+                        keuze2 = false;
+                        inputTekst.clear();
+                    }
+                }
+                catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
         }
 
         else if(!onderwerp2){
@@ -197,7 +310,7 @@ public class chatController extends onderwerp{
                 }
             }
         }
-        else if (onderwerp2){
+        else if (onderwerp2 && !keuze2){
             for (String woord : apart){
                 for (String woord2 : check){
                     if (woord.equalsIgnoreCase(woord2)){
@@ -206,6 +319,34 @@ public class chatController extends onderwerp{
                 }
             }
 
+        }
+        else if (onderwerp2 && keuze2){
+            String help = "";
+            String help2 = "";
+            for (int i = 0; i < apart.length; i++){
+                String woord = apart[i];
+                if (i != apart.length - 1){
+                    help = woord + " " + apart[i +1];
+                }
+                for (String woord2 : keuzes2){
+                    if (woord.equalsIgnoreCase(woord2) || help.equalsIgnoreCase(woord2)){
+                        if (help.equals(woord2)){
+                            return help;
+                        }
+                        checkDoor = true;
+                        return woord2;
+                    }
+                }
+            }
+
+            for (String woord : apart){
+                for (String woord2 : check){
+                    if (woord.equalsIgnoreCase(woord2)){
+                        help = woord2;
+                        return help;
+                    }
+                }
+            }
         }
         return null;
     }
