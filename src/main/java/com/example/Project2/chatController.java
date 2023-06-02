@@ -2,11 +2,15 @@ package com.example.Project2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -36,7 +40,6 @@ public class chatController extends onderwerp{
     private String jaar = null;
     boolean heeftJaar = false;
     private ArrayList<String> check = new ArrayList<>();
-
 
     public void VonderwerpOnAction(ActionEvent event){
         onderwerp1 = null;
@@ -215,5 +218,18 @@ public class chatController extends onderwerp{
     public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void createAccountForm(){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+            Stage registerStage = new Stage();
+            registerStage.initStyle(StageStyle.UNDECORATED);
+            registerStage.setScene(new Scene(root, 800, 600));
+            registerStage.show();
+        } catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 }
