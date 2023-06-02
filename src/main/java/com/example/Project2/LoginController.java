@@ -103,6 +103,7 @@ public class LoginController{
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            e.getCause();
         }
     }
 }
