@@ -42,7 +42,7 @@
             <tabs>
                 <Tab fx:id="chatTab" text="Chat 1">
                     <content>
-                        <AnchorPane fx:id="parent" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="primary-color" stylesheets="@../../../../java/styles/lightMode.css">
+                        <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="primary-color" stylesheets="@../../../styles/lightMode.css">
                             <children>
                                 <TextField fx:id="inputTekst" layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" />
                                 <Button fx:id="sendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Verstuur" textFill="WHITE" />
@@ -69,7 +69,7 @@
                            <graphic>
                               <ImageView fx:id="imgMode" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../Images/ic_dark.png" />
+                                    <Image url="@../../../Images/ic_dark.png" />
                                  </image>
                               </ImageView>
                            </graphic>
