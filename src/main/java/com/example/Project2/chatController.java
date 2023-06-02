@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -65,6 +66,7 @@ public class chatController extends onderwerp{
         anchorPane.getStylesheets().add(getClass().getResource("/styles/lightMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_dark.png").toExternalForm());
         imgMode.setImage(image);
+        outputTekst.setTextFill(new Color(0,0,0,1));
     }
 
     private void setDarkMode() {
@@ -72,6 +74,7 @@ public class chatController extends onderwerp{
         anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_light.png").toExternalForm());
         imgMode.setImage(image);
+        outputTekst.setTextFill(new Color(1,1,1,1));
     }
 
     public void VonderwerpOnAction(ActionEvent event){
