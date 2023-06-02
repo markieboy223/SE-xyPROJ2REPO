@@ -19,7 +19,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class chatController extends onderwerp{
     @FXML
@@ -48,27 +47,30 @@ public class chatController extends onderwerp{
     @FXML
     private ImageView imgMode;
     @FXML
-    private AnchorPane parent;
+    private AnchorPane anchorPane;
 
-    private boolean isLightmode = true;
-    public void changeMode(ActionEvent event){
-        isLightmode = !isLightmode;
-        if(isLightmode){
-            setLightmode();
-        }else{
-            setDarkmode();
+    private boolean isLightMode = true;
+
+    public void changeMode(ActionEvent event) {
+        isLightMode = !isLightMode;
+        if (isLightMode) {
+            setLightMode();
+        } else {
+            setDarkMode();
         }
     }
-    private void setLightmode(){
-        parent.getStylesheets().remove("@../../../../java/styles/darkMode.css");
-        parent.getStylesheets().add("@../../../../java/styles/lightMode.css");
-        Image image = new Image("@../../../../../../Images/ic_dark.png");
+
+    private void setLightMode() {
+        anchorPane.getStylesheets().remove(getClass().getResource("/styles/darkMode.css").toExternalForm());
+        anchorPane.getStylesheets().add(getClass().getResource("/styles/lightMode.css").toExternalForm());
+        Image image = new Image(getClass().getResource("/Images/ic_dark.png").toExternalForm());
         imgMode.setImage(image);
     }
-    private void setDarkmode(){
-        parent.getStylesheets().remove("@../../../../java/styles/lightMode.css");
-        parent.getStylesheets().add("@../../../../java/styles/darkMode.css");
-        Image image = new Image("@../../../../../../Images/ic_dark.png");
+
+    private void setDarkMode() {
+        anchorPane.getStylesheets().remove(getClass().getResource("/styles/lightMode.css").toExternalForm());
+        anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
+        Image image = new Image(getClass().getResource("/Images/ic_light.png").toExternalForm());
         imgMode.setImage(image);
     }
 

@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b3ba2db-82bf-4ba6-990f-a8e351101a63" name="Changes" comment="Misha" />
+    <list default="true" id="36899b85-2f97-446d-bea8-df097e7f85a1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Images/LogoDocAssistent.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/LogoDocAssistent.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/ic_dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/ic_dark.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/ic_light.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/ic_light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/styles/darkMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles/darkMode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/styles/lightMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles/lightMode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,16 +23,29 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Mark" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2QeG3kCaM1eKd2huOxITIWLJkuC" />
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2PdomTx5e4SP1el1UcYdvgeAVzJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -32,40 +54,50 @@
   "keyToString": {
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
+    "Repository.Attach.JavaDocs": "true",
+    "Repository.Attach.Sources": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Misha/SE-xyPROJ2REPO/src/main/java/styles",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-20",
+    "last_directory_selection": "C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/src/main/java/com/example/Project2",
+    "last_opened_file_path": "C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/src/main/resources/com/example/Project2",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Misha\SE-xyPROJ2REPO\src\main\java\styles" />
-      <recent name="C:\Users\Misha\SE-xyPROJ2REPO\Images" />
+      <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\resources\com\example\Project2" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\resources" />
+      <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\resources\styles" />
+      <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\Images" />
+      <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\java\Images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.Main" />
+      <module name="Project2" />
+      <option name="PROGRAM_PARAMETERS" value="$JAVAFX_SDK$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5b3ba2db-82bf-4ba6-990f-a8e351101a63" name="Changes" comment="" />
-      <created>1685706441137</created>
+      <changelist id="36899b85-2f97-446d-bea8-df097e7f85a1" name="Changes" comment="" />
+      <created>1683796479926</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1685706441137</updated>
+      <updated>1683796479926</updated>
     </task>
-    <task id="LOCAL-00001" summary="Misha">
-      <created>1685711458913</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1685711458913</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -78,9 +110,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Misha" />
-    <option name="LAST_COMMIT_MESSAGE" value="Misha" />
   </component>
 </project>
