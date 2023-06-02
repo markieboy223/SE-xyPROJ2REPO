@@ -67,7 +67,7 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="loginButton" layoutX="81.0" layoutY="407.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="35.0" prefWidth="243.0" style="-fx-background-color: #0e82c9;" text="Inloggen" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="loginButton" defaultButton="true" layoutX="81.0" layoutY="407.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="35.0" prefWidth="243.0" style="-fx-background-color: #0e82c9;" text="Inloggen" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
