@@ -42,8 +42,13 @@ public class RegisterController {
     }
 
     public void registerButtonOnAction() {
-        if (passwordTextField.getText().equals(confirmPasswordTextField.getText())){
+        if (passwordTextField.getText().equals(confirmPasswordTextField.getText()) && !gebruikersnaamTextField.getText().isBlank()){
             registerUser();
+        } else if (gebruikersnaamTextField.getText().isBlank()) {
+            messageLabel.setText("Gebruikersnaam niet ingevuld");
+            messageLabel.setTextFill(Color.RED);
+            CornerRadii corn = new CornerRadii(4);
+            messageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
         } else {
             messageLabel.setText("Wachtwoord komt niet overeen");
             messageLabel.setTextFill(Color.RED);
