@@ -21,6 +21,8 @@ public class LoginController{
     @FXML
     private Button closeButton;
     @FXML
+    private Button loginButton;
+    @FXML
     private Label LoginMessageLabel;
     @FXML
     private Label usernameLabel;
@@ -43,8 +45,16 @@ public class LoginController{
         String selectedLanguage = languageComboBox.getValue();
         if (selectedLanguage.equals("Nederlands")) {
             usernameLabel.setText("Gebruikersnaam");
+            closeButton.setText("Afsluiten");
+            passwordLabel.setText("Wachtwoord");
+            loginButton.setText("Inloggen");
+
         } else if (selectedLanguage.equals("English")) {
             usernameLabel.setText("Username");
+            closeButton.setText("Close");
+            passwordLabel.setText("Password");
+            loginButton.setText("Login");
+
         }
     }
 
