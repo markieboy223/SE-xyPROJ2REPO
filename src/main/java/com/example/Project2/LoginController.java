@@ -69,8 +69,15 @@ public class LoginController{
     }
     public void redirectToNewScene() {
         try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
             Parent root = fxmlLoader.load();
+
+            // Get the controller instance from the FXMLLoader
+            chatController chatControllerInstance = fxmlLoader.getController();
+
+            // Pass the selected language to the chatController instance
+            chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
+
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 800, 600));
@@ -79,6 +86,7 @@ public class LoginController{
             e.printStackTrace();
         }
     }
+
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnectionGebruiker();

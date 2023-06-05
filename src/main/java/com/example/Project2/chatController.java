@@ -22,6 +22,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class chatController extends onderwerp{
+    private String selectedLanguage;
     @FXML
     private Button closeButton;
     @FXML
@@ -268,4 +269,9 @@ public class chatController extends onderwerp{
             e.getCause();
         }
     }
+
+    public void setSelectedLanguage(String language) {
+        selectedLanguage = language;
+    }
+
 }
