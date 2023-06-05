@@ -378,11 +378,10 @@ public class chatController extends onderwerp{
         }
         return null;
     }
-
     public void setUser(int userID, String userName){
-
+            this.userID = userID;
+            this.userName = userName;
     }
-
     public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
