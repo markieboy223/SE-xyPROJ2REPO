@@ -78,6 +78,17 @@ public class chatController extends onderwerp{
         outputTekst.setTextFill(new Color(1,1,1,1));
     }
 
+    public void handleLanguageSelection() {
+        if (selectedLanguage != null) {
+            if (selectedLanguage.equals("Nederlands")) {
+                sendButton.setText("Verstuur");
+                closeButton.setText("Afsluiten");
+            } else if (selectedLanguage.equals("English")) {
+                sendButton.setText("Send");
+                closeButton.setText("Close");
+            }
+        }
+    }
     public void VonderwerpOnAction(ActionEvent event){
         onderwerp1 = null;
         onderwerp2 = false;
@@ -272,6 +283,7 @@ public class chatController extends onderwerp{
 
     public void setSelectedLanguage(String language) {
         selectedLanguage = language;
+        handleLanguageSelection();
     }
 
 }
