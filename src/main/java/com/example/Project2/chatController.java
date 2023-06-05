@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -21,6 +22,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class chatController extends onderwerp{
+    private String selectedLanguage;
     @FXML
     private Button closeButton;
     @FXML
@@ -65,6 +67,7 @@ public class chatController extends onderwerp{
         anchorPane.getStylesheets().add(getClass().getResource("/styles/lightMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_dark.png").toExternalForm());
         imgMode.setImage(image);
+        outputTekst.setTextFill(new Color(0,0,0,1));
     }
 
     private void setDarkMode() {
@@ -72,8 +75,20 @@ public class chatController extends onderwerp{
         anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_light.png").toExternalForm());
         imgMode.setImage(image);
+        outputTekst.setTextFill(new Color(1,1,1,1));
     }
 
+    public void handleLanguageSelection() {
+        if (selectedLanguage != null) {
+            if (selectedLanguage.equals("Nederlands")) {
+                sendButton.setText("Verstuur");
+                closeButton.setText("Afsluiten");
+            } else if (selectedLanguage.equals("English")) {
+                sendButton.setText("Send");
+                closeButton.setText("Close");
+            }
+        }
+    }
     public void VonderwerpOnAction(ActionEvent event){
         onderwerp1 = null;
         onderwerp2 = false;
@@ -265,4 +280,10 @@ public class chatController extends onderwerp{
             e.getCause();
         }
     }
+
+    public void setSelectedLanguage(String language) {
+        selectedLanguage = language;
+        handleLanguageSelection();
+    }
+
 }
