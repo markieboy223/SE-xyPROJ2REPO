@@ -18,7 +18,7 @@
          <children>
             <ImageView fitHeight="244.0" fitWidth="209.0" layoutX="98.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Images/LogoDocAssistent.png" />
+                  <Image url="@../../../Images/LogoDocAssistent.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" layoutX="111.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC Assistent" textAlignment="CENTER">
