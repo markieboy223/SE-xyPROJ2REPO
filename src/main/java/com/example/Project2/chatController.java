@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -83,9 +80,17 @@ public class chatController extends onderwerp{
             if (selectedLanguage.equals("Nederlands")) {
                 sendButton.setText("Verstuur");
                 closeButton.setText("Afsluiten");
+                Vonderwerp.setText("Verander");
+                outputTekst.setText("Waar kan ik u mee helpen?");
+
             } else if (selectedLanguage.equals("English")) {
                 sendButton.setText("Send");
                 closeButton.setText("Close");
+                Vonderwerp.setText("Change");
+                outputTekst.setText("How can i assist you?");
+
+
+
             }
         }
     }
