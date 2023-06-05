@@ -38,6 +38,11 @@ public class chatController extends onderwerp{
     boolean heeftJaar = false;
     boolean keuze2 = false;
     boolean checkDoor = false;
+    private String vraag;
+    private String antwoord;
+    private int userID;
+    private String userName;
+
     int index;
     ArrayList<String> keuzes2 = new ArrayList<>();
     ArrayList<String> att = new ArrayList<>();
@@ -372,6 +377,10 @@ public class chatController extends onderwerp{
             }
         }
         return null;
+    }
+
+    public void setUser(int userID, String userName){
+
     }
 
     public void closeButtonOnAction(ActionEvent event) {
