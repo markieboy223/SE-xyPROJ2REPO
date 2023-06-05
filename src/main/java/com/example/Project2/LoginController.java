@@ -21,6 +21,8 @@ public class LoginController{
     @FXML
     private Button closeButton;
     @FXML
+    private Button loginButton;
+    @FXML
     private Label LoginMessageLabel;
     @FXML
     private Label usernameLabel;
@@ -45,8 +47,16 @@ public class LoginController{
         String selectedLanguage = languageComboBox.getValue();
         if (selectedLanguage.equals("Nederlands")) {
             usernameLabel.setText("Gebruikersnaam");
+            closeButton.setText("Afsluiten");
+            passwordLabel.setText("Wachtwoord");
+            loginButton.setText("Inloggen");
+
         } else if (selectedLanguage.equals("English")) {
             usernameLabel.setText("Username");
+            closeButton.setText("Close");
+            passwordLabel.setText("Password");
+            loginButton.setText("Login");
+
         }
     }
 
@@ -71,8 +81,15 @@ public class LoginController{
     }
     public void redirectToNewScene() {
         try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
             Parent root = fxmlLoader.load();
+
+            // Get the controller instance from the FXMLLoader
+            chatController chatControllerInstance = fxmlLoader.getController();
+
+            // Pass the selected language to the chatController instance
+            chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
+
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 800, 600));
@@ -81,6 +98,7 @@ public class LoginController{
             e.printStackTrace();
         }
     }
+
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnectionGebruiker();
@@ -107,6 +125,7 @@ public class LoginController{
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            e.getCause();
         }
     }
 }
