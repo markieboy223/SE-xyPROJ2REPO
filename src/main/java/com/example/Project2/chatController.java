@@ -123,18 +123,30 @@ public class chatController extends onderwerp{
                 PreparedStatement statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
                 if (jaar != null && jaren.contains(jaar + "-01-01")){
                     statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar);
-                    index = tabellenNaam.indexOf(keuze);
+                    for (String x : tabellenNaam){
+                        if (keuze.equalsIgnoreCase(x)){
+                            index = tabellenNaam.indexOf(x);
+                        }
+                    }
                     keuze2 = true;
                 }
                 else if (jaar != null && !jaren.contains(jaar + "-01-01")){
                     statement = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp1);
                     buitenTermijn = true;
-                    index = tabellenNaam.indexOf(keuze);
+                    for (String x : tabellenNaam){
+                        if (keuze.equalsIgnoreCase(x)){
+                            index = tabellenNaam.indexOf(x);
+                        }
+                    }
                     keuze2 = true;
                 }
                 else{
                     statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
-                    index = tabellenNaam.indexOf(keuze);
+                    for (String x : tabellenNaam){
+                        if (keuze.equalsIgnoreCase(x)){
+                            index = tabellenNaam.indexOf(x);
+                        }
+                    }
                     keuze2 = true;
                 }
                 int teller = 0;
@@ -176,18 +188,30 @@ public class chatController extends onderwerp{
                     PreparedStatement statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
                     if (jaar != null && jaren.contains(jaar + "-01-01")){
                         statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar);
-                        index = tabellenNaam.indexOf(keuze);
+                        for (String x : tabellenNaam){
+                            if (keuze.equalsIgnoreCase(x)){
+                                index = tabellenNaam.indexOf(x);
+                            }
+                        }
                         keuze2 = true;
                     }
                     else if (jaar != null && !jaren.contains(jaar + "-01-01")){
                         statement = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp1);
                         buitenTermijn = true;
-                        index = tabellenNaam.indexOf(keuze);
+                        for (String x : tabellenNaam){
+                            if (keuze.equalsIgnoreCase(x)){
+                                index = tabellenNaam.indexOf(x);
+                            }
+                        }
                         keuze2 = true;
                     }
                     else{
                         statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
-                        index = tabellenNaam.indexOf(keuze);
+                        for (String x : tabellenNaam){
+                            if (keuze.equalsIgnoreCase(x)){
+                                index = tabellenNaam.indexOf(x);
+                            }
+                        }
                         keuze2 = true;
                     }
                     int teller = 0;
@@ -221,7 +245,6 @@ public class chatController extends onderwerp{
 
             else{
                 int index2 = tabellenInhoud.get(index).indexOf(keuze) + 1;
-                System.out.println(index2);
                 try (Connection connectDB = connection.getConnectionDoc()){
                     PreparedStatement statement = connectDB.prepareStatement("SELECT *  FROM " + onderwerp1 + " WHERE " + onderwerp1 + ".id = " + index2);
                     try (ResultSet queryResult = statement.executeQuery()) {
