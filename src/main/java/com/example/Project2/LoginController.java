@@ -39,7 +39,7 @@ public class LoginController{
     public void initialize() {
         // Add language options to the ComboBox
         languageComboBox.getItems().addAll("Nederlands", "English");
-        // Set the default selected language
+        // Set the default selected languageg
         languageComboBox.getSelectionModel().selectFirst();
     }
 
