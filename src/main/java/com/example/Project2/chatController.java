@@ -34,6 +34,10 @@ public class chatController extends onderwerp{
     private Button sendButton;
     @FXML
     private Tab chatTab;
+    @FXML
+    private MenuItem Delete;
+    @FXML
+    private Menu Chat;
     private boolean onderwerp2 = false;
     private String onderwerp1 = null;
     private String keuzes = null;
@@ -83,17 +87,17 @@ public class chatController extends onderwerp{
                 Vonderwerp.setText("Verander");
                 outputTekst.setText("Waar kan ik u mee helpen?");
 
+
             } else if (selectedLanguage.equals("English")) {
                 sendButton.setText("Send");
                 closeButton.setText("Close");
                 Vonderwerp.setText("Change");
                 outputTekst.setText("How can i assist you?");
 
-
-
             }
         }
     }
+
     public void VonderwerpOnAction(ActionEvent event){
         onderwerp1 = null;
         onderwerp2 = false;
