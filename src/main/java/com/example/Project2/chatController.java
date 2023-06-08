@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +22,7 @@ import java.util.Objects;
 
 public class chatController extends onderwerp{
     private opslaanChat opslaan = new opslaanChat();
+    private opvragenChat opvragen = new opvragenChat();
     private String selectedLanguage;
     @FXML
     private Button closeButton;
@@ -33,7 +31,9 @@ public class chatController extends onderwerp{
     @FXML
     private TextField inputTekst;
     @FXML
-    private Label outputTekst;
+    private TextArea outputTekst;
+    @FXML
+    private ScrollPane scrollDing;
     @FXML
     private Label Honderwerp;
     @FXML
@@ -64,6 +64,7 @@ public class chatController extends onderwerp{
     ArrayList<String> att = new ArrayList<>();
     private ArrayList<String> check = new ArrayList<>();
 
+
     public void changeMode(ActionEvent event) {
         isLightMode = !isLightMode;
         if (isLightMode) {
@@ -78,7 +79,7 @@ public class chatController extends onderwerp{
         anchorPane.getStylesheets().add(getClass().getResource("/styles/lightMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_dark.png").toExternalForm());
         imgMode.setImage(image);
-        outputTekst.setTextFill(new Color(0,0,0,1));
+        outputTekst.setStyle("-fx-text-fill: black ;");
     }
 
     private void setDarkMode() {
@@ -86,7 +87,7 @@ public class chatController extends onderwerp{
         anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_light.png").toExternalForm());
         imgMode.setImage(image);
-        outputTekst.setTextFill(new Color(1,1,1,1));
+        outputTekst.setStyle("-fx-text-fill: white ;");
     }
 
     public void handleLanguageSelection() {
@@ -99,6 +100,32 @@ public class chatController extends onderwerp{
                 closeButton.setText("Close");
             }
         }
+    }
+    public void setStartText(String start){
+        //outputTekst.setStyle("-fx-text-fill: white");
+        outputTekst.setStyle("-fx-font-style: white");
+        //scrollDing.setStyle("-fx-background: transparent");
+        //scrollDing.setStyle("-fx-background-color: transparent");
+        opvragen.opvragen(userID);
+        String volgende = "\n";
+        ArrayList<String> geschiedenis = opvragen.uitvragen();
+        outputTekst.setText("Uw chatgeschiedenis: \n");
+        int teller = 0;
+        for (String x : geschiedenis){
+            if (teller == 0){
+                outputTekst.appendText("Q: " + x);
+                outputTekst.appendText(volgende);
+                teller++;
+            }
+            else {
+                outputTekst.appendText("A: " + x);
+                outputTekst.appendText(volgende);
+                teller = 0;
+            }
+        }
+        outputTekst.appendText(volgende);
+        outputTekst.appendText(start);
+        outputTekst.appendText(volgende);
     }
     public void VonderwerpOnAction(ActionEvent event){
         if (vraagS.length() > 0){
@@ -122,7 +149,7 @@ public class chatController extends onderwerp{
         att.clear();
         Honderwerp.setText("");
         chatTab.setText("chat");
-        outputTekst.setText("Over welk onderwerp wilt u het hebben?");
+        setStartText("Over welk onderwerp wilt u het hebben?");
     }
     public void SendButtonOnAction(ActionEvent event){
         if (vraagS.length() > 0){
@@ -175,7 +202,7 @@ public class chatController extends onderwerp{
 
                     Honderwerp.setText(onderwerp1);
                     chatTab.setText(onderwerp1);
-                    outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes + "\n");
+                    outputTekst.appendText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes + "\n");
                     vraagS = vraagS + input;
                     String betereKeuzes = keuzes.replaceAll("\r", ", ").replaceAll("\n", ", ");
                     antwoordS = antwoordS + betereKeuzes;
@@ -234,10 +261,10 @@ public class chatController extends onderwerp{
                         fuck = fuck + x + "\n";
                     }
                     if (!buitenTermijn){
-                        outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                        outputTekst.appendText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
                     }
                     else{
-                        outputTekst.setText("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
+                        outputTekst.appendText("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
                                             + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
                     }
                     vraagS = vraagS + input;
@@ -301,10 +328,10 @@ public class chatController extends onderwerp{
                             fuck = fuck + x + "\n";
                         }
                         if (!buitenTermijn){
-                            outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                            outputTekst.appendText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
                         }
                         else{
-                            outputTekst.setText("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
+                            outputTekst.appendText("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
                                     + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
                         }
                         vraagS = vraagS + input;
@@ -337,7 +364,7 @@ public class chatController extends onderwerp{
                             System.out.println(x);
                             fuck = fuck + x + "\n";
                         }
-                        outputTekst.setText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                        outputTekst.appendText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
                         vraagS = vraagS + input;
                         String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
                         antwoordS = antwoordS + betereKeuzes;
@@ -363,7 +390,7 @@ public class chatController extends onderwerp{
                 help2 =  help2 + dit + "\n";
             }
             help = help + help2;
-            outputTekst.setText(help);
+            outputTekst.appendText(help);
             inputTekst.clear();
         }
         else if(onderwerp2 && keuze == null){
@@ -373,7 +400,7 @@ public class chatController extends onderwerp{
                 help2 =  help2 + dit + "\n";
             }
             help = help + help2;
-            outputTekst.setText(help);
+            outputTekst.appendText(help);
             inputTekst.clear();
         }
 

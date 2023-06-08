@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd66bae2-93ee-4ef0-98ef-ff059ce202c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="cd66bae2-93ee-4ef0-98ef-ff059ce202c3" name="Changes" comment="chatgeschiedenis">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/opvragenChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docassistent (1).sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/opslaanChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/opslaanChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +24,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/Bart" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Mark" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,6 +91,14 @@
       <option name="presentableId" value="Default" />
       <updated>1683796479926</updated>
     </task>
+    <task id="LOCAL-00001" summary="chatgeschiedenis">
+      <created>1686209136272</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686209136272</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,5 +111,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="chatgeschiedenis" />
+    <option name="LAST_COMMIT_MESSAGE" value="chatgeschiedenis" />
   </component>
 </project>
