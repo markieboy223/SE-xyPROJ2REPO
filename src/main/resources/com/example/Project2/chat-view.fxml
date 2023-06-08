@@ -21,7 +21,7 @@
     <children>
         <MenuBar layoutY="-1.0" prefHeight="28.0" prefWidth="800.0" style="-fx-background-color: #0e82c9;">
             <menus>
-                <Menu mnemonicParsing="false" text="Chats">
+                <Menu fx:id="Chat" mnemonicParsing="false" text="Chats">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Close" />
                     </items>
