@@ -89,6 +89,7 @@ public class LoginController{
 
             // Pass the selected language to the chatController instance
             chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
+            chatControllerInstance.setUser(check, username);
 
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
