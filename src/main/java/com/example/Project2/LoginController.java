@@ -34,6 +34,8 @@ public class LoginController{
     private PasswordField passwordTextField;
     @FXML
     private ComboBox<String> languageComboBox;
+    private int check = -5;
+    private String username = "";
     public void initialize() {
         // Add language options to the ComboBox
         languageComboBox.getItems().addAll("Nederlands", "English");
@@ -87,6 +89,7 @@ public class LoginController{
 
             // Pass the selected language to the chatController instance
             chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
+            chatControllerInstance.setUser(check, username);
 
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
@@ -100,11 +103,13 @@ public class LoginController{
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnectionGebruiker();
-            PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1) FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
+            PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1), id FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
             statement.setString(1, gebruikersnaamTextField.getText());
             statement.setString(2, passwordTextField.getText());
             try (ResultSet queryResult = statement.executeQuery()) {
                 if (queryResult.next() && queryResult.getInt(1) == 1) {
+                    check = queryResult.getInt("id");
+                    username = gebruikersnaamTextField.getText();
                     LoginMessageLabel.setText("Ingelogd!");
                     LoginMessageLabel.setTextFill(Color.GREEN);
                     CornerRadii corn = new CornerRadii(4);
