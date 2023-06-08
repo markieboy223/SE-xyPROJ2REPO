@@ -35,9 +35,9 @@ public class chatController extends onderwerp{
     @FXML
     private Tab chatTab;
     @FXML
-    private MenuItem Delete;
+    private Menu Instellingen;
     @FXML
-    private Menu Chat;
+    private Menu Profiel;
     private boolean onderwerp2 = false;
     private String onderwerp1 = null;
     private String keuzes = null;
@@ -86,6 +86,8 @@ public class chatController extends onderwerp{
                 closeButton.setText("Afsluiten");
                 Vonderwerp.setText("Verander");
                 outputTekst.setText("Waar kan ik u mee helpen?");
+                Instellingen.setText("Instellingen");
+                Profiel.setText("Profiel");
 
 
             } else if (selectedLanguage.equals("English")) {
@@ -93,6 +95,9 @@ public class chatController extends onderwerp{
                 closeButton.setText("Close");
                 Vonderwerp.setText("Change");
                 outputTekst.setText("How can i assist you?");
+                Instellingen.setText("Settings");
+                Profiel.setText("Profile");
+
 
             }
         }

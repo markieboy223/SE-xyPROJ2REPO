@@ -13,7 +13,12 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.Statement;
 
-public class RegisterController {
+public class RegisterController extends LoginController{
+    private String selectedLanguage;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
     @FXML
     private Button closeButton;
     @FXML
@@ -36,6 +41,21 @@ public class RegisterController {
         rolBox.getSelectionModel().selectFirst();
     }
 
+    public void handleLanguageSelection() {
+        if (selectedLanguage != null) {
+            if (selectedLanguage.equals("Nederlands")) {
+                closeButton.setText("Afsluiten");
+                usernameLabel.setText("Gebruikersnaam");
+                passwordLabel.setText("Wachtwoord");
+            } else if (selectedLanguage.equals("English")) {
+                closeButton.setText("Close");
+                usernameLabel.setText("Username");
+                passwordLabel.setText("Password");
+
+
+            }
+        }
+    }
     public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
