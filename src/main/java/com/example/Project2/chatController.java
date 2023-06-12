@@ -88,6 +88,19 @@ public class chatController extends onderwerp{
             e.printStackTrace();
         }
     }
+    public void instellingenScene(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("intellingen-view.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void setLightMode() {
         anchorPane.getStylesheets().remove(getClass().getResource("/styles/darkMode.css").toExternalForm());
