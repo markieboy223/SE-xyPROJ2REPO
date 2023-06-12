@@ -122,7 +122,7 @@ public class chatController extends onderwerp{
                 Profiel.setText("Profiel");
                 MenuClose.setText("Afsluiten");
                 MenuDelete.setText("Verwijderen");
-                MenuAbout.setText("Over");
+                MenuAbout.setText("Weergeven");
             } else if (selectedLanguage.equals("English")) {
                 sendButton.setText("Send");
                 closeButton.setText("Close");

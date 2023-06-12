@@ -22,7 +22,7 @@
                 </Menu>
                 <Menu fx:id="Profiel" mnemonicParsing="false" text="Profiel">
                     <items>
-                        <MenuItem fx:id="MenuAbout" mnemonicParsing="false" text="About" />
+                        <MenuItem fx:id="MenuAbout" mnemonicParsing="false" onAction="#profileScene" text="About" />
                     </items>
                 </Menu>
             </menus>
