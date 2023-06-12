@@ -80,6 +80,12 @@ public class chatController extends onderwerp{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
             Parent root = fxmlLoader.load();
 
+            // Get the controller instance from the FXMLLoader
+            ProfileController profileController = fxmlLoader.getController();
+
+            profileController.setUser(userName); // Pass the userName to the ProfileController
+            profileController.initialize();
+
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 800, 600));
