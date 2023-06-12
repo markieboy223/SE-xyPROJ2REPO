@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="052ac9ac-3be5-44e2-985a-3ce7d219c42b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/ProfileController.java" afterDir="false" />
+    <list default="true" id="052ac9ac-3be5-44e2-985a-3ce7d219c42b" name="Changes" comment="Dark and light">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docassistent (1).sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/opslaanChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/opslaanChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +23,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Misha" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,7 +53,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/src/main/java/com/example/Project2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/src/main/resources/com/example/Project2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Misha/SE-xyPROJ2REPO/src/main/resources/com/example/Project2&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -61,6 +62,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Misha\SE-xyPROJ2REPO\src\main\resources\com\example\Project2" />
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\resources\com\example\Project2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -101,5 +103,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Dark and light" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dark and light" />
   </component>
 </project>

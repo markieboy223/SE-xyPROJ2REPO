@@ -34,6 +34,8 @@ public class LoginController{
     private PasswordField passwordTextField;
     @FXML
     private ComboBox<String> languageComboBox;
+    @FXML
+    private ComboBox<String> Layout;
     private int check = -5;
     private String username = "";
     public void initialize() {
@@ -41,6 +43,11 @@ public class LoginController{
         languageComboBox.getItems().addAll("Nederlands", "English");
         // Set the default selected language
         languageComboBox.getSelectionModel().selectFirst();
+
+        // Add language options to the ComboBox
+        Layout.getItems().addAll("Layout 1", "Layout 2");
+        // Set the default selected language
+        Layout.getSelectionModel().selectFirst();
     }
 
     public void handleLanguageSelection(ActionEvent event) {
@@ -79,22 +86,45 @@ public class LoginController{
             LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
         }
     }
+
+    public void selectLayout(ActionEvent event) {
+
+    }
     public void redirectToNewScene() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
-            Parent root = fxmlLoader.load();
+            String selectedLayout = Layout.getValue();
+            if(selectedLayout.equals("Layout 1")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+                Parent root = fxmlLoader.load();
 
-            // Get the controller instance from the FXMLLoader
-            chatController chatControllerInstance = fxmlLoader.getController();
+                // Get the controller instance from the FXMLLoader
+                chatController chatControllerInstance = fxmlLoader.getController();
 
-            // Pass the selected language to the chatController instance
-            chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
-            chatControllerInstance.setUser(check, username);
+                // Pass the selected language to the chatController instance
+                chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
+                chatControllerInstance.setUser(check, username);
 
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(new Scene(root, 800, 600));
+                stage.show();
+            }
+            else if (selectedLayout.equals("Layout 2")){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view2.fxml"));
+                Parent root = fxmlLoader.load();
+
+                // Get the controller instance from the FXMLLoader
+                chatController chatControllerInstance = fxmlLoader.getController();
+
+                // Pass the selected language to the chatController instance
+                chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
+                chatControllerInstance.setUser(check, username);
+
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(new Scene(root, 800, 600));
+                stage.show();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
