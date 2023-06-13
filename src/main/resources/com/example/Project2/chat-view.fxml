@@ -28,7 +28,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Instellingen">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem fx:id="register" mnemonicParsing="false" onAction="#registerScene" text="Register" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Profiel">
