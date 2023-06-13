@@ -1,7 +1,5 @@
 package com.example.Project2;
 
-import javafx.event.ActionEvent;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,15 +11,15 @@ public class chatVerwerker extends chatController{
     private chatController controller;
     private opslaanChat opslaan = new opslaanChat();
     private boolean onderwerp2 = false;
-    private String onderwerp1 = null;
+    protected String onderwerp1 = null;
     private String keuzes = null;
     private String keuze = null;
     private String jaar = null;
     boolean heeftJaar = false;
     boolean keuze2 = false;
     boolean checkDoor = false;
-    private String vraagS = "";
-    private String antwoordS = "";
+    protected String vraagS = "";
+    protected String antwoordS = "";
     private ArrayList<String> att = new ArrayList<>();
     private ArrayList<String> keuzes2 = new ArrayList<>();
     private ArrayList<String> check = new ArrayList<>();
@@ -29,7 +27,6 @@ public class chatVerwerker extends chatController{
     public chatVerwerker(chatController controller){
         this.controller = controller;
     }
-
     public String formuleerAntwoord(String inputtekst){
         if (vraagS.length() > 0){
             opslaan.opslaan(vraagS, antwoordS, onderwerp1, controller.getUserID());
@@ -37,15 +34,14 @@ public class chatVerwerker extends chatController{
             antwoordS = "";
         }
         DatabaseConnection connection = new DatabaseConnection();
-        String input = inputtekst;
         StringBuilder antwoord = new StringBuilder();
 
         if (!onderwerp2){
             maakOnderwerpen();
-            onderwerp1 = vindOnderwerp(input);
+            onderwerp1 = vindOnderwerp(inputtekst);
         }
         else {
-            keuze = vindOnderwerp(input);
+            keuze = vindOnderwerp(inputtekst);
         }
 
         if (onderwerp1 != null && keuzes == null){
@@ -81,11 +77,10 @@ public class chatVerwerker extends chatController{
 
                     controller.Honderwerp.setText(onderwerp1);
                     controller.chatTab.setText(onderwerp1);
-                    //outputTekst.appendText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes + "\n");
-                    vraagS = vraagS + input;
+                    vraagS = vraagS + inputtekst;
                     String betereKeuzes = keuzes.replaceAll("\r", ", ").replaceAll("\n", ", ");
                     antwoordS = antwoordS + betereKeuzes;
-                    return ("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes + "\n");
+                    return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes + "\n");
                 }
             }
             catch (SQLException e) {
@@ -139,17 +134,14 @@ public class chatVerwerker extends chatController{
                     for (String x : keuzes2){
                         fuck = fuck + x + "\n";
                     }
-                    vraagS = vraagS + input;
+                    vraagS = vraagS + inputtekst;
                     String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
                     antwoordS = antwoordS + betereKeuzes;
                     if (!buitenTermijn){
-                        //outputTekst.appendText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
-                        return ("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                        return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
                     }
                     else{
-                        //outputTekst.appendText("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
-                                //+ "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
-                        return ("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
+                        return ("Q: " + inputtekst + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
                                 + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
                     }
                 }
@@ -207,17 +199,14 @@ public class chatVerwerker extends chatController{
                         for (String x : keuzes2){
                             fuck = fuck + x + "\n";
                         }
-                        vraagS = vraagS + input;
+                        vraagS = vraagS + inputtekst;
                         String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
                         antwoordS = antwoordS + betereKeuzes;
                         if (!buitenTermijn){
-                            //outputTekst.appendText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
-                            return ("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                            return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
                         }
                         else{
-                            //outputTekst.appendText("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
-                                    //+ "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
-                            return ("Q: " + input + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
+                            return ("Q: " + inputtekst + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
                                     + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
                         }
                     }
@@ -245,15 +234,14 @@ public class chatVerwerker extends chatController{
                             System.out.println(x);
                             fuck = fuck + x + "\n";
                         }
-                        //outputTekst.appendText("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
-                        vraagS = vraagS + input;
+                        vraagS = vraagS + inputtekst;
                         String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
                         antwoordS = antwoordS + betereKeuzes;
                         att.clear();
                         keuzes2.clear();
                         checkDoor = false;
                         keuze2 = false;
-                        return ("Q: " + input + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                        return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
                     }
                 }
                 catch (SQLException e) {
@@ -268,7 +256,6 @@ public class chatVerwerker extends chatController{
                 help2 =  help2 + dit + "\n";
             }
             help = help + help2;
-            //outputTekst.appendText(help);
             return help;
         }
         else if(onderwerp2 && keuze == null){
@@ -278,7 +265,6 @@ public class chatVerwerker extends chatController{
                 help2 =  help2 + dit + "\n";
             }
             help = help + help2;
-            //outputTekst.appendText(help);
             return help;
         }
         return "";

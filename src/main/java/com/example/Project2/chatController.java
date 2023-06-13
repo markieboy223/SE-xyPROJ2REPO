@@ -9,18 +9,11 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class chatController extends onderwerp{
     private opslaanChat opslaan = new opslaanChat();
@@ -138,6 +131,11 @@ public class chatController extends onderwerp{
         outputTekst.appendText(volgende);
     }
     public void VonderwerpOnAction(ActionEvent event){
+        if (verwerk.vraagS.length() > 0){
+            opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, userID);
+            verwerk.vraagS = "";
+            verwerk.antwoordS = "";
+        }
         tabellenInhoud.clear();
         tabellenNaam.clear();
         index = 0;
@@ -172,6 +170,11 @@ public class chatController extends onderwerp{
         }
     }
     public void closeButtonOnAction(ActionEvent event) {
+        if (verwerk.vraagS.length() > 0){
+            opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, userID);
+            verwerk.vraagS = "";
+            verwerk.antwoordS = "";
+        }
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
