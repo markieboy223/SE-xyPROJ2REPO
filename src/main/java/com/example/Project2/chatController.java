@@ -44,14 +44,6 @@ public class chatController extends onderwerp{
     private MenuItem Delete;
     @FXML
     private Menu Chat;
-    private boolean onderwerp2 = false;
-    private String onderwerp1 = null;
-    private String keuzes = null;
-    private String keuze = null;
-    private String jaar = null;
-    boolean heeftJaar = false;
-    boolean keuze2 = false;
-    boolean checkDoor = false;
     private String vraagS = "";
     private String antwoordS = "";
     private int userID;
@@ -162,20 +154,10 @@ public class chatController extends onderwerp{
             verwerk.vraagS = "";
             verwerk.antwoordS = "";
         }
-        onderwerp1 = null;
-        onderwerp2 = false;
-        keuze = null;
-        keuzes = null;
-        jaar = null;
-        heeftJaar = false;
         tabellenInhoud.clear();
         tabellenNaam.clear();
-        keuze2 = false;
         index = 0;
-        keuzes2.clear();
-        check.clear();
         tabellen.clear();
-        att.clear();
         Honderwerp.setText("");
         chatTab.setText("chat");
         setStartText("Over welk onderwerp wilt u het hebben?");
@@ -189,9 +171,10 @@ public class chatController extends onderwerp{
         selectedLanguage = language;
         handleLanguageSelection();
     }
-    public void setUser(int userID, String userName){
+    public void setUser(int userID, String userName, String rol){
             this.userID = userID;
             this.userName = userName;
+            this.rol = rol;
     }
     public void createAccountForm(){
         try {
