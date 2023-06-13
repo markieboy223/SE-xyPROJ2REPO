@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -16,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
@@ -40,6 +38,10 @@ public class chatController extends onderwerp{
     private Button sendButton;
     @FXML
     private Tab chatTab;
+    @FXML
+    private MenuItem Delete;
+    @FXML
+    private Menu Chat;
     private boolean onderwerp2 = false;
     private String onderwerp1 = null;
     private String keuzes = null;
@@ -52,17 +54,34 @@ public class chatController extends onderwerp{
     private String antwoordS = "";
     private int userID;
     private String userName;
+    private String rol;
     @FXML
     private Button btnMode;
     @FXML
     private ImageView imgMode;
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private MenuItem register;
     private boolean isLightMode = true;
     int index;
     ArrayList<String> keuzes2 = new ArrayList<>();
     ArrayList<String> att = new ArrayList<>();
     private ArrayList<String> check = new ArrayList<>();
+    public void setUser(int userID, String userName, String rol) {
+        this.userID = userID;
+        this.userName = userName;
+        this.rol = rol;
+        initialize(); // Call initialize method after setting the values
+    }
+    @FXML
+    public void initialize() {
+        if (rol != null && rol.equalsIgnoreCase("admin")) {
+            register.setVisible(true);
+        } else {
+            register.setVisible(false);
+        }
+    }
 
     public void changeMode(ActionEvent event) {
         isLightMode = !isLightMode;
@@ -70,6 +89,33 @@ public class chatController extends onderwerp{
             setLightMode();
         } else {
             setDarkMode();
+        }
+    }
+    public void registerScene(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void profileScene(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -94,12 +140,20 @@ public class chatController extends onderwerp{
             if (selectedLanguage.equals("Nederlands")) {
                 sendButton.setText("Verstuur");
                 closeButton.setText("Afsluiten");
+                Vonderwerp.setText("Verander");
+                outputTekst.setText("Waar kan ik u mee helpen?");
+
+
             } else if (selectedLanguage.equals("English")) {
                 sendButton.setText("Send");
                 closeButton.setText("Close");
+                Vonderwerp.setText("Change");
+                outputTekst.setText("How can i assist you?");
+
             }
         }
     }
+
     public void VonderwerpOnAction(ActionEvent event){
         if (vraagS.length() > 0){
             opslaan.opslaan(vraagS, antwoordS, onderwerp1, userID);
