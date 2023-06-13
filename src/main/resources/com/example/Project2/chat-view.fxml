@@ -21,7 +21,7 @@
     <children>
         <MenuBar layoutY="-1.0" prefHeight="28.0" prefWidth="800.0" style="-fx-background-color: #0e82c9;">
             <menus>
-                <Menu mnemonicParsing="false" text="Chats">
+                <Menu fx:id="Chat" mnemonicParsing="false" text="Chats">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Close" />
                     </items>
@@ -33,7 +33,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Profiel">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#profileScene" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -65,19 +65,19 @@
                                 </GridPane>
                                 <Label fx:id="Honderwerp" layoutX="22.0" layoutY="17.0" />
                                 <Button fx:id="Vonderwerp" layoutX="74.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: #0e82c9;" text="Verander" textFill="WHITE" />
-                        <Button fx:id="btnMode" layoutX="312.0" layoutY="218.0" mnemonicParsing="false" onAction="#changeMode">
-                           <graphic>
-                              <ImageView fx:id="imgMode" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/ic_dark.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <styleClass>
-                              <String fx:value="secondary-color" />
-                              <String fx:value="round-border" />
-                           </styleClass>
-                        </Button>
+                                <Button fx:id="btnMode" layoutX="668.0" layoutY="100.0" mnemonicParsing="false" onAction="#changeMode" prefHeight="61.0" prefWidth="0.0">
+                                    <styleClass>
+                                        <String fx:value="secondary-color" />
+                                        <String fx:value="round-border" />
+                                    </styleClass>
+                                    <graphic>
+                                        <ImageView fx:id="imgMode" fitHeight="115.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../Images/ic_dark.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
                             </children>
                         </AnchorPane>
                     </content>
