@@ -5,13 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -34,6 +32,11 @@ public class chatController extends onderwerp{
     private Button Vonderwerp;
     @FXML
     private TextField inputTekst;
+
+    public TextArea getOutputTekst() {
+        return outputTekst;
+    }
+
     @FXML
     private TextArea outputTekst;
     @FXML
@@ -130,10 +133,8 @@ public class chatController extends onderwerp{
         }
     }
     public void setStartText(String start){
-        //outputTekst.setStyle("-fx-text-fill: white");
-        outputTekst.setStyle("-fx-font-style: white");
-        //scrollDing.setStyle("-fx-background: transparent");
-        //scrollDing.setStyle("-fx-background-color: transparent");
+        //outputTekst.setStyle("-fx-background-color: #454545; -fx-text-fill: green;");
+        //outputTekst.setBackground(Background.fill(Color.TRANSPARENT));
         opvragen.opvragen(userID);
         String volgende = "\n";
         ArrayList<String> geschiedenis = opvragen.uitvragen();
