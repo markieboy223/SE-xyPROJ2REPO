@@ -5,7 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -41,6 +44,10 @@ public class chatController extends onderwerp{
     private Button sendButton;
     @FXML
     private Tab chatTab;
+    @FXML
+    private MenuItem Delete;
+    @FXML
+    private Menu Chat;
     private boolean onderwerp2 = false;
     private String onderwerp1 = null;
     private String keuzes = null;
@@ -79,6 +86,12 @@ public class chatController extends onderwerp{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
             Parent root = fxmlLoader.load();
+
+            // Get the controller instance from the FXMLLoader
+            ProfileController profileController = fxmlLoader.getController();
+
+            profileController.setUser(userName); // Pass the userName to the ProfileController
+            profileController.initialize();
 
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
