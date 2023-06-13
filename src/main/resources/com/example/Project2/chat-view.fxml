@@ -44,11 +44,7 @@
                                 <Button fx:id="closeButton" layoutX="675.0" layoutY="25.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Afsluiten" textFill="WHITE" />
                                 <Label fx:id="Honderwerp" layoutX="14.0" layoutY="16.0" prefHeight="18.0" prefWidth="92.0" textFill="WHITE" />
                                 <Button fx:id="Vonderwerp" layoutX="120.0" layoutY="12.0" mnemonicParsing="false" onAction="#VonderwerpOnAction" style="-fx-background-color: #0e82c9;" text="Verander" textFill="WHITE" />
-                        <TextArea fx:id="outputTekst" blendMode="SRC_ATOP" cache="true" layoutX="50.0" layoutY="100.0" prefHeight="278.0" prefWidth="389.0" style="-fx-control-inner-background: #454545; -fx-background-color: #454545; -fx-text-fill: white" text="&#10;tekst" wrapText="true">
-                           <font>
-                              <Font name="Calibri Bold" size="12.0" />
-                           </font>
-                        </TextArea>
+                        <TextArea fx:id="outputTekst" blendMode="SRC_ATOP" cache="true" layoutX="50.0" layoutY="100.0" prefHeight="278.0" prefWidth="389.0" style="-fx-control-inner-background: #454545; -fx-background-color: #454545; -fx-text-fill: white" text="tekst" wrapText="true" />
                             </children>
                         </AnchorPane>
                     </content>
