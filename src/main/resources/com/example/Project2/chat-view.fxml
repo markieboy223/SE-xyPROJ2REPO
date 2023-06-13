@@ -29,7 +29,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Profiel">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#profileScene" text="About" />
+                        <MenuItem mnemonicParsing="false" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -47,9 +47,9 @@
                                 <Button fx:id="Vonderwerp" layoutX="120.0" layoutY="12.0" mnemonicParsing="false" onAction="#VonderwerpOnAction" style="-fx-background-color: #0e82c9;" text="Verander" textFill="WHITE" />
                         <ScrollPane fx:id="scrollDing" blendMode="MULTIPLY" layoutX="50.0" layoutY="110.0" pannable="true" prefHeight="280.0" prefWidth="390.0" style="-fx-background-color: #454545;">
                            <content>
-                              <TextArea fx:id="outputTekst" blendMode="ADD" prefHeight="278.0" prefWidth="389.0" style="-fx-font-style: #ffffff;">
+                              <TextArea fx:id="outputTekst" blendMode="ADD" prefHeight="278.0" prefWidth="389.0" style="-fx-font-style: white;">
                                  <font>
-                                    <Font name="Calibri" size="12.0"/>
+                                    <Font name="Calibri" size="12.0" />
                                  </font>
                               </TextArea>
                            </content>
