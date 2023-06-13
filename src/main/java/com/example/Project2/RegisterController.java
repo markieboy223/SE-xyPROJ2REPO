@@ -19,6 +19,14 @@ public class RegisterController {
     @FXML
     private TextField gebruikersnaamTextField;
     @FXML
+    private TextField emailTextField;
+    @FXML
+    private TextField voornaamTextField;
+    @FXML
+    private TextField achternaamTextField;
+    @FXML
+    private TextField telefoonTextField;
+    @FXML
     private TextField passwordTextField;
     @FXML
     private TextField confirmPasswordTextField;
@@ -60,11 +68,16 @@ public class RegisterController {
         DatabaseConnection connection = new DatabaseConnection();
         Connection connectDB = connection.getConnectionGebruiker();
         String username = gebruikersnaamTextField.getText();
+        String email = emailTextField.getText();
+        String voornaam = voornaamTextField.getText();
+        String achternaam = achternaamTextField.getText();
+        String telefoonnummer = telefoonTextField.getText();
         String password = passwordTextField.getText();
         String role = rolBox.getValue();
+        int layout = 0;
 
-        String insertFields = "INSERT INTO user(gebruikersnaam, wachtwoord, rol) VALUES ('";
-        String insertValues = username + "','" + password + "','" + role + "')";
+        String insertFields = "INSERT INTO user(gebruikersnaam, email, voornaam, achternaam, telefoonnummer, wachtwoord, rol, layout) VALUES ('";
+        String insertValues = username + "','"+ email + "','" + voornaam + "','" + achternaam + "','" + telefoonnummer + "','" + password + "','" + role + "','" + layout + "')";
         String insertToRegister = insertFields + insertValues;
 
         try {

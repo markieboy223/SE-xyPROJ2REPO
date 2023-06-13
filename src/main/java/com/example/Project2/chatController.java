@@ -54,17 +54,34 @@ public class chatController extends onderwerp{
     private String antwoordS = "";
     private int userID;
     private String userName;
+    private String rol;
     @FXML
     private Button btnMode;
     @FXML
     private ImageView imgMode;
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private MenuItem register;
     private boolean isLightMode = true;
     int index;
     ArrayList<String> keuzes2 = new ArrayList<>();
     ArrayList<String> att = new ArrayList<>();
     private ArrayList<String> check = new ArrayList<>();
+    public void setUser(int userID, String userName, String rol) {
+        this.userID = userID;
+        this.userName = userName;
+        this.rol = rol;
+        initialize(); // Call initialize method after setting the values
+    }
+    @FXML
+    public void initialize() {
+        if (rol != null && rol.equalsIgnoreCase("admin")) {
+            register.setVisible(true);
+        } else {
+            register.setVisible(false);
+        }
+    }
 
     public void changeMode(ActionEvent event) {
         isLightMode = !isLightMode;
@@ -72,6 +89,19 @@ public class chatController extends onderwerp{
             setLightMode();
         } else {
             setDarkMode();
+        }
+    }
+    public void registerScene(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -485,10 +515,6 @@ public class chatController extends onderwerp{
     public void setSelectedLanguage(String language) {
         selectedLanguage = language;
         handleLanguageSelection();
-    }
-    public void setUser(int userID, String userName){
-            this.userID = userID;
-            this.userName = userName;
     }
     public void createAccountForm(){
         try {

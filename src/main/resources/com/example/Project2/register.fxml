@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="244.0" fitWidth="209.0" layoutX="98.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Images/LogoDocAssistent.png" />
+                  <Image url="@../../../Images/LogoDocAssistent.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" layoutX="111.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC Assistent" textAlignment="CENTER">
@@ -25,6 +25,16 @@
                   <Font name="System Bold Italic" size="27.0" />
                </font>
             </Text>
+            <Label fx:id="messageLabel" layoutX="55.0" layoutY="456.0" prefHeight="28.0" prefWidth="290.0" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Button fx:id="registerButton" layoutX="78.0" layoutY="514.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="35.0" prefWidth="243.0" style="-fx-background-color: #454545;" text="Registreren" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </left>
@@ -36,57 +46,87 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Text fill="WHITE" layoutX="106.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registreren" textAlignment="CENTER">
+            <Text fill="WHITE" layoutX="40.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registreren" textAlignment="CENTER">
                <font>
                   <Font size="42.0" />
                </font>
             </Text>
-            <Label fx:id="usernameLabel" layoutX="57.0" layoutY="143.0" text="Gebruikersnaam" textFill="WHITE">
+            <Label fx:id="usernameLabel" layoutX="57.0" layoutY="77.0" text="Gebruikersnaam" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="gebruikersnaamTextField" layoutX="57.0" layoutY="171.0" prefHeight="26.0" prefWidth="308.0" promptText="markvdburg">
+            <TextField fx:id="gebruikersnaamTextField" layoutX="57.0" layoutY="105.0" prefHeight="26.0" prefWidth="308.0" promptText="markvdburg">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <Label fx:id="passwordLabel" layoutX="57.0" layoutY="209.0" text="Wachtwoord" textFill="WHITE">
+            <Label fx:id="passwordLabel" layoutX="61.0" layoutY="385.0" text="Wachtwoord" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="passwordTextField" layoutX="57.0" layoutY="237.0" prefHeight="26.0" prefWidth="308.0" promptText="keesje1234!">
+            <TextField fx:id="passwordTextField" layoutX="57.0" layoutY="413.0" prefHeight="26.0" prefWidth="308.0" promptText="keesje1234!">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <Button fx:id="registerButton" layoutX="79.0" layoutY="468.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="35.0" prefWidth="243.0" style="-fx-background-color: #0e82c9;" text="Registreren" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Button>
-            <Label fx:id="passwordLabel1" layoutX="61.0" layoutY="333.0" text="Rol" textFill="WHITE">
+            <Label fx:id="passwordLabel1" layoutX="56.0" layoutY="512.0" text="Rol" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="confirmPasswordTextField" layoutX="57.0" layoutY="300.0" prefHeight="26.0" prefWidth="308.0" promptText="keesje1234!">
+            <TextField fx:id="confirmPasswordTextField" layoutX="57.0" layoutY="471.0" prefHeight="26.0" prefWidth="308.0" promptText="keesje1234!">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
-            <Label fx:id="passwordLabel2" layoutX="57.0" layoutY="272.0" text="Bevestig wachtwoord" textFill="WHITE">
+            <Label fx:id="passwordLabel2" layoutX="61.0" layoutY="443.0" text="Bevestig wachtwoord" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label fx:id="messageLabel" layoutX="61.0" layoutY="416.0" prefHeight="28.0" prefWidth="290.0" textFill="WHITE">
+            <ComboBox fx:id="rolBox" layoutX="56.0" layoutY="540.0" prefHeight="25.0" prefWidth="310.0" />
+            <Label fx:id="usernameLabel1" layoutX="61.0" layoutY="135.0" text="Email" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <ComboBox fx:id="rolBox" layoutX="57.0" layoutY="361.0" prefHeight="25.0" prefWidth="310.0" />
+            <TextField fx:id="emailTextField" layoutX="57.0" layoutY="163.0" prefHeight="26.0" prefWidth="308.0" promptText="markvdburg@gmail.com">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Label fx:id="usernameLabel11" layoutX="60.0" layoutY="194.0" prefHeight="27.0" prefWidth="87.0" text="Voornaam" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="voornaamTextField" layoutX="57.0" layoutY="221.0" prefHeight="26.0" prefWidth="308.0" promptText="mark">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Label fx:id="usernameLabel111" layoutX="60.0" layoutY="257.0" text="Achternaam" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="achternaamTextField" layoutX="57.0" layoutY="285.0" prefHeight="26.0" prefWidth="308.0" promptText="van der burg">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="telefoonTextField" layoutX="57.0" layoutY="355.0" prefHeight="26.0" prefWidth="308.0" promptText="0634215234">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Label fx:id="telefoonnummberLabel" layoutX="61.0" layoutY="327.0" text="Telefoonnummer" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
