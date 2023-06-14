@@ -23,13 +23,13 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Instellingen">
                     <items>
-                        <MenuItem fx:id="register" mnemonicParsing="false" onAction="#registerScene" text="Register" />
+                        <MenuItem fx:id="register" mnemonicParsing="false" onAction="#createAccountForm" text="Register" />
                   <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Profiel">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#profileScene" text="About" />
                     </items>
                 </Menu>
             </menus>

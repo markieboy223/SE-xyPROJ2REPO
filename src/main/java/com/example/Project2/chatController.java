@@ -189,7 +189,7 @@ public class chatController extends onderwerp{
         }
     }
     public void closeButtonOnAction(ActionEvent event) {
-        if (verwerk.vraagS.length() > 0){
+        if (verwerk != null && verwerk.vraagS.length() > 0){
             opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, userID);
             verwerk.vraagS = "";
             verwerk.antwoordS = "";
