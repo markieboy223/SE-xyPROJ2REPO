@@ -59,6 +59,14 @@ public class chatController extends onderwerp{
     private MenuItem register;
     private boolean isLightMode = true;
     int index;
+    @FXML
+    public void initialize() {
+        if (rol != null && rol.equalsIgnoreCase("admin")) {
+            register.setVisible(true);
+        } else {
+            register.setVisible(false);
+        }
+    }
 
     public int getUserID() {
         return userID;
