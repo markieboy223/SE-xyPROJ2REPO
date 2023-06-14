@@ -36,6 +36,7 @@ public class LoginController{
     private ComboBox<String> languageComboBox;
     private int check = -5;
     private String username = "";
+    private int layout = 0;
     private String rol = "";
     public void initialize() {
         // Add language options to the ComboBox
@@ -82,7 +83,16 @@ public class LoginController{
     }
     public void redirectToNewScene() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+            String path;
+            if (layout == 2) {
+                path = "chat-view3.fxml";
+            } else if (layout == 1) {
+                path = "chat-view2.fxml";
+            } else {
+                path = "chat-view.fxml";
+            }
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+
             Parent root = fxmlLoader.load();
 
             // Get the controller instance from the FXMLLoader
@@ -105,13 +115,14 @@ public class LoginController{
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnectionGebruiker();
-            PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1), id, rol FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
+            PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1), id, rol, layout FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
             statement.setString(1, gebruikersnaamTextField.getText());
             statement.setString(2, passwordTextField.getText());
             try (ResultSet queryResult = statement.executeQuery()) {
                 if (queryResult.next() && queryResult.getInt(1) == 1) {
                     check = queryResult.getInt("id");
                     rol = queryResult.getString("rol");
+                    layout = queryResult.getInt("layout");
                     username = gebruikersnaamTextField.getText();
                     LoginMessageLabel.setText("Ingelogd!");
                     LoginMessageLabel.setTextFill(Color.GREEN);
