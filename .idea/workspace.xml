@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LayoutController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx-swt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.base.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.controls.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.fxml.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.graphics.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.media.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.swing.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.web.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/Instellingenview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/Instellingenview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view3.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

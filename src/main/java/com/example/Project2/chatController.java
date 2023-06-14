@@ -10,20 +10,14 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
 import javafx.scene.control.Button;
 
-public class chatController extends onderwerp{
+public class chatController extends onderwerp {
     private opslaanChat opslaan = new opslaanChat();
     private opvragenChat opvragen = new opvragenChat();
     private chatVerwerker verwerk;
@@ -72,42 +66,6 @@ public class chatController extends onderwerp{
     ArrayList<String> keuzes2 = new ArrayList<>();
     ArrayList<String> att = new ArrayList<>();
     private ArrayList<String> check = new ArrayList<>();
-    @FXML
-    private Button layout1Button;
-
-    @FXML
-    private Button layout2Button;
-
-    @FXML
-    private Button layout3Button;
-
-    @FXML
-    public void layout1ButtonOnAction(ActionEvent event) {
-        loadFXML("chat-view.fxml");
-    }
-
-    @FXML
-    public void layout2ButtonOnAction(ActionEvent event) {
-        loadFXML("chat-view2.fxml");
-    }
-
-    @FXML
-    public void layout3ButtonOnAction(ActionEvent event) {
-        loadFXML("chat-view3.fxml");
-    }
-
-    private void loadFXML(String fxmlFileName) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFileName));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = (Stage) closeButton.getScene().getWindow();
-            stage.setScene(new Scene(root));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public int getUserID() {
         return userID;
@@ -126,10 +84,8 @@ public class chatController extends onderwerp{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
             Parent root = fxmlLoader.load();
 
-            // Get the controller instance from the FXMLLoader
             ProfileController profileController = fxmlLoader.getController();
-
-            profileController.setUser(userName); // Pass the userName to the ProfileController
+            profileController.setUser(userName);
             profileController.initialize();
 
             Stage stage = new Stage();
@@ -144,6 +100,10 @@ public class chatController extends onderwerp{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Instellingenview.fxml"));
             Parent root = fxmlLoader.load();
+
+            LayoutController layoutController = fxmlLoader.getController();
+            layoutController.setSelectedLanguage(selectedLanguage);
+            layoutController.setUser(userID, userName, rol);
 
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
