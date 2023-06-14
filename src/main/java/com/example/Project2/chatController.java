@@ -1,4 +1,5 @@
 package com.example.Project2;
+import javafx.application.Platform;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import javafx.scene.control.Button;
 
 public class chatController extends onderwerp{
     private opslaanChat opslaan = new opslaanChat();
@@ -65,6 +67,42 @@ public class chatController extends onderwerp{
     ArrayList<String> keuzes2 = new ArrayList<>();
     ArrayList<String> att = new ArrayList<>();
     private ArrayList<String> check = new ArrayList<>();
+    @FXML
+    private Button layout1Button;
+
+    @FXML
+    private Button layout2Button;
+
+    @FXML
+    private Button layout3Button;
+
+    @FXML
+    public void layout1ButtonOnAction(ActionEvent event) {
+        loadFXML("chat-view.fxml");
+    }
+
+    @FXML
+    public void layout2ButtonOnAction(ActionEvent event) {
+        loadFXML("chat-view2.fxml");
+    }
+
+    @FXML
+    public void layout3ButtonOnAction(ActionEvent event) {
+        loadFXML("chat-view3.fxml");
+    }
+
+    private void loadFXML(String fxmlFileName) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFileName));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = (Stage) closeButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void changeMode(ActionEvent event) {
         isLightMode = !isLightMode;
@@ -96,7 +134,7 @@ public class chatController extends onderwerp{
     }
     public void instellingenScene(ActionEvent event){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("intellingen-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Instellingenview.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage stage = new Stage();
@@ -167,6 +205,8 @@ public class chatController extends onderwerp{
         chatTab.setText("chat");
         outputTekst.setText("Over welk onderwerp wilt u het hebben?");
     }
+
+
     public void SendButtonOnAction(ActionEvent event){
         if (vraagS.length() > 0){
             opslaan.opslaan(vraagS, antwoordS, onderwerp1, userID);
@@ -516,6 +556,7 @@ public class chatController extends onderwerp{
         }
     }
     public void closeButtonOnAction(ActionEvent event) {
+        Platform.exit();
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }

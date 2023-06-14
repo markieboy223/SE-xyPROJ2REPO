@@ -17,7 +17,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.sql.*;
 
-public class LoginController{
+public class LoginController {
     @FXML
     private Button closeButton;
     @FXML
@@ -38,16 +38,12 @@ public class LoginController{
     private ComboBox<String> Layout;
     private int check = -5;
     private String username = "";
+
     public void initialize() {
         // Add language options to the ComboBox
         languageComboBox.getItems().addAll("Nederlands", "English");
         // Set the default selected language
         languageComboBox.getSelectionModel().selectFirst();
-
-        // Add language options to the ComboBox
-        Layout.getItems().addAll("Layout 1", "Layout 2");
-        // Set the default selected language
-        Layout.getSelectionModel().selectFirst();
     }
 
     public void handleLanguageSelection(ActionEvent event) {
@@ -71,13 +67,15 @@ public class LoginController{
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
+
     public void closeCurrentWindow() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-    public void loginButtonOnAction(ActionEvent event){
 
-        if (gebruikersnaamTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false){
+    public void loginButtonOnAction(ActionEvent event) {
+
+        if (gebruikersnaamTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false) {
             validateLogin();
         } else {
             LoginMessageLabel.setText("Voer een gebruikersnaam en wachtwoord in.");
@@ -86,49 +84,27 @@ public class LoginController{
             LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
         }
     }
-
-    public void selectLayout(ActionEvent event) {
-
-    }
     public void redirectToNewScene() {
         try {
-            String selectedLayout = Layout.getValue();
-            if(selectedLayout.equals("Layout 1")) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
-                Parent root = fxmlLoader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+            Parent root = fxmlLoader.load();
 
-                // Get the controller instance from the FXMLLoader
-                chatController chatControllerInstance = fxmlLoader.getController();
+            // Get the controller instance from the FXMLLoader
+            chatController chatControllerInstance = fxmlLoader.getController();
 
-                // Pass the selected language to the chatController instance
-                chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
-                chatControllerInstance.setUser(check, username);
+            // Pass the selected language to the chatController instance
+            chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
+            chatControllerInstance.setUser(check, username);
 
-                Stage stage = new Stage();
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setScene(new Scene(root, 800, 600));
-                stage.show();
-            }
-            else if (selectedLayout.equals("Layout 2")){
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat-view2.fxml"));
-                Parent root = fxmlLoader.load();
-
-                // Get the controller instance from the FXMLLoader
-                chatController chatControllerInstance = fxmlLoader.getController();
-
-                // Pass the selected language to the chatController instance
-                chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
-                chatControllerInstance.setUser(check, username);
-
-                Stage stage = new Stage();
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setScene(new Scene(root, 800, 600));
-                stage.show();
-            }
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
