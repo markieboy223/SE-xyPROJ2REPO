@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="052ac9ac-3be5-44e2-985a-3ce7d219c42b" name="Changes" comment="misha">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/Instellingenview.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view2.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view3.fxml" afterDir="false" />
+    <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,16 +24,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Rayen" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2PdomTx5e4SP1el1UcYdvgeAVzJ" />
   <component name="ProjectViewState">
@@ -51,22 +42,21 @@
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-20&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/src/main/java/com/example/Project2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Misha/SE-xyPROJ2REPO/src/main/resources/com/example/Project2&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/markv/Desktop/javafx-sdk-20/lib/javafx.web.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Misha\SE-xyPROJ2REPO\src\main\resources\com\example\Project2" />
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\resources\com\example\Project2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -75,29 +65,93 @@
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\Images" />
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\java\Images" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.Project2" />
-    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.example.Project2.Main" />
       <module name="Project2" />
-      <option name="PROGRAM_PARAMETERS" value="$JAVAFX_SDK$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="testChatController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="testChatController" />
+      <option name="METHOD_NAME" value="testsetStartText" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testChatController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="testChatController" />
+      <option name="METHOD_NAME" value="testsetStartText" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="C:\Users\bartv\IdeaProjects\HabanaERPv1\.idea\libraries\javafx-sdk-20.0.1\lib" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testChatController.testsetStartText" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project2" />
+      <selectedOptions>
+        <option name="environmentVariables" visible="false" />
+      </selectedOptions>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-20" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="testChatController" />
+      <option name="METHOD_NAME" value="testsetStartText" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.testChatController" />
+      <item itemvalue="JUnit.testChatController.testsetStartText" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.testChatController.testsetStartText" />
+        <item itemvalue="JUnit.testChatController.testsetStartText" />
+        <item itemvalue="JUnit.testChatController.testsetStartText" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="052ac9ac-3be5-44e2-985a-3ce7d219c42b" name="Changes" comment="" />
+      <changelist id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="" />
       <created>1683796479926</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683796479926</updated>
     </task>
+    <task id="LOCAL-00001" summary="witte letters text area">
+      <created>1686686169571</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686686169571</updated>
+    </task>
+    <task id="LOCAL-00002" summary="chatController gesplist m.b.v. chatverwerker.">
+      <created>1686690988701</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686690988701</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -112,7 +166,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="misha" />
-    <option name="LAST_COMMIT_MESSAGE" value="misha" />
+    <MESSAGE value="h" />
+    <MESSAGE value="witte letters text area" />
+    <MESSAGE value="chatController gesplist m.b.v. chatverwerker." />
+    <option name="LAST_COMMIT_MESSAGE" value="chatController gesplist m.b.v. chatverwerker." />
   </component>
 </project>
