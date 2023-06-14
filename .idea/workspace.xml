@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="misha">
+    <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx-swt.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.base.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.controls.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.fxml.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.graphics.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.media.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.swing.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/globallib/javafx.web.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +56,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-20",
     "last_directory_selection": "C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/src/main/java/com/example/Project2",
-    "last_opened_file_path": "C:/Users/Misha/SE-xyPROJ2REPO/src/main/globallib/javafx.web.jar",
+    "last_opened_file_path": "C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/javafx-sdk-20.0.1/lib/javafx-swt.jar",
     "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -59,10 +68,11 @@
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\resources\com\example\Project2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO" />
+      <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main" />
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\resources" />
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\resources\styles" />
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\Images" />
-      <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\src\main\java\Images" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
