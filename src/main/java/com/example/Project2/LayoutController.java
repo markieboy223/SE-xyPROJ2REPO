@@ -92,8 +92,13 @@ public class LayoutController {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 800, 600));
             stage.show();
+            closeCurrentWindow();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void closeCurrentWindow() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 }
