@@ -42,9 +42,7 @@ public class chatController extends onderwerp {
     private MenuItem Delete;
     @FXML
     private Menu Chat;
-    private int userID;
-    private String userName;
-    private String rol;
+    private User user;
     @FXML
     private Button btnMode;
     @FXML
@@ -55,18 +53,18 @@ public class chatController extends onderwerp {
     private MenuItem register;
     private boolean isLightMode = true;
     int index;
-    @FXML
     public void initialize() {
-        if (rol != null && rol.equalsIgnoreCase("admin")) {
+        if (user != null && user.getRole() != null && user.getRole().equalsIgnoreCase("admin")) {
             register.setVisible(true);
         } else {
             register.setVisible(false);
         }
-        setStartText("Over welk onderwerp wilt u het hebben?");
     }
-
+    public void setUser(User user) {
+        this.user = user;
+    }
     public int getUserID() {
-        return userID;
+        return user.getUserID();
     }
     public void changeMode(ActionEvent event) {
         isLightMode = !isLightMode;
@@ -83,7 +81,7 @@ public class chatController extends onderwerp {
             Parent root = fxmlLoader.load();
 
             ProfileController profileController = fxmlLoader.getController();
-            profileController.setUser(userName);
+            profileController.setUser(user);
             profileController.initialize();
 
             Stage stage = new Stage();
@@ -101,7 +99,7 @@ public class chatController extends onderwerp {
 
             LayoutController layoutController = fxmlLoader.getController();
             layoutController.setSelectedLanguage(selectedLanguage);
-            layoutController.setUser(userID, userName, rol);
+            layoutController.setUser(user);
 
             Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 800, 600));
@@ -147,7 +145,7 @@ public class chatController extends onderwerp {
     public void setStartText(String start){
         verwerk = new chatVerwerker(this);
         outputTekst.clear();
-        opvragen.opvragen(userID);
+        opvragen.opvragen(user.getUserID());
         String volgende = "\n";
         ArrayList<String> geschiedenis = opvragen.uitvragen();
         outputTekst.setText("Uw chatgeschiedenis: \n");
@@ -171,7 +169,7 @@ public class chatController extends onderwerp {
 
     public void VonderwerpOnAction(ActionEvent event){
         if (verwerk.vraagS.length() > 0){
-            opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, userID);
+            opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, user.getUserID());
             verwerk.vraagS = "";
             verwerk.antwoordS = "";
         }
@@ -194,11 +192,6 @@ public class chatController extends onderwerp {
         selectedLanguage = language;
         handleLanguageSelection();
     }
-    public void setUser(int userID, String userName, String rol){
-            this.userID = userID;
-            this.userName = userName;
-            this.rol = rol;
-    }
     public void createAccountForm(){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
@@ -214,7 +207,7 @@ public class chatController extends onderwerp {
     public void closeButtonOnAction(ActionEvent event) {
         Platform.exit();
         if (verwerk != null && verwerk.vraagS.length() > 0){
-            opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, userID);
+            opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, user.getUserID());
             verwerk.vraagS = "";
             verwerk.antwoordS = "";
         }

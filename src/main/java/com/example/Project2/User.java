@@ -1,6 +1,7 @@
 package com.example.Project2;
 
 public class User {
+    private int userID;
     private String username;
     private String email;
     private String voornaam;
@@ -9,8 +10,9 @@ public class User {
     private String password;
     private String role;
 
-    public User(String username, String email, String voornaam, String achternaam,
+    public User(int userID ,String username, String email, String voornaam, String achternaam,
                 String telefoonnummer, String password, String role) {
+        this.userID = userID;
         this.username = username;
         this.email = email;
         this.voornaam = voornaam;
@@ -19,7 +21,9 @@ public class User {
         this.password = password;
         this.role = role;
     }
-
+    public int getUserID() {
+        return userID;
+    }
     public String getUsername() {
         return username;
     }
