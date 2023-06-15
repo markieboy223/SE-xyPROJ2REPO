@@ -2,6 +2,7 @@ package com.example.Project2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -14,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProfileController {
+    @FXML
+    private Label passwordMessage;
     @FXML
     private Button closeButton;
     @FXML
@@ -65,6 +68,10 @@ public class ProfileController {
                 statement.setString(1, newPassword);
                 statement.setString(2, userName);
                 statement.executeUpdate();
+                pasChangeBtn.setVisible(true);
+                passwordField.setVisible(false);
+                updatePasBtn.setVisible(false);
+                passwordMessage.setText("Wachtwoord gewijzigd naar: " + newPassword);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

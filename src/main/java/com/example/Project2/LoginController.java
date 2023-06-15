@@ -82,35 +82,18 @@ public class LoginController{
         }
     }
     public void redirectToNewScene() {
-        try {
-            String path;
-            if (layout == 2) {
-                path = "chat-view3.fxml";
-            } else if (layout == 1) {
-                path = "chat-view2.fxml";
-            } else {
-                path = "chat-view.fxml";
-            }
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-
-            Parent root = fxmlLoader.load();
-
-            // Get the controller instance from the FXMLLoader
-            chatController chatControllerInstance = fxmlLoader.getController();
-
-            // Pass the selected language to the chatController instance
-            chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
-            chatControllerInstance.setUser(check, username, rol);
-            chatControllerInstance.initialize();
-
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        String path;
+        if (layout == 2) {
+            path = "chat-view3.fxml";
+        } else if (layout == 1) {
+            path = "chat-view2.fxml";
+        } else {
+            path = "chat-view.fxml";
         }
+
+        ControllerUtils.initializeChatView(path, layout, check, username, rol, languageComboBox.getValue());
     }
+
 
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();

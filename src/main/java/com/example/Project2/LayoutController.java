@@ -71,31 +71,18 @@ public class LayoutController {
             e.printStackTrace();
         }
     }
-    public void redirectToChosenLayout(){
+    public void redirectToChosenLayout() {
         String path;
-        if (layout == 2){
+        if (layout == 2) {
             path = "chat-view3.fxml";
         } else if (layout == 1) {
             path = "chat-view2.fxml";
         } else {
             path = "chat-view.fxml";
         }
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-            Parent root = fxmlLoader.load();
-            chatController chatControllerInstance = fxmlLoader.getController();
-            chatControllerInstance.setUser(userID, userName, rol);
-            chatControllerInstance.setSelectedLanguage(selectedLanguage);
-            chatControllerInstance.initialize();
 
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-            closeCurrentWindow();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ControllerUtils.initializeChatView(path, layout, userID, userName, rol, selectedLanguage);
+        closeCurrentWindow();
     }
     public void closeCurrentWindow() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
