@@ -52,19 +52,26 @@ public class RegisterController {
     }
 
     public void registerButtonOnAction() {
-        if (passwordTextField.getText().equals(confirmPasswordTextField.getText()) && !gebruikersnaamTextField.getText().isBlank()){
-            registerUser();
-        } else if (gebruikersnaamTextField.getText().isBlank()) {
-            messageLabel.setText("Gebruikersnaam niet ingevuld");
-            messageLabel.setTextFill(Color.RED);
-            CornerRadii corn = new CornerRadii(4);
-            messageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
+        String username = gebruikersnaamTextField.getText();
+        String password = passwordTextField.getText();
+        String confirmPassword = confirmPasswordTextField.getText();
+
+        if (username.isBlank()) {
+            setErrorMessage("Gebruikersnaam niet ingevuld");
+        } else if (password.isBlank()) {
+            setErrorMessage("Wachtwoord niet ingevuld");
+        } else if (!password.equals(confirmPassword)) {
+            setErrorMessage("Wachtwoord komt niet overeen");
         } else {
-            messageLabel.setText("Wachtwoord komt niet overeen");
-            messageLabel.setTextFill(Color.RED);
-            CornerRadii corn = new CornerRadii(4);
-            messageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
+            registerUser();
         }
+    }
+
+    private void setErrorMessage(String message) {
+        messageLabel.setText(message);
+        messageLabel.setTextFill(Color.RED);
+        CornerRadii corn = new CornerRadii(4);
+        messageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
     }
     public void registerUser() {
         DatabaseConnection connection = new DatabaseConnection();
