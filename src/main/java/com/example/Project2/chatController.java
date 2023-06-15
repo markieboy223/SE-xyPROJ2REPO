@@ -54,10 +54,13 @@ public class chatController extends onderwerp {
     private boolean isLightMode = true;
     int index;
     public void initialize() {
-        if (user != null && user.getRole() != null && user.getRole().equalsIgnoreCase("admin")) {
-            register.setVisible(true);
-        } else {
-            register.setVisible(false);
+        if (user != null) {
+            if (user.getRole() != null && user.getRole().equalsIgnoreCase("admin")){
+                register.setVisible(true);
+            } else{
+                register.setVisible(false);
+            }
+            setStartText("Over welk onderwerp wilt u het hebben?");
         }
     }
     public void setUser(User user) {
