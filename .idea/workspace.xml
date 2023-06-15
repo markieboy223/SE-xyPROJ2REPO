@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/ProfileController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     "jdk.selected.JAVA_MODULE": "openjdk-20",
     "last_directory_selection": "C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/src/main/java/com/example/Project2",
     "last_opened_file_path": "C:/Users/markv/IdeaProjects/SE-xyPROJ2REPO/javafx-sdk-20.0.1/lib/javafx-swt.jar",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pathVariables"

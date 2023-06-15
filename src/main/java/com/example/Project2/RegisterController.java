@@ -66,7 +66,6 @@ public class RegisterController {
             registerUser();
         }
     }
-
     private void setErrorMessage(String message) {
         messageLabel.setText(message);
         messageLabel.setTextFill(Color.RED);
@@ -74,8 +73,6 @@ public class RegisterController {
         messageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
     }
     public void registerUser() {
-        DatabaseConnection connection = new DatabaseConnection();
-        Connection connectDB = connection.getConnectionGebruiker();
         String username = gebruikersnaamTextField.getText();
         String email = emailTextField.getText();
         String voornaam = voornaamTextField.getText();
@@ -85,10 +82,21 @@ public class RegisterController {
         String role = rolBox.getValue();
         int layout = 0;
 
+        try (Connection connectDB = getConnection()) {
+            insertUser(connectDB, username, email, voornaam, achternaam, telefoonnummer, password, role, layout);
+            messageLabel.setText("Gebruiker Toegevoegd");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private Connection getConnection() {
+        DatabaseConnection connection = new DatabaseConnection();
+        return connection.getConnectionGebruiker();
+    }
+    private void insertUser(Connection connectDB, String username, String email, String voornaam, String achternaam,
+                            String telefoonnummer, String password, String role, int layout) throws SQLException {
         String insertFields = "INSERT INTO user(gebruikersnaam, email, voornaam, achternaam, telefoonnummer, wachtwoord, rol, layout) VALUES (?,?,?,?,?,?,?,?)";
-
-        try {
-            PreparedStatement statement = connectDB.prepareStatement(insertFields);
+        try (PreparedStatement statement = connectDB.prepareStatement(insertFields)) {
             statement.setString(1, username);
             statement.setString(2, email);
             statement.setString(3, voornaam);
@@ -98,9 +106,6 @@ public class RegisterController {
             statement.setString(7, role);
             statement.setInt(8, layout);
             statement.executeUpdate();
-            messageLabel.setText("Gebruiker Toegevoegd");
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }
