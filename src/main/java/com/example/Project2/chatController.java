@@ -96,7 +96,7 @@ public class chatController extends onderwerp {
             e.printStackTrace();
         }
     }
-    public void instellingenScene(ActionEvent event){
+    public void instellingenScene(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Instellingenview.fxml"));
             Parent root = fxmlLoader.load();
@@ -105,10 +105,10 @@ public class chatController extends onderwerp {
             layoutController.setSelectedLanguage(selectedLanguage);
             layoutController.setUser(userID, userName, rol);
 
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
+            Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 800, 600));
             stage.show();
+
             closeCurrentWindow();
         } catch (IOException e) {
             e.printStackTrace();
