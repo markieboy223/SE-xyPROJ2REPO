@@ -72,8 +72,9 @@ public class LayoutController {
         }
     }
     public void redirectToChosenLayout() {
+        ChatViewData chatViewData = new ChatViewData(userID, userName, rol, selectedLanguage);
         String path = ChatViewPathResolver.resolvePath(layout);
-        ControllerUtils.initializeChatView(path, layout, userID, userName, rol, selectedLanguage);
+        ControllerUtils.initializeChatView(path, chatViewData);
         closeCurrentWindow();
     }
     public void closeCurrentWindow() {

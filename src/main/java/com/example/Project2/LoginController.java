@@ -82,8 +82,9 @@ public class LoginController{
         }
     }
     public void redirectToNewScene() {
+        ChatViewData chatViewData = new ChatViewData(check, username, rol, languageComboBox.getValue());
         String path = ChatViewPathResolver.resolvePath(layout);
-        ControllerUtils.initializeChatView(path, layout, check, username, rol, languageComboBox.getValue());
+        ControllerUtils.initializeChatView(path, chatViewData);
     }
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
@@ -101,9 +102,9 @@ public class LoginController{
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            e.getCause();
         }
     }
+
     private void handleSuccessfulLogin(ResultSet queryResult) throws SQLException {
         check = queryResult.getInt("id");
         rol = queryResult.getString("rol");
@@ -113,9 +114,11 @@ public class LoginController{
         redirectToNewScene();
         closeCurrentWindow();
     }
+
     private void handleFailedLogin() {
         setLoginMessage("Ongeldige login, probeer het opnieuw!", Color.RED);
     }
+
     private void setLoginMessage(String message, Color color) {
         LoginMessageLabel.setText(message);
         LoginMessageLabel.setTextFill(color);

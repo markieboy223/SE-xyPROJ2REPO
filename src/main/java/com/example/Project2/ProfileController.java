@@ -43,43 +43,44 @@ public class ProfileController {
         passwordField.setVisible(false);
         updatePasBtn.setVisible(false);
     }
-
     public void setUser(String userName) {
         this.userName = userName;
     }
-
     public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-
     public void passChangeOnAction(ActionEvent event) {
         pasChangeBtn.setVisible(false);
         passwordField.setVisible(true);
         updatePasBtn.setVisible(true);
     }
-
     public void updatePassword(ActionEvent event) {
         String newPassword = passwordField.getText();
         if (!newPassword.isEmpty()) {
-            DatabaseConnection connection = new DatabaseConnection();
-            try (Connection connectDB = connection.getConnectionGebruiker();
-                 PreparedStatement statement = connectDB.prepareStatement("UPDATE docassistent.user SET wachtwoord = ? WHERE gebruikersnaam = ?")) {
-                statement.setString(1, newPassword);
-                statement.setString(2, userName);
-                statement.executeUpdate();
-                pasChangeBtn.setVisible(true);
-                passwordField.setVisible(false);
-                updatePasBtn.setVisible(false);
-                passwordMessage.setText("Wachtwoord gewijzigd naar: " + newPassword);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            updatePasswordInDatabase(newPassword);
         } else {
-            System.out.println("Please enter a new password.");
+            handleEmptyPassword();
         }
     }
-
+    private void updatePasswordInDatabase(String newPassword) {
+        DatabaseConnection connection = new DatabaseConnection();
+        try (Connection connectDB = connection.getConnectionGebruiker();
+             PreparedStatement statement = connectDB.prepareStatement("UPDATE docassistent.user SET wachtwoord = ? WHERE gebruikersnaam = ?")) {
+            statement.setString(1, newPassword);
+            statement.setString(2, userName);
+            statement.executeUpdate();
+            pasChangeBtn.setVisible(true);
+            passwordField.setVisible(false);
+            updatePasBtn.setVisible(false);
+            passwordMessage.setText("Wachtwoord gewijzigd naar: " + newPassword);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private void handleEmptyPassword() {
+        passwordMessage.setText("Geen wachtwoord ingevuld om te wijzigen");
+    }
     public void getUserInfo(String userName) {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnectionGebruiker();
@@ -88,20 +89,23 @@ public class ProfileController {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                String gebruikersnaam = resultSet.getString("gebruikersnaam");
-                String email = resultSet.getString("email");
-                String voornaam = resultSet.getString("voornaam");
-                String achternaam = resultSet.getString("achternaam");
-                String rol = resultSet.getString("rol");
-
-                usernameLabel.setText(gebruikersnaam);
-                emailLabel.setText(email);
-                nameLabel.setText(voornaam);
-                surnameLabel.setText(achternaam);
-                roleLabel.setText(rol);
+                displayUserInfo(resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    private void displayUserInfo(ResultSet resultSet) throws SQLException {
+        String gebruikersnaam = resultSet.getString("gebruikersnaam");
+        String email = resultSet.getString("email");
+        String voornaam = resultSet.getString("voornaam");
+        String achternaam = resultSet.getString("achternaam");
+        String rol = resultSet.getString("rol");
+
+        usernameLabel.setText(gebruikersnaam);
+        emailLabel.setText(email);
+        nameLabel.setText(voornaam);
+        surnameLabel.setText(achternaam);
+        roleLabel.setText(rol);
     }
 }
