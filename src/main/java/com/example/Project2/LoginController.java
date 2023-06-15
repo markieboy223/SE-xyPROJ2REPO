@@ -85,37 +85,41 @@ public class LoginController{
         String path = ChatViewPathResolver.resolvePath(layout);
         ControllerUtils.initializeChatView(path, layout, check, username, rol, languageComboBox.getValue());
     }
-
-
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnectionGebruiker();
-            PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1), id, rol, layout FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
+             PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1), id, rol, layout FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
             statement.setString(1, gebruikersnaamTextField.getText());
             statement.setString(2, passwordTextField.getText());
+
             try (ResultSet queryResult = statement.executeQuery()) {
                 if (queryResult.next() && queryResult.getInt(1) == 1) {
-                    check = queryResult.getInt("id");
-                    rol = queryResult.getString("rol");
-                    layout = queryResult.getInt("layout");
-                    username = gebruikersnaamTextField.getText();
-                    LoginMessageLabel.setText("Ingelogd!");
-                    LoginMessageLabel.setTextFill(Color.GREEN);
-                    CornerRadii corn = new CornerRadii(4);
-                    LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
-                    //Nieuwe scene wanneer de login succesvol is.
-                    redirectToNewScene();
-                    closeCurrentWindow();
+                    handleSuccessfulLogin(queryResult);
                 } else {
-                    LoginMessageLabel.setText("Ongeldige login, probeer het opnieuw!");
-                    LoginMessageLabel.setTextFill(Color.RED);
-                    CornerRadii corn = new CornerRadii(4);
-                    LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
+                    handleFailedLogin();
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
             e.getCause();
         }
+    }
+    private void handleSuccessfulLogin(ResultSet queryResult) throws SQLException {
+        check = queryResult.getInt("id");
+        rol = queryResult.getString("rol");
+        layout = queryResult.getInt("layout");
+        username = gebruikersnaamTextField.getText();
+        setLoginMessage("Ingelogd!", Color.GREEN);
+        redirectToNewScene();
+        closeCurrentWindow();
+    }
+    private void handleFailedLogin() {
+        setLoginMessage("Ongeldige login, probeer het opnieuw!", Color.RED);
+    }
+    private void setLoginMessage(String message, Color color) {
+        LoginMessageLabel.setText(message);
+        LoginMessageLabel.setTextFill(color);
+        CornerRadii corn = new CornerRadii(4);
+        LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
     }
 }
