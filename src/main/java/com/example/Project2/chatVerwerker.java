@@ -21,7 +21,6 @@ public class chatVerwerker extends chatController{
     boolean checkDoor = false;
     protected String vraagS = "";
     protected String antwoordS = "";
-    private ArrayList<String> att = new ArrayList<>();
     private ArrayList<String> keuzes2 = new ArrayList<>();
     private ArrayList<String> check = new ArrayList<>();
 
