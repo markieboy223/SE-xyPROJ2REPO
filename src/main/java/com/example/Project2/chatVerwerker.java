@@ -319,12 +319,11 @@ public class chatVerwerker extends chatController{
 
     private String findMatchingWordWithHelp(String[] words, List<String> options) {
         String help = "";
-        for (int i = 0; i < words.length; i++) {
-            String woord = words[i];
-            if (i != words.length - 1) {
-                help = woord + " " + words[i + 1];
-            }
-            String match = findMatchingWord(new String[]{woord, help}, options);
+        for (int i = 0; i < words.length - 1; i++) {
+            String word = words[i];
+            String nextWord = words[i + 1];
+            help = word + " " + nextWord;
+            String match = findMatchingWord(new String[]{word, help}, options);
             if (match != null) {
                 if (match.equals(help)) {
                     return help;
