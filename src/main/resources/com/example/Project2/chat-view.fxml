@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -40,14 +41,10 @@
                             <children>
                                 <TextField fx:id="inputTekst" layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" />
                                 <Button fx:id="sendButton" defaultButton="true" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Verstuur" textFill="WHITE" />
-                                <Label fx:id="outputTekst" layoutX="33.0" layoutY="73.0" prefHeight="281.0" prefWidth="424.0" style="-fx-font-style: #454545;" text="Waar kan ik u mee helpen?" textFill="WHITE">
-                                    <font>
-                                        <Font size="16.0" />
-                                    </font>
-                                </Label>
                                 <Button fx:id="closeButton" layoutX="675.0" layoutY="25.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Afsluiten" textFill="WHITE" />
-                                <Label fx:id="Honderwerp" layoutX="14.0" layoutY="17.0" prefHeight="17.0" prefWidth="90.0" textFill="WHITE" />
-                                <Button fx:id="Vonderwerp" layoutX="120.0" layoutY="13.0" mnemonicParsing="false" onAction="#VonderwerpOnAction" style="-fx-background-color: #0e82c9;" text="Verander" textFill="WHITE" />
+                                <Label fx:id="Honderwerp" layoutX="14.0" layoutY="16.0" prefHeight="18.0" prefWidth="92.0" textFill="WHITE" />
+                                <Button fx:id="Vonderwerp" layoutX="120.0" layoutY="12.0" mnemonicParsing="false" onAction="#VonderwerpOnAction" style="-fx-background-color: #0e82c9;" text="Verander" textFill="WHITE" />
+                        <TextArea fx:id="outputTekst" blendMode="SRC_ATOP" cache="true" layoutX="50.0" layoutY="100.0" prefHeight="278.0" prefWidth="389.0" style="-fx-control-inner-background: #454545; -fx-background-color: #454545; -fx-text-fill: white" text="tekst" wrapText="true" />
                             </children>
                         </AnchorPane>
                     </content>
