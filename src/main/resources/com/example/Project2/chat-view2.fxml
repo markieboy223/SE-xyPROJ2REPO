@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -34,7 +35,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Profiel">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#profileScene" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -47,11 +48,6 @@
                             <children>
                                 <TextField fx:id="inputTekst" layoutX="100.0" layoutY="410.0" prefHeight="40.0" prefWidth="600.0" />
                                 <Button fx:id="sendButton" layoutX="350.0" layoutY="475.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #808080;" text="Verstuur" textFill="WHITE" />
-                                <Label fx:id="outputTekst" layoutX="50.0" layoutY="75.0" prefHeight="50.0" prefWidth="200.0" styleClass="secondary-color" text="Waar kan ik u mee helpen?">
-                                    <font>
-                                        <Font size="16.0" />
-                                    </font>
-                                </Label>
                                 <Button fx:id="closeButton" layoutX="668.0" layoutY="475.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #808080;" text="Afsluiten" textFill="WHITE" />
                                 <GridPane layoutX="106.0" layoutY="425.0">
                                     <columnConstraints>
@@ -79,6 +75,7 @@
                                         </ImageView>
                            </graphic>
                                 </Button>
+                        <TextArea fx:id="outputTekst" layoutX="100.0" layoutY="139.0" prefHeight="200.0" prefWidth="534.0" />
                             </children>
                         </AnchorPane>
                     </content>

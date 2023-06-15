@@ -23,6 +23,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Instellingen">
                     <items>
+                  <MenuItem mnemonicParsing="false" onAction="#instellingenScene" text="layouts" />
                         <MenuItem fx:id="register" mnemonicParsing="false" onAction="#createAccountForm" text="Register" />
                   <MenuItem mnemonicParsing="false" onAction="#instellingenScene" text="Instellingen" />
                     </items>
