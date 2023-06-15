@@ -184,12 +184,9 @@ public class chatController extends onderwerp {
         setStartText("Over welk onderwerp wilt u het hebben?");
     }
     public void SendButtonOnAction(ActionEvent event){
-        if (inputTekst.getText() != null){
-            outputTekst.setText(verwerk.formuleerAntwoord(inputTekst.getText()));
+            outputTekst.appendText(verwerk.formuleerAntwoord(inputTekst.getText()));
             inputTekst.clear();
-        }
     }
-
     public void setSelectedLanguage(String language) {
         selectedLanguage = language;
         handleLanguageSelection();
