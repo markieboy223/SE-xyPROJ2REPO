@@ -75,23 +75,7 @@ public class chatVerwerker extends chatController{
                 throw new RuntimeException(e);
             }
     }
-    public String formuleerAntwoord(String inputtekst){
-        if (vraagS.length() > 0){
-            opslaan.opslaan(vraagS, antwoordS, onderwerp1, controller.getUserID());
-            vraagS = "";
-            antwoordS = "";
-        }
-        DatabaseConnection connection = new DatabaseConnection();
-        StringBuilder antwoord = new StringBuilder();
-
-        if (!onderwerp2){
-            maakOnderwerpen();
-            onderwerp1 = vindOnderwerp(inputtekst);
-        }
-        else {
-            keuze = vindOnderwerp(inputtekst);
-        }
-
+    public String formuleerAntwoord_Onderwerp(String inputtekst, DatabaseConnection connection, StringBuilder antwoord){
         if (onderwerp1 != null && keuzes == null){
             try (Connection connectDB = connection.getConnectionDoc()){
                 PreparedStatement statement = connectDB.prepareStatement("DESCRIBE " + onderwerp1);
@@ -133,8 +117,13 @@ public class chatVerwerker extends chatController{
                 throw new RuntimeException(e);
             }
         }
+        else{
+            return formuleerAntwoord_Onderwerp2(inputtekst, connection, antwoord);
+        }
+    }
 
-        else if (onderwerp2 && keuze != null && !keuze2){
+    public String formuleerAntwoord_Onderwerp2(String inputtekst, DatabaseConnection connection, StringBuilder antwoord){
+        if (onderwerp2 && keuze != null && !keuze2){
             String fuck = "";
             boolean buitenTermijn = false;
             return(formuleer2(connection, buitenTermijn, inputtekst, fuck));
@@ -179,7 +168,29 @@ public class chatVerwerker extends chatController{
                 }
             }
         }
-        else if(!onderwerp2){
+        return null;
+    }
+    public String formuleerAntwoord(String inputtekst){
+        if (vraagS.length() > 0){
+            opslaan.opslaan(vraagS, antwoordS, onderwerp1, controller.getUserID());
+            vraagS = "";
+            antwoordS = "";
+        }
+        DatabaseConnection connection = new DatabaseConnection();
+        StringBuilder antwoord = new StringBuilder();
+
+        if (!onderwerp2){
+            maakOnderwerpen();
+            onderwerp1 = vindOnderwerp(inputtekst);
+        }
+        else {
+            keuze = vindOnderwerp(inputtekst);
+        }
+        if (formuleerAntwoord_Onderwerp(inputtekst, connection, antwoord) != null){
+            return formuleerAntwoord_Onderwerp(inputtekst, connection, antwoord);
+        }
+
+        if(!onderwerp2){
             String help = "Hier heb ik geen informatie over. \nIk heb alleen kennis over de volgende onderwerpen: \n";
             String help2 = "";
             for (String dit : tabellen){
@@ -188,7 +199,7 @@ public class chatVerwerker extends chatController{
             help = help + help2;
             return help;
         }
-        else if(onderwerp2 && keuze == null){
+        else if(keuze == null){
             String help = "Hier heb ik geen informatie over. \nIk heb alleen kennis over de volgende onderwerpen: \n";
             String help2 = "";
             for (String dit : check){
@@ -211,7 +222,6 @@ public class chatVerwerker extends chatController{
         }
         return findMatchingWordWithHelp(apart, keuzes2);
     }
-
     private String validateYear(String[] apart) {
         if (heeftJaar) {
             char[] jaartallen = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -234,7 +244,6 @@ public class chatVerwerker extends chatController{
         }
         return null;
     }
-
     private String findMatchingWord(String[] words, ArrayList<String> options) {
         for (String word : words) {
             for (String optie : options){
