@@ -350,7 +350,6 @@ public class chatController extends onderwerp{
         }
         return null;
     }
-
     public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
