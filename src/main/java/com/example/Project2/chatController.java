@@ -1,4 +1,5 @@
 package com.example.Project2;
+import javafx.application.Platform;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +15,9 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.scene.control.Button;
 
-public class chatController extends onderwerp{
+public class chatController extends onderwerp {
     private opslaanChat opslaan = new opslaanChat();
     private opvragenChat opvragen = new opvragenChat();
     private chatVerwerker verwerk;
@@ -24,11 +26,9 @@ public class chatController extends onderwerp{
     private Button closeButton;
     @FXML
     private Button Vonderwerp;
-    @FXML
     protected TextField inputTekst;
     @FXML
     protected TextArea outputTekst;
-    @FXML
     private ScrollPane scrollDing;
     @FXML
     protected Label Honderwerp;
@@ -40,16 +40,32 @@ public class chatController extends onderwerp{
     private MenuItem Delete;
     @FXML
     private Menu Chat;
+    private String vraagS = "";
+    private String antwoordS = "";
     private int userID;
     private String userName;
+    private String rol;
     @FXML
     private Button btnMode;
     @FXML
     private ImageView imgMode;
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private MenuItem register;
     private boolean isLightMode = true;
     int index;
+    @FXML
+    public void initialize() {
+        if (rol != null && rol.equalsIgnoreCase("admin")) {
+            register.setVisible(true);
+        } else {
+            register.setVisible(false);
+        }
+    }
+    ArrayList<String> keuzes2 = new ArrayList<>();
+    ArrayList<String> att = new ArrayList<>();
+    private ArrayList<String> check = new ArrayList<>();
 
     public int getUserID() {
         return userID;
@@ -62,15 +78,14 @@ public class chatController extends onderwerp{
             setDarkMode();
         }
     }
+
     public void profileScene(ActionEvent event){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
             Parent root = fxmlLoader.load();
 
-            // Get the controller instance from the FXMLLoader
             ProfileController profileController = fxmlLoader.getController();
-
-            profileController.setUser(userName); // Pass the userName to the ProfileController
+            profileController.setUser(userName);
             profileController.initialize();
 
             Stage stage = new Stage();
@@ -81,6 +96,25 @@ public class chatController extends onderwerp{
             e.printStackTrace();
         }
     }
+    public void instellingenScene(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Instellingenview.fxml"));
+            Parent root = fxmlLoader.load();
+
+            LayoutController layoutController = fxmlLoader.getController();
+            layoutController.setSelectedLanguage(selectedLanguage);
+            layoutController.setUser(userID, userName, rol);
+
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+            closeCurrentWindow();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void setLightMode() {
         anchorPane.getStylesheets().remove(getClass().getResource("/styles/darkMode.css").toExternalForm());
         anchorPane.getStylesheets().add(getClass().getResource("/styles/lightMode.css").toExternalForm());
@@ -88,6 +122,7 @@ public class chatController extends onderwerp{
         imgMode.setImage(image);
         outputTekst.setStyle("-fx-text-fill: black ;");
     }
+
     private void setDarkMode() {
         anchorPane.getStylesheets().remove(getClass().getResource("/styles/lightMode.css").toExternalForm());
         anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
@@ -95,11 +130,16 @@ public class chatController extends onderwerp{
         imgMode.setImage(image);
         outputTekst.setStyle("-fx-text-fill: white ;");
     }
+
     public void handleLanguageSelection() {
         if (selectedLanguage != null) {
             if (selectedLanguage.equals("Nederlands")) {
                 sendButton.setText("Verstuur");
                 closeButton.setText("Afsluiten");
+                Vonderwerp.setText("Verander");
+                outputTekst.setText("Waar kan ik u mee helpen?");
+
+
             } else if (selectedLanguage.equals("English")) {
                 sendButton.setText("Send");
                 closeButton.setText("Close");
@@ -130,6 +170,7 @@ public class chatController extends onderwerp{
         outputTekst.appendText(start);
         outputTekst.appendText(volgende);
     }
+
     public void VonderwerpOnAction(ActionEvent event){
         if (verwerk.vraagS.length() > 0){
             opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, userID);
@@ -153,9 +194,10 @@ public class chatController extends onderwerp{
         selectedLanguage = language;
         handleLanguageSelection();
     }
-    public void setUser(int userID, String userName){
+    public void setUser(int userID, String userName, String rol){
             this.userID = userID;
             this.userName = userName;
+            this.rol = rol;
     }
     public void createAccountForm(){
         try {
@@ -170,11 +212,16 @@ public class chatController extends onderwerp{
         }
     }
     public void closeButtonOnAction(ActionEvent event) {
-        if (verwerk.vraagS.length() > 0){
+        Platform.exit();
+        if (verwerk != null && verwerk.vraagS.length() > 0){
             opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, userID);
             verwerk.vraagS = "";
             verwerk.antwoordS = "";
         }
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+    public void closeCurrentWindow() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
