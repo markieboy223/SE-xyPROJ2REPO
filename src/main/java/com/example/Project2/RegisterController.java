@@ -82,7 +82,7 @@ public class RegisterController {
         String password = passwordTextField.getText();
         String role = rolBox.getValue();
 
-        User user = new User(username, email, voornaam, achternaam, telefoonnummer, password, role);
+        User user = new User(0 ,username, email, voornaam, achternaam, telefoonnummer, password, role);
 
         try (Connection connectDB = getConnection()) {
             insertUser(connectDB, user);

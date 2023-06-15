@@ -29,15 +29,11 @@ public class LayoutController {
     private Button layout3Button;
     @FXML
     private Text succesLabel;
-    private int userID;
-    private String userName;
-    private String rol;
+    private User user;
     private String selectedLanguage;
     private int layout = 0;
-    public void setUser(int userID, String userName, String rol){
-        this.userID = userID;
-        this.userName = userName;
-        this.rol = rol;
+    public void setUser(User user) {
+        this.user = user;
     }
     public void setSelectedLanguage(String language) {
         selectedLanguage = language;
@@ -64,7 +60,7 @@ public class LayoutController {
         try (Connection connectDB = connection.getConnectionGebruiker();
              PreparedStatement statement = connectDB.prepareStatement("UPDATE docassistent.user SET layout = ? WHERE gebruikersnaam = ?")) {
             statement.setInt(1, layout);
-            statement.setString(2, userName);
+            statement.setString(2, user.getUsername());
             statement.executeUpdate();
             succesLabel.setText("Layout succesvol aangepast naar layout: " + (layout + 1));
         } catch (SQLException e) {
@@ -72,9 +68,8 @@ public class LayoutController {
         }
     }
     public void redirectToChosenLayout() {
-        ChatViewData chatViewData = new ChatViewData(userID, userName, rol, selectedLanguage);
         String path = ChatViewPathResolver.resolvePath(layout);
-        ControllerUtils.initializeChatView(path, chatViewData);
+        ControllerUtils.initializeChatView(path, user, selectedLanguage);
         closeCurrentWindow();
     }
     public void closeCurrentWindow() {

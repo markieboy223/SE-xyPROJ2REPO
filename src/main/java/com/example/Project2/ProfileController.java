@@ -35,16 +35,18 @@ public class ProfileController {
     private Label roleLabel;
     @FXML
     private TextField passwordField;
-    private String userName;
+    private User user;
 
     @FXML
     public void initialize() {
-        getUserInfo(userName);
-        passwordField.setVisible(false);
-        updatePasBtn.setVisible(false);
+        if (user != null) {
+            getUserInfo(user.getUsername());
+            passwordField.setVisible(false);
+            updatePasBtn.setVisible(false);
+        }
     }
-    public void setUser(String userName) {
-        this.userName = userName;
+    public void setUser(User user) {
+        this.user = user;
     }
     public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -68,7 +70,7 @@ public class ProfileController {
         try (Connection connectDB = connection.getConnectionGebruiker();
              PreparedStatement statement = connectDB.prepareStatement("UPDATE docassistent.user SET wachtwoord = ? WHERE gebruikersnaam = ?")) {
             statement.setString(1, newPassword);
-            statement.setString(2, userName);
+            statement.setString(2, user.getUsername());
             statement.executeUpdate();
             pasChangeBtn.setVisible(true);
             passwordField.setVisible(false);

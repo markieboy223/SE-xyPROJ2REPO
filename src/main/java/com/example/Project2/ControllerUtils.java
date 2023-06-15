@@ -1,6 +1,5 @@
 package com.example.Project2;
 
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,14 +9,14 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class ControllerUtils {
-    public static void initializeChatView(String fxmlPath, ChatViewData chatViewData) {
+    public static void initializeChatView(String fxmlPath, User user, String selectedLanguage) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(ControllerUtils.class.getResource(fxmlPath));
             Parent root = fxmlLoader.load();
 
             chatController chatControllerInstance = fxmlLoader.getController();
-            chatControllerInstance.setUser(chatViewData.getUserID(), chatViewData.getUsername(), chatViewData.getRol());
-            chatControllerInstance.setSelectedLanguage(chatViewData.getSelectedLanguage());
+            chatControllerInstance.setSelectedLanguage(selectedLanguage);
+            chatControllerInstance.setUser(user);
             chatControllerInstance.initialize();
 
             Stage stage = new Stage(StageStyle.UNDECORATED);
@@ -27,6 +26,4 @@ public class ControllerUtils {
             e.printStackTrace();
         }
     }
-
 }
-
