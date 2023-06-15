@@ -26,9 +26,11 @@ public class chatController extends onderwerp {
     private Button closeButton;
     @FXML
     private Button Vonderwerp;
+    @FXML
     protected TextField inputTekst;
     @FXML
     protected TextArea outputTekst;
+    @FXML
     private ScrollPane scrollDing;
     @FXML
     protected Label Honderwerp;
@@ -40,8 +42,6 @@ public class chatController extends onderwerp {
     private MenuItem Delete;
     @FXML
     private Menu Chat;
-    private String vraagS = "";
-    private String antwoordS = "";
     private int userID;
     private String userName;
     private String rol;
@@ -62,10 +62,8 @@ public class chatController extends onderwerp {
         } else {
             register.setVisible(false);
         }
+        setStartText("Over welk onderwerp wilt u het hebben?");
     }
-    ArrayList<String> keuzes2 = new ArrayList<>();
-    ArrayList<String> att = new ArrayList<>();
-    private ArrayList<String> check = new ArrayList<>();
 
     public int getUserID() {
         return userID;
@@ -186,8 +184,10 @@ public class chatController extends onderwerp {
         setStartText("Over welk onderwerp wilt u het hebben?");
     }
     public void SendButtonOnAction(ActionEvent event){
-        outputTekst.setText(verwerk.formuleerAntwoord(inputTekst.getText()));
-        inputTekst.clear();
+        if (inputTekst.getText() != null){
+            outputTekst.setText(verwerk.formuleerAntwoord(inputTekst.getText()));
+            inputTekst.clear();
+        }
     }
 
     public void setSelectedLanguage(String language) {
