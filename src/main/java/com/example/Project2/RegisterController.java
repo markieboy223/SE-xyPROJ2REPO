@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class RegisterController {
     @FXML
@@ -80,10 +79,9 @@ public class RegisterController {
         String telefoonnummer = telefoonTextField.getText();
         String password = passwordTextField.getText();
         String role = rolBox.getValue();
-        int layout = 0;
 
         try (Connection connectDB = getConnection()) {
-            insertUser(connectDB, username, email, voornaam, achternaam, telefoonnummer, password, role, layout);
+            insertUser(connectDB, username, email, voornaam, achternaam, telefoonnummer, password, role);
             messageLabel.setText("Gebruiker Toegevoegd");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -94,7 +92,7 @@ public class RegisterController {
         return connection.getConnectionGebruiker();
     }
     private void insertUser(Connection connectDB, String username, String email, String voornaam, String achternaam,
-                            String telefoonnummer, String password, String role, int layout) throws SQLException {
+                            String telefoonnummer, String password, String role) throws SQLException {
         String insertFields = "INSERT INTO user(gebruikersnaam, email, voornaam, achternaam, telefoonnummer, wachtwoord, rol, layout) VALUES (?,?,?,?,?,?,?,?)";
         try (PreparedStatement statement = connectDB.prepareStatement(insertFields)) {
             statement.setString(1, username);
@@ -104,7 +102,7 @@ public class RegisterController {
             statement.setString(5, telefoonnummer);
             statement.setString(6, password);
             statement.setString(7, role);
-            statement.setInt(8, layout);
+            statement.setInt(8, 0);
             statement.executeUpdate();
         }
     }
