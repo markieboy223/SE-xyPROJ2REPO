@@ -272,11 +272,23 @@ public class chatVerwerker extends chatController{
     }
     public String vindOnderwerp(String input) {
         String[] apart = input.split(" ");
-        jaar = null;
-        char[] jaartallen = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-        int teller = 0;
+        jaar = validateYear(apart);
 
+        if (!onderwerp2) {
+            return findMatchingWord(apart, tabellen);
+        }
+
+        if (!keuze2) {
+            return findMatchingWord(apart, check);
+        }
+
+        return findMatchingWordWithHelp(apart, keuzes2);
+    }
+
+    private String validateYear(String[] apart) {
         if (heeftJaar) {
+            char[] jaartallen = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            int teller = 0;
             for (String jaarC : apart) {
                 if (jaarC.length() == 4) {
                     for (int i = 0; i < jaarC.length(); i++) {
@@ -288,35 +300,11 @@ public class chatVerwerker extends chatController{
                         }
                     }
                     if (teller == 4) {
-                        jaar = jaarC;
+                        return jaarC;
                     }
                 }
             }
         }
-
-        if (!onderwerp2) {
-            return findMatchingWord(apart, tabellen);
-        } else if (onderwerp2 && !keuze2) {
-            return findMatchingWord(apart, check);
-        } else if (onderwerp2 && keuze2) {
-            String help = "";
-            for (int i = 0; i < apart.length; i++) {
-                String woord = apart[i];
-                if (i != apart.length - 1) {
-                    help = woord + " " + apart[i + 1];
-                }
-                String match = findMatchingWord(new String[]{woord, help}, keuzes2);
-                if (match != null) {
-                    if (match.equals(help)) {
-                        return help;
-                    }
-                    checkDoor = true;
-                    return match;
-                }
-            }
-            return findMatchingWord(apart, check);
-        }
-
         return null;
     }
 
@@ -329,4 +317,22 @@ public class chatVerwerker extends chatController{
         return null;
     }
 
+    private String findMatchingWordWithHelp(String[] words, List<String> options) {
+        String help = "";
+        for (int i = 0; i < words.length; i++) {
+            String woord = words[i];
+            if (i != words.length - 1) {
+                help = woord + " " + words[i + 1];
+            }
+            String match = findMatchingWord(new String[]{woord, help}, options);
+            if (match != null) {
+                if (match.equals(help)) {
+                    return help;
+                }
+                checkDoor = true;
+                return match;
+            }
+        }
+        return findMatchingWord(words, options);
+    }
 }
