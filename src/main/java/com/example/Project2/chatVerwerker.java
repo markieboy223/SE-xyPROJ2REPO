@@ -287,7 +287,7 @@ public class chatVerwerker extends chatController{
 
     private String validateYear(String[] apart) {
         if (heeftJaar) {
-            char[] jaartallen = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            char[] jaartallen = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
             int teller = 0;
             for (String jaarC : apart) {
                 if (jaarC.length() == 4) {

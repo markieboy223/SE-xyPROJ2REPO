@@ -13,40 +13,12 @@ public class onderwerp {
     protected ArrayList<String> jaren = new ArrayList<>();
 
     public void maakOnderwerpen() {
-        DatabaseConnection connection = new DatabaseConnection();
-        StringBuilder tableCheck = new StringBuilder();
-
-        try (Connection connectDB = connection.getConnectionDoc()) {
-            PreparedStatement tableNames = connectDB.prepareStatement("SELECT DISTINCT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'documentatie'");
-            try (ResultSet queryResult2 = tableNames.executeQuery()) {
-                while (queryResult2.next()) {
-                    tableCheck.append(queryResult2.getString(1));
-                    tabellen.add(String.valueOf(tableCheck));
-                    tableCheck.setLength(0);
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        fetchTabellen("SELECT DISTINCT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'documentatie'", tabellen);
     }
 
     public void getJaartallen(String onderwerp) {
-        DatabaseConnection connection = new DatabaseConnection();
-        StringBuilder jarenCheck = new StringBuilder();
-
-        try (Connection connectDB = connection.getConnectionDoc()) {
-            PreparedStatement tableNames = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp);
-            try (ResultSet queryResult2 = tableNames.executeQuery()) {
-                while (queryResult2.next()) {
-                    jarenCheck.append(queryResult2.getString(1));
-                    jaren.add(String.valueOf(jarenCheck));
-                    jarenCheck.setLength(0);
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
+        String query = "SELECT Jaartal FROM " + onderwerp;
+        fetchTabellen(query, jaren);
     }
 
     public void getTabbelen(String tabNaam, String onderwerp) {
@@ -54,22 +26,8 @@ public class onderwerp {
 
         if (tabellenNaam.size() == 0) {
             tabellenNaam.add("id");
-            DatabaseConnection connection = new DatabaseConnection();
-            StringBuilder tabellenCheck = new StringBuilder();
-
-            try (Connection connectDB = connection.getConnectionDoc()) {
-                PreparedStatement tableInhoud = connectDB.prepareStatement("SELECT 'id' FROM " + onderwerp);
-                try (ResultSet queryResult2 = tableInhoud.executeQuery()) {
-                    while (queryResult2.next()) {
-                        tabellenCheck.append(queryResult2.getString(1));
-                        inhoudC.add(String.valueOf(tabellenCheck));
-                        tabellenCheck.setLength(0);
-                    }
-                }
-            }
-            catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            String query = "SELECT 'id' FROM " + onderwerp;
+            fetchTabellen(query, inhoudC);
             tabellenInhoud.add(inhoudC);
             inhoudC.clear();
         }
@@ -78,23 +36,26 @@ public class onderwerp {
             tabellenNaam.add(tabNaam);
         }
 
-        DatabaseConnection connection = new DatabaseConnection();
-        StringBuilder tabellenCheck = new StringBuilder();
-        try (Connection connectDB = connection.getConnectionDoc()) {
-            PreparedStatement tableInhoud = connectDB.prepareStatement("SELECT " + tabNaam + " FROM " + onderwerp);
-            try (ResultSet queryResult2 = tableInhoud.executeQuery()) {
-                while (queryResult2.next()) {
-                    tabellenCheck.append(queryResult2.getString(1));
-                    inhoudC.add(String.valueOf(tabellenCheck));
-                    tabellenCheck.setLength(0);
-                }
-            }
-        }
-        catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        String query = "SELECT " + tabNaam + " FROM " + onderwerp;
+        fetchTabellen(query, inhoudC);
         tabellenInhoud.add(inhoudC);
     }
 
-    }
+    private void fetchTabellen(String query, ArrayList<String> list) {
+        DatabaseConnection connection = new DatabaseConnection();
+        StringBuilder resultBuilder = new StringBuilder();
 
+        try (Connection connectDB = connection.getConnectionDoc()) {
+            PreparedStatement statement = connectDB.prepareStatement(query);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    resultBuilder.append(resultSet.getString(1));
+                    list.add(String.valueOf(resultBuilder));
+                    resultBuilder.setLength(0);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
