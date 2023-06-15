@@ -27,6 +27,54 @@ public class chatVerwerker extends chatController{
     public chatVerwerker(chatController controller){
         this.controller = controller;
     }
+    private String formuleer2(DatabaseConnection connection, boolean buitenTermijn, StringBuilder antwoord, String inputtekst, String fuck){
+        keuzes2.clear();
+        keuze2 = true;
+        try (Connection connectDB = connection.getConnectionDoc()) {
+            PreparedStatement statement;
+            if (jaar != null && jaren.contains(jaar + "-01-01")) {
+                statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar);
+            } else if (jaar != null && !jaren.contains(jaar + "-01-01")) {
+                statement = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp1);
+                buitenTermijn = true;
+            } else {
+                statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
+                keuze2 = true;
+            }
+
+            for (String x : tabellenNaam) {
+                if (keuze.equalsIgnoreCase(x)) {
+                    index = tabellenNaam.indexOf(x);
+                }
+            }
+            int teller = 0;
+            try (ResultSet queryResult = statement.executeQuery()) {
+                while (queryResult.next()) {
+                    teller++;
+                    if (teller > 0) {
+                        antwoord.append(queryResult.getString(1));
+                        keuzes2.add(antwoord.toString());
+                        antwoord.setLength(0);
+                    }
+                }
+                for (String x : keuzes2) {
+                    fuck = fuck + x + "\n";
+                }
+                vraagS = vraagS + inputtekst;
+                String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
+                antwoordS = antwoordS + betereKeuzes;
+                if (!buitenTermijn) {
+                    return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                } else {
+                    return ("Q: " + inputtekst + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
+                            + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
+                }
+            }
+        }
+            catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+    }
     public String formuleerAntwoord(String inputtekst){
         if (vraagS.length() > 0){
             opslaan.opslaan(vraagS, antwoordS, onderwerp1, controller.getUserID());
@@ -91,129 +139,14 @@ public class chatVerwerker extends chatController{
         else if (onderwerp2 && keuze != null && !keuze2){
             String fuck = "";
             boolean buitenTermijn = false;
-            try (Connection connectDB = connection.getConnectionDoc()){
-                PreparedStatement statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
-                if (jaar != null && jaren.contains(jaar + "-01-01")){
-                    statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar);
-                    for (String x : tabellenNaam){
-                        if (keuze.equalsIgnoreCase(x)){
-                            index = tabellenNaam.indexOf(x);
-                        }
-                    }
-                    keuze2 = true;
-                }
-                else if (jaar != null && !jaren.contains(jaar + "-01-01")){
-                    statement = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp1);
-                    buitenTermijn = true;
-                    for (String x : tabellenNaam){
-                        if (keuze.equalsIgnoreCase(x)){
-                            index = tabellenNaam.indexOf(x);
-                        }
-                    }
-                    keuze2 = true;
-                }
-                else{
-                    statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
-                    for (String x : tabellenNaam){
-                        if (keuze.equalsIgnoreCase(x)){
-                            index = tabellenNaam.indexOf(x);
-                        }
-                    }
-                    keuze2 = true;
-                }
-                int teller = 0;
-                try (ResultSet queryResult = statement.executeQuery()) {
-                    while (queryResult.next()){
-                        teller++;
-                        if (teller > 0){
-                            antwoord.append(queryResult.getString(1));
-                            keuzes2.add(antwoord.toString());
-                            antwoord.setLength(0);
-                        }
-                    }
-                    for (String x : keuzes2){
-                        fuck = fuck + x + "\n";
-                    }
-                    vraagS = vraagS + inputtekst;
-                    String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
-                    antwoordS = antwoordS + betereKeuzes;
-                    if (!buitenTermijn){
-                        return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
-                    }
-                    else{
-                        return ("Q: " + inputtekst + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
-                                + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
-                    }
-                }
-            }
-            catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            return(formuleer2(connection, buitenTermijn, antwoord, inputtekst, fuck));
         }
 
         else if (onderwerp2 && keuze != null){
             String fuck = "";
             boolean buitenTermijn = false;
             if (!checkDoor){
-                keuzes2.clear();
-                try (Connection connectDB = connection.getConnectionDoc()){
-                    PreparedStatement statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
-                    if (jaar != null && jaren.contains(jaar + "-01-01")){
-                        statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar);
-                        for (String x : tabellenNaam){
-                            if (keuze.equalsIgnoreCase(x)){
-                                index = tabellenNaam.indexOf(x);
-                            }
-                        }
-                        keuze2 = true;
-                    }
-                    else if (jaar != null && !jaren.contains(jaar + "-01-01")){
-                        statement = connectDB.prepareStatement("SELECT Jaartal FROM " + onderwerp1);
-                        buitenTermijn = true;
-                        for (String x : tabellenNaam){
-                            if (keuze.equalsIgnoreCase(x)){
-                                index = tabellenNaam.indexOf(x);
-                            }
-                        }
-                        keuze2 = true;
-                    }
-                    else{
-                        statement = connectDB.prepareStatement("SELECT " + keuze + " FROM " + onderwerp1);
-                        for (String x : tabellenNaam){
-                            if (keuze.equalsIgnoreCase(x)){
-                                index = tabellenNaam.indexOf(x);
-                            }
-                        }
-                        keuze2 = true;
-                    }
-                    int teller = 0;
-                    try (ResultSet queryResult = statement.executeQuery()) {
-                        while (queryResult.next()){
-                            teller++;
-                            if (teller > 0){
-                                antwoord.append(queryResult.getString(1));
-                                keuzes2.add(antwoord.toString());
-                                antwoord.setLength(0);
-                            }
-                        }
-                        for (String x : keuzes2){
-                            fuck = fuck + x + "\n";
-                        }
-                        vraagS = vraagS + inputtekst;
-                        String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
-                        antwoordS = antwoordS + betereKeuzes;
-                        if (!buitenTermijn){
-                            return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
-                        }
-                        else{
-                            return ("Q: " + inputtekst + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
-                                    + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
-                        }
-                    }
-                }
-                catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+                return(formuleer2(connection, buitenTermijn, antwoord, inputtekst, fuck));
             }
 
             else{
@@ -234,6 +167,7 @@ public class chatVerwerker extends chatController{
                             System.out.println(x);
                             fuck = fuck + x + "\n";
                         }
+
                         vraagS = vraagS + inputtekst;
                         String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
                         antwoordS = antwoordS + betereKeuzes;
@@ -269,6 +203,7 @@ public class chatVerwerker extends chatController{
         }
         return "";
     }
+
     public String vindOnderwerp(String input){
         String [] apart = input.split(" ");
         jaar = null;
