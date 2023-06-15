@@ -82,8 +82,9 @@ public class LoginController{
         }
     }
     public void redirectToNewScene() {
+        ChatViewData chatViewData = new ChatViewData(check, username, rol, languageComboBox.getValue());
         String path = ChatViewPathResolver.resolvePath(layout);
-        ControllerUtils.initializeChatView(path, layout, check, username, rol, languageComboBox.getValue());
+        ControllerUtils.initializeChatView(path, chatViewData);
     }
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();

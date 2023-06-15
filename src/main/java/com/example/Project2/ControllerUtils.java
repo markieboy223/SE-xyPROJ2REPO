@@ -10,14 +10,14 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class ControllerUtils {
-    public static void initializeChatView(String fxmlPath, int layout, int userID, String username, String rol, String selectedLanguage) {
+    public static void initializeChatView(String fxmlPath, ChatViewData chatViewData) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(ControllerUtils.class.getResource(fxmlPath));
             Parent root = fxmlLoader.load();
 
             chatController chatControllerInstance = fxmlLoader.getController();
-            chatControllerInstance.setUser(userID, username, rol);
-            chatControllerInstance.setSelectedLanguage(selectedLanguage);
+            chatControllerInstance.setUser(chatViewData.getUserID(), chatViewData.getUsername(), chatViewData.getRol());
+            chatControllerInstance.setSelectedLanguage(chatViewData.getSelectedLanguage());
             chatControllerInstance.initialize();
 
             Stage stage = new Stage(StageStyle.UNDECORATED);
@@ -27,5 +27,6 @@ public class ControllerUtils {
             e.printStackTrace();
         }
     }
+
 }
 
