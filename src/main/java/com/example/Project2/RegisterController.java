@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class RegisterController {
@@ -76,20 +78,22 @@ public class RegisterController {
         String role = rolBox.getValue();
         int layout = 0;
 
-        String insertFields = "INSERT INTO user(gebruikersnaam, email, voornaam, achternaam, telefoonnummer, wachtwoord, rol, layout) VALUES ('";
-        String insertValues = username + "','"+ email + "','" + voornaam + "','" + achternaam + "','" + telefoonnummer + "','" + password + "','" + role + "','" + layout + "')";
-        String insertToRegister = insertFields + insertValues;
+        String insertFields = "INSERT INTO user(gebruikersnaam, email, voornaam, achternaam, telefoonnummer, wachtwoord, rol, layout) VALUES (?,?,?,?,?,?,?,?)";
 
         try {
-            Statement statement = connectDB.createStatement();
-            statement.executeUpdate(insertToRegister);
-
-
-        } catch (Exception e) {
+            PreparedStatement statement = connectDB.prepareStatement(insertFields);
+            statement.setString(1, username);
+            statement.setString(2, email);
+            statement.setString(3, voornaam);
+            statement.setString(4, achternaam);
+            statement.setString(5, telefoonnummer);
+            statement.setString(6, password);
+            statement.setString(7, role);
+            statement.setInt(8, layout);
+            statement.executeUpdate();
+            messageLabel.setText("Gebruiker Toegevoegd");
+        } catch (SQLException e) {
             e.printStackTrace();
-            e.getCause();
         }
-
     }
-
 }

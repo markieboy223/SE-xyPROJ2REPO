@@ -79,7 +79,6 @@ public class ProfileController {
             System.out.println("Please enter a new password.");
         }
     }
-
     public void getUserInfo(String userName) {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnectionGebruiker();
@@ -88,20 +87,23 @@ public class ProfileController {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                String gebruikersnaam = resultSet.getString("gebruikersnaam");
-                String email = resultSet.getString("email");
-                String voornaam = resultSet.getString("voornaam");
-                String achternaam = resultSet.getString("achternaam");
-                String rol = resultSet.getString("rol");
-
-                usernameLabel.setText(gebruikersnaam);
-                emailLabel.setText(email);
-                nameLabel.setText(voornaam);
-                surnameLabel.setText(achternaam);
-                roleLabel.setText(rol);
+                displayUserInfo(resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    private void displayUserInfo(ResultSet resultSet) throws SQLException {
+        String gebruikersnaam = resultSet.getString("gebruikersnaam");
+        String email = resultSet.getString("email");
+        String voornaam = resultSet.getString("voornaam");
+        String achternaam = resultSet.getString("achternaam");
+        String rol = resultSet.getString("rol");
+
+        usernameLabel.setText(gebruikersnaam);
+        emailLabel.setText(email);
+        nameLabel.setText(voornaam);
+        surnameLabel.setText(achternaam);
+        roleLabel.setText(rol);
     }
 }
