@@ -65,12 +65,14 @@ public class RegisterController {
             registerUser();
         }
     }
+
     private void setErrorMessage(String message) {
         messageLabel.setText(message);
         messageLabel.setTextFill(Color.RED);
         CornerRadii corn = new CornerRadii(4);
         messageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
     }
+
     public void registerUser() {
         String username = gebruikersnaamTextField.getText();
         String email = emailTextField.getText();
@@ -80,28 +82,31 @@ public class RegisterController {
         String password = passwordTextField.getText();
         String role = rolBox.getValue();
 
+        User user = new User(username, email, voornaam, achternaam, telefoonnummer, password, role);
+
         try (Connection connectDB = getConnection()) {
-            insertUser(connectDB, username, email, voornaam, achternaam, telefoonnummer, password, role);
+            insertUser(connectDB, user);
             messageLabel.setText("Gebruiker Toegevoegd");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     private Connection getConnection() {
         DatabaseConnection connection = new DatabaseConnection();
         return connection.getConnectionGebruiker();
     }
-    private void insertUser(Connection connectDB, String username, String email, String voornaam, String achternaam,
-                            String telefoonnummer, String password, String role) throws SQLException {
+
+    private void insertUser(Connection connectDB, User user) throws SQLException {
         String insertFields = "INSERT INTO user(gebruikersnaam, email, voornaam, achternaam, telefoonnummer, wachtwoord, rol, layout) VALUES (?,?,?,?,?,?,?,?)";
         try (PreparedStatement statement = connectDB.prepareStatement(insertFields)) {
-            statement.setString(1, username);
-            statement.setString(2, email);
-            statement.setString(3, voornaam);
-            statement.setString(4, achternaam);
-            statement.setString(5, telefoonnummer);
-            statement.setString(6, password);
-            statement.setString(7, role);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getVoornaam());
+            statement.setString(4, user.getAchternaam());
+            statement.setString(5, user.getTelefoonnummer());
+            statement.setString(6, user.getPassword());
+            statement.setString(7, user.getRole());
             statement.setInt(8, 0);
             statement.executeUpdate();
         }
