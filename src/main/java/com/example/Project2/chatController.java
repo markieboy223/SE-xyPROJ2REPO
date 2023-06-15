@@ -63,7 +63,7 @@ public class chatController extends onderwerp{
     int index;
     @FXML
     public void initialize() {
-        if (rol != null && rol.equalsIgnoreCase("admin")) {
+        if (rol != null &&  rol.equalsIgnoreCase("admin")) {
             register.setVisible(true);
         } else {
             register.setVisible(false);
