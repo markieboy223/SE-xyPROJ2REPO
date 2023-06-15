@@ -29,15 +29,11 @@ public class LayoutController {
     private Button layout3Button;
     @FXML
     private Text succesLabel;
-    private int userID;
-    private String userName;
-    private String rol;
+    private User user;
     private String selectedLanguage;
     private int layout = 0;
-    public void setUser(int userID, String userName, String rol){
-        this.userID = userID;
-        this.userName = userName;
-        this.rol = rol;
+    public void setUser(User user) {
+        this.user = user;
     }
     public void setSelectedLanguage(String language) {
         selectedLanguage = language;
@@ -64,36 +60,20 @@ public class LayoutController {
         try (Connection connectDB = connection.getConnectionGebruiker();
              PreparedStatement statement = connectDB.prepareStatement("UPDATE docassistent.user SET layout = ? WHERE gebruikersnaam = ?")) {
             statement.setInt(1, layout);
-            statement.setString(2, userName);
+            statement.setString(2, user.getUsername());
             statement.executeUpdate();
             succesLabel.setText("Layout succesvol aangepast naar layout: " + (layout + 1));
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void redirectToChosenLayout(){
-        String path;
-        if (layout == 2){
-            path = "chat-view3.fxml";
-        } else if (layout == 1) {
-            path = "chat-view2.fxml";
-        } else {
-            path = "chat-view.fxml";
-        }
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-            Parent root = fxmlLoader.load();
-            chatController chatControllerInstance = fxmlLoader.getController();
-            chatControllerInstance.setUser(userID, userName, rol);
-            chatControllerInstance.setSelectedLanguage(selectedLanguage);
-            chatControllerInstance.initialize();
-
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void redirectToChosenLayout() {
+        String path = ChatViewPathResolver.resolvePath(layout);
+        ControllerUtils.initializeChatView(path, user, selectedLanguage);
+        closeCurrentWindow();
+    }
+    public void closeCurrentWindow() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 }

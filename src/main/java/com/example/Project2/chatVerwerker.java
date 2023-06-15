@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class chatVerwerker extends chatController{
@@ -269,76 +270,68 @@ public class chatVerwerker extends chatController{
         }
         return "";
     }
-    public String vindOnderwerp(String input){
-        String [] apart = input.split(" ");
-        jaar = null;
-        char [] jaartallen = new char[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-        int teller = 0;
+    public String vindOnderwerp(String input) {
+        String[] apart = input.split(" ");
+        jaar = validateYear(apart);
 
-        if (heeftJaar){
-            for (String jaarC : apart){
-                if (jaarC.length() == 4){
-                    for (int i = 0; i < jaarC.length(); i++){
+        if (!onderwerp2) {
+            return findMatchingWord(apart, tabellen);
+        }
+
+        if (!keuze2) {
+            return findMatchingWord(apart, check);
+        }
+
+        return findMatchingWordWithHelp(apart, keuzes2);
+    }
+
+    private String validateYear(String[] apart) {
+        if (heeftJaar) {
+            char[] jaartallen = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            int teller = 0;
+            for (String jaarC : apart) {
+                if (jaarC.length() == 4) {
+                    for (int i = 0; i < jaarC.length(); i++) {
                         char c = jaarC.charAt(i);
-                        for (char j : jaartallen){
-                            if (c == j){
+                        for (char j : jaartallen) {
+                            if (c == j) {
                                 teller++;
                             }
                         }
                     }
-                    if (teller == 4){
-                        jaar = jaarC;
-                    }
-                }
-            }
-        }
-        if (!onderwerp2){
-            for (String woord : apart){
-                for (String tabel : tabellen){
-                    if (woord.toLowerCase().equals(tabel)){
-                        return woord;
-                    }
-                }
-            }
-        }
-        else if (onderwerp2 && !keuze2){
-            for (String woord : apart){
-                for (String woord2 : check){
-                    if (woord.equalsIgnoreCase(woord2)){
-                        return woord;
-                    }
-                }
-            }
-
-        }
-        else if (onderwerp2 && keuze2){
-            String help = "";
-            String help2 = "";
-            for (int i = 0; i < apart.length; i++){
-                String woord = apart[i];
-                if (i != apart.length - 1){
-                    help = woord + " " + apart[i +1];
-                }
-                for (String woord2 : keuzes2){
-                    if (woord.equalsIgnoreCase(woord2) || help.equalsIgnoreCase(woord2)){
-                        if (help.equals(woord2)){
-                            return help;
-                        }
-                        checkDoor = true;
-                        return woord2;
-                    }
-                }
-            }
-
-            for (String woord : apart){
-                for (String woord2 : check){
-                    if (woord.equalsIgnoreCase(woord2)){
-                        help = woord2;
-                        return help;
+                    if (teller == 4) {
+                        return jaarC;
                     }
                 }
             }
         }
         return null;
+    }
+
+    private String findMatchingWord(String[] words, List<String> options) {
+        for (String word : words) {
+            if (options.contains(word)) {
+                return word;
+            }
+        }
+        return null;
+    }
+
+    private String findMatchingWordWithHelp(String[] words, List<String> options) {
+        String help = "";
+        for (int i = 0; i < words.length - 1; i++) {
+            String word = words[i];
+            String nextWord = words[i + 1];
+            help = word + " " + nextWord;
+            String match = findMatchingWord(new String[]{word, help}, options);
+            if (match != null) {
+                if (match.equals(help)) {
+                    return help;
+                }
+                checkDoor = true;
+                return match;
+            }
+        }
+        return findMatchingWord(words, options);
     }
 }
