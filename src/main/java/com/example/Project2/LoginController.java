@@ -82,15 +82,7 @@ public class LoginController{
         }
     }
     public void redirectToNewScene() {
-        String path;
-        if (layout == 2) {
-            path = "chat-view3.fxml";
-        } else if (layout == 1) {
-            path = "chat-view2.fxml";
-        } else {
-            path = "chat-view.fxml";
-        }
-
+        String path = ChatViewPathResolver.resolvePath(layout);
         ControllerUtils.initializeChatView(path, layout, check, username, rol, languageComboBox.getValue());
     }
 
