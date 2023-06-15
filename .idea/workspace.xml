@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/ChatViewPathResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/ControllerUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/LayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LayoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatVerwerker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/chatVerwerker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/onderwerp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/onderwerp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/profile-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/profile-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Bart" />
+        <entry key="$PROJECT_DIR$" value="Mark" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
