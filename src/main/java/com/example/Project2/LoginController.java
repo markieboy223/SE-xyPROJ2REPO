@@ -1,20 +1,14 @@
 package com.example.Project2;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.sql.*;
 
 public class LoginController{
@@ -34,10 +28,16 @@ public class LoginController{
     private PasswordField passwordTextField;
     @FXML
     private ComboBox<String> languageComboBox;
-    private int check = -5;
+    private int userID = -5;
     private String username = "";
+    private String email;
+    private String voornaam;
+    private String achternaam;
+    private String telefoonnummer;
+    private String password;
     private int layout = 0;
     private String rol = "";
+
     public void initialize() {
         // Add language options to the ComboBox
         languageComboBox.getItems().addAll("Nederlands", "English");
@@ -45,102 +45,89 @@ public class LoginController{
         languageComboBox.getSelectionModel().selectFirst();
     }
 
-    public void handleLanguageSelection(ActionEvent event) {
+    public void handleLanguageSelection() {
         String selectedLanguage = languageComboBox.getValue();
         if (selectedLanguage.equals("Nederlands")) {
             usernameLabel.setText("Gebruikersnaam");
             closeButton.setText("Afsluiten");
             passwordLabel.setText("Wachtwoord");
             loginButton.setText("Inloggen");
-
         } else if (selectedLanguage.equals("English")) {
             usernameLabel.setText("Username");
             closeButton.setText("Close");
             passwordLabel.setText("Password");
             loginButton.setText("Login");
-
         }
     }
 
-    public void closeButtonOnAction(ActionEvent event) {
+    public void closeButtonOnAction() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
+
     public void closeCurrentWindow() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-    public void loginButtonOnAction(ActionEvent event){
 
-        if (gebruikersnaamTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false){
+    public void loginButtonOnAction(){
+        if (!gebruikersnaamTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
             validateLogin();
         } else {
-            LoginMessageLabel.setText("Voer een gebruikersnaam en wachtwoord in.");
-            LoginMessageLabel.setTextFill(Color.RED);
-            CornerRadii corn = new CornerRadii(4);
-            LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
+            setLoginMessage("Voer een gebruikersnaam en wachtwoord in.", Color.RED);
         }
     }
+
     public void redirectToNewScene() {
-        try {
-            String path;
-            if (layout == 2) {
-                path = "chat-view3.fxml";
-            } else if (layout == 1) {
-                path = "chat-view2.fxml";
-            } else {
-                path = "chat-view.fxml";
-            }
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-
-            Parent root = fxmlLoader.load();
-
-            // Get the controller instance from the FXMLLoader
-            chatController chatControllerInstance = fxmlLoader.getController();
-
-            // Pass the selected language to the chatController instance
-            chatControllerInstance.setSelectedLanguage(languageComboBox.getValue());
-            chatControllerInstance.setUser(check, username, rol);
-            chatControllerInstance.initialize();
-
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        User user = new User(userID, username, email, voornaam, achternaam, telefoonnummer, password, rol);
+        String path = ChatViewPathResolver.resolvePath(layout);
+        ControllerUtils.initializeChatView(path, user, languageComboBox.getValue());
+        closeCurrentWindow();
     }
 
     public void validateLogin() {
         DatabaseConnection connection = new DatabaseConnection();
         try (Connection connectDB = connection.getConnectionGebruiker();
-            PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1), id, rol, layout FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
+             PreparedStatement statement = connectDB.prepareStatement("SELECT COUNT(1), id, email, voornaam, achternaam, telefoonnummer, rol, layout FROM docassistent.user WHERE gebruikersnaam = ? AND wachtwoord = ?")) {
             statement.setString(1, gebruikersnaamTextField.getText());
             statement.setString(2, passwordTextField.getText());
+
             try (ResultSet queryResult = statement.executeQuery()) {
                 if (queryResult.next() && queryResult.getInt(1) == 1) {
-                    check = queryResult.getInt("id");
-                    rol = queryResult.getString("rol");
-                    layout = queryResult.getInt("layout");
-                    username = gebruikersnaamTextField.getText();
-                    LoginMessageLabel.setText("Ingelogd!");
-                    LoginMessageLabel.setTextFill(Color.GREEN);
-                    CornerRadii corn = new CornerRadii(4);
-                    LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
-                    //Nieuwe scene wanneer de login succesvol is.
-                    redirectToNewScene();
-                    closeCurrentWindow();
+                    handleSuccessfulLogin(queryResult);
                 } else {
-                    LoginMessageLabel.setText("Ongeldige login, probeer het opnieuw!");
-                    LoginMessageLabel.setTextFill(Color.RED);
-                    CornerRadii corn = new CornerRadii(4);
-                    LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
+                    handleFailedLogin();
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            e.getCause();
         }
+    }
+
+    private void handleSuccessfulLogin(ResultSet queryResult) throws SQLException {
+        userID = queryResult.getInt("id");
+        username = gebruikersnaamTextField.getText();
+        password = passwordTextField.getText();
+        email = queryResult.getString("email");
+        voornaam = queryResult.getString("voornaam");
+        achternaam = queryResult.getString("achternaam");
+        telefoonnummer = queryResult.getString("telefoonnummer");
+        rol = queryResult.getString("rol");
+        layout = queryResult.getInt("layout");
+
+        setLoginMessage("Ingelogd!", Color.GREEN);
+        redirectToNewScene();
+        closeCurrentWindow();
+    }
+
+    private void handleFailedLogin() {
+        setLoginMessage("Ongeldige login, probeer het opnieuw!", Color.RED);
+    }
+
+    private void setLoginMessage(String message, Color color) {
+        LoginMessageLabel.setText(message);
+        LoginMessageLabel.setTextFill(color);
+        CornerRadii corn = new CornerRadii(4);
+        LoginMessageLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, corn, Insets.EMPTY)));
     }
 }
