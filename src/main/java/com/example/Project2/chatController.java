@@ -30,17 +30,11 @@ public class chatController extends onderwerp {
     @FXML
     protected TextArea outputTekst;
     @FXML
-    private ScrollPane scrollDing;
-    @FXML
     protected Label Honderwerp;
     @FXML
     private Button sendButton;
     @FXML
     protected Tab chatTab;
-    @FXML
-    private MenuItem Delete;
-    @FXML
-    private Menu Chat;
     private User user;
     @FXML
     private Button btnMode;
@@ -54,11 +48,7 @@ public class chatController extends onderwerp {
     int index;
     public void initialize() {
         if (user != null) {
-            if (user.getRole() != null && user.getRole().equalsIgnoreCase("admin")){
-                register.setVisible(true);
-            } else{
-                register.setVisible(false);
-            }
+            register.setVisible(user.getRole() != null && user.getRole().equalsIgnoreCase("admin"));
             setStartText("Over welk onderwerp wilt u het hebben?");
         }
     }

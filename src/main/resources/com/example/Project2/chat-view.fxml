@@ -16,16 +16,10 @@
     <children>
         <MenuBar layoutY="-1.0" prefHeight="28.0" prefWidth="800.0" style="-fx-background-color: #0e82c9;">
             <menus>
-                <Menu mnemonicParsing="false" text="Chats">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                    </items>
-                </Menu>
                 <Menu mnemonicParsing="false" text="Instellingen">
                     <items>
                   <MenuItem mnemonicParsing="false" onAction="#instellingenScene" text="layouts" />
                         <MenuItem fx:id="register" mnemonicParsing="false" onAction="#createAccountForm" text="Register" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Profiel">
@@ -45,7 +39,7 @@
                                 <Button fx:id="sendButton" defaultButton="true" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Verstuur" textFill="WHITE" />
                                 <Button fx:id="closeButton" layoutX="675.0" layoutY="25.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Afsluiten" textFill="WHITE" />
                                 <Label fx:id="Honderwerp" layoutX="14.0" layoutY="16.0" prefHeight="18.0" prefWidth="92.0" textFill="WHITE" />
-                                <Button fx:id="Vonderwerp" layoutX="120.0" layoutY="12.0" mnemonicParsing="false" onAction="#VonderwerpOnAction" style="-fx-background-color: #0e82c9;" text="Verander" textFill="WHITE" />
+                                <Button fx:id="Vonderwerp" layoutX="18.0" layoutY="65.0" mnemonicParsing="false" onAction="#VonderwerpOnAction" style="-fx-background-color: #0e82c9;" text="Verander" textFill="WHITE" />
                         <TextArea fx:id="outputTekst" blendMode="SRC_ATOP" cache="true" layoutX="50.0" layoutY="100.0" prefHeight="278.0" prefWidth="389.0" style="-fx-control-inner-background: #454545; -fx-background-color: #454545; -fx-text-fill: white" text="tekst" wrapText="true" />
                             </children>
                         </AnchorPane>
