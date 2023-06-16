@@ -34,7 +34,7 @@
                         <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="primary-color" stylesheets="@../../../styles/lightMode.css">
                             <children>
                                 <TextField fx:id="inputTekst" layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" />
-                                <Button fx:id="sendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Verstuur" textFill="WHITE" />
+                                <Button fx:id="SendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Verstuur" textFill="WHITE" />
                                 <Label fx:id="outputTekst" layoutX="50.0" layoutY="75.0" prefHeight="50.0" prefWidth="200.0" style="-fx-font-style: #454545;" styleClass="secondary-color" text="Waar kan ik u mee helpen?">
                                     <font>
                                         <Font size="16.0" />
@@ -76,8 +76,8 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <TextField layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" text="Stel uw vraag." />
-                                <Button layoutX="675.0" layoutY="450.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Verstuur" />
-                                <Label layoutX="50.0" layoutY="75.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?">
+                                <Button fx:id="sendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Verstuur" />
+                                <Label fx:id="outputText" layoutX="50.0" layoutY="75.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?">
                                     <font>
                                         <Font size="16.0" />
                                     </font>

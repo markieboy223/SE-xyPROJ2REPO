@@ -63,6 +63,8 @@ public class chatController extends onderwerp{
     @FXML
     private Button btnMode;
     @FXML
+    private Button SendButton;
+    @FXML
     private ImageView imgMode;
     @FXML
     private AnchorPane anchorPane;
@@ -123,6 +125,7 @@ public class chatController extends onderwerp{
                 MenuClose.setText("Afsluiten");
                 MenuDelete.setText("Verwijderen");
                 MenuAbout.setText("Weergeven");
+                SendButton.setText("Verstuur");
             } else if (selectedLanguage.equals("English")) {
                 sendButton.setText("Send");
                 closeButton.setText("Close");
@@ -133,6 +136,7 @@ public class chatController extends onderwerp{
                 MenuClose.setText("Close");
                 MenuDelete.setText("Delete");
                 MenuAbout.setText("About");
+                SendButton.setText("Send");
 
 
             }
