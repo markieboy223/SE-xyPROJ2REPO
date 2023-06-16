@@ -72,7 +72,7 @@ public class chatController extends onderwerp {
         }
     }
 
-    public void profileScene(ActionEvent event){
+    public void profileScene(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
             Parent root = fxmlLoader.load();
@@ -89,7 +89,7 @@ public class chatController extends onderwerp {
             e.printStackTrace();
         }
     }
-    public void instellingenScene(ActionEvent event) {
+    public void instellingenScene() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Instellingenview.fxml"));
             Parent root = fxmlLoader.load();
@@ -198,7 +198,7 @@ public class chatController extends onderwerp {
             e.getCause();
         }
     }
-    public void closeButtonOnAction(ActionEvent event) {
+    public void closeButtonOnAction() {
         Platform.exit();
         if (verwerk != null && verwerk.vraagS.length() > 0){
             opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, user.getUserID());
