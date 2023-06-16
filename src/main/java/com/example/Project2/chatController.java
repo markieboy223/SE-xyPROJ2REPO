@@ -71,7 +71,6 @@ public class chatController extends onderwerp {
             setDarkMode();
         }
     }
-
     public void profileScene(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
