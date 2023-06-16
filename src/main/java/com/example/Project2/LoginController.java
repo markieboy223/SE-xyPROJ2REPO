@@ -13,21 +13,21 @@ import java.sql.*;
 
 public class LoginController{
     @FXML
-    private Button closeButton;
+    public Button closeButton;
     @FXML
-    private Button loginButton;
+    public Button loginButton;
     @FXML
     public Label LoginMessageLabel;
     @FXML
-    private Label usernameLabel;
+    public Label usernameLabel;
     @FXML
     private TextField gebruikersnaamTextField;
     @FXML
-    private Label passwordLabel;
+    public Label passwordLabel;
     @FXML
     private PasswordField passwordTextField;
     @FXML
-    private ComboBox<String> languageComboBox;
+    public ComboBox<String> languageComboBox;
     private int userID = -5;
     private String username = "";
     private String email;
@@ -120,11 +120,11 @@ public class LoginController{
         closeCurrentWindow();
     }
 
-    private void handleFailedLogin() {
+    public void handleFailedLogin() {
         setLoginMessage("Ongeldige login, probeer het opnieuw!", Color.RED);
     }
 
-    private void setLoginMessage(String message, Color color) {
+    public void setLoginMessage(String message, Color color) {
         LoginMessageLabel.setText(message);
         LoginMessageLabel.setTextFill(color);
         CornerRadii corn = new CornerRadii(4);
