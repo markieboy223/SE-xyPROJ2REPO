@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import javafx.scene.control.Button;
 
 public class chatController extends onderwerp {
-    private opslaanChat opslaan = new opslaanChat();
+    public opslaanChat opslaan = new opslaanChat();
     private opvragenChat opvragen = new opvragenChat();
     private chatVerwerker verwerk;
     private String selectedLanguage;
@@ -27,15 +27,15 @@ public class chatController extends onderwerp {
     @FXML
     private Button Vonderwerp;
     @FXML
-    protected TextField inputTekst;
+    public TextField inputTekst;
     @FXML
-    protected TextArea outputTekst;
+    public TextArea outputTekst;
     @FXML
-    protected Label Honderwerp;
+    public Label Honderwerp;
     @FXML
     private Button sendButton;
     @FXML
-    protected Tab chatTab;
+    public Tab chatTab;
     @FXML
     private MenuItem Delete;
     @FXML
@@ -122,7 +122,6 @@ public class chatController extends onderwerp {
         imgMode.setImage(image);
         outputTekst.setStyle("-fx-control-inner-background: #383838; -fx-background-color: #383838; -fx-text-fill: white");
     }
-
     public void handleLanguageSelection() {
         if (selectedLanguage != null) {
             if (selectedLanguage.equals("Nederlands")) {
@@ -130,8 +129,6 @@ public class chatController extends onderwerp {
                 closeButton.setText("Afsluiten");
                 Vonderwerp.setText("Verander");
                 outputTekst.setText("Waar kan ik u mee helpen?");
-
-
             } else if (selectedLanguage.equals("English")) {
                 sendButton.setText("Send");
                 closeButton.setText("Close");

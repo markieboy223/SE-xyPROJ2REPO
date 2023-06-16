@@ -16,7 +16,7 @@ public class chatVerwerker extends chatController{
     private String keuzes = null;
     private String keuze = null;
     private String jaar = null;
-    boolean heeftJaar = false;
+    public boolean heeftJaar = false;
     boolean keuze2 = false;
     boolean checkDoor = false;
     protected String vraagS = "";
