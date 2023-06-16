@@ -121,7 +121,7 @@ public class chatController extends onderwerp {
         anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_light.png").toExternalForm());
         imgMode.setImage(image);
-        outputTekst.setStyle("-fx-text-fill: white ;");
+        outputTekst.setStyle("-fx-control-inner-background: #383838; -fx-background-color: #383838; -fx-text-fill: white");
     }
 
     public void handleLanguageSelection() {
