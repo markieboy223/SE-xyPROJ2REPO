@@ -31,8 +31,6 @@ public class chatController extends onderwerp {
     @FXML
     protected TextArea outputTekst;
     @FXML
-    private ScrollPane scrollDing;
-    @FXML
     protected Label Honderwerp;
     @FXML
     private Button sendButton;
@@ -55,11 +53,7 @@ public class chatController extends onderwerp {
     int index;
     public void initialize() {
         if (user != null) {
-            if (user.getRole() != null && user.getRole().equalsIgnoreCase("admin")){
-                register.setVisible(true);
-            } else{
-                register.setVisible(false);
-            }
+            register.setVisible(user.getRole() != null && user.getRole().equalsIgnoreCase("admin"));
             setStartText("Over welk onderwerp wilt u het hebben?");
         }
     }
@@ -69,7 +63,7 @@ public class chatController extends onderwerp {
     public int getUserID() {
         return user.getUserID();
     }
-    public void changeMode(ActionEvent event) {
+    public void changeMode() {
         isLightMode = !isLightMode;
         if (isLightMode) {
             setLightMode();
@@ -77,8 +71,7 @@ public class chatController extends onderwerp {
             setDarkMode();
         }
     }
-
-    public void profileScene(ActionEvent event){
+    public void profileScene(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
             Parent root = fxmlLoader.load();
@@ -95,7 +88,7 @@ public class chatController extends onderwerp {
             e.printStackTrace();
         }
     }
-    public void instellingenScene(ActionEvent event) {
+    public void instellingenScene() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Instellingenview.fxml"));
             Parent root = fxmlLoader.load();
@@ -127,7 +120,7 @@ public class chatController extends onderwerp {
         anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_light.png").toExternalForm());
         imgMode.setImage(image);
-        outputTekst.setStyle("-fx-text-fill: white ;");
+        outputTekst.setStyle("-fx-control-inner-background: #383838; -fx-background-color: #383838; -fx-text-fill: white");
     }
 
     public void handleLanguageSelection() {
@@ -170,7 +163,7 @@ public class chatController extends onderwerp {
         outputTekst.appendText(volgende);
     }
 
-    public void VonderwerpOnAction(ActionEvent event){
+    public void VonderwerpOnAction(){
         if (verwerk.vraagS.length() > 0){
             opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, user.getUserID());
             verwerk.vraagS = "";
@@ -184,7 +177,7 @@ public class chatController extends onderwerp {
         chatTab.setText("chat");
         setStartText("Over welk onderwerp wilt u het hebben?");
     }
-    public void SendButtonOnAction(ActionEvent event){
+    public void SendButtonOnAction(){
             outputTekst.appendText(verwerk.formuleerAntwoord(inputTekst.getText()));
             inputTekst.clear();
     }
@@ -204,7 +197,7 @@ public class chatController extends onderwerp {
             e.getCause();
         }
     }
-    public void closeButtonOnAction(ActionEvent event) {
+    public void closeButtonOnAction() {
         Platform.exit();
         if (verwerk != null && verwerk.vraagS.length() > 0){
             opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, user.getUserID());

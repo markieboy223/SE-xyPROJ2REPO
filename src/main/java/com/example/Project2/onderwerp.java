@@ -13,6 +13,7 @@ public class onderwerp {
     protected ArrayList<String> jaren = new ArrayList<>();
 
     public void maakOnderwerpen() {
+        tabellen.clear();
         fetchTabellen("SELECT DISTINCT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'documentatie'", tabellen);
     }
 
@@ -35,7 +36,6 @@ public class onderwerp {
         if (!tabellenNaam.contains(tabNaam)){
             tabellenNaam.add(tabNaam);
         }
-
         String query = "SELECT " + tabNaam + " FROM " + onderwerp;
         fetchTabellen(query, inhoudC);
         tabellenInhoud.add(inhoudC);
