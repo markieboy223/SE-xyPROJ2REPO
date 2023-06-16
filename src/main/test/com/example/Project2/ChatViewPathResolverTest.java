@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChatViewPathResolverTest {
-
+    //Hiermee wordt ook getest of de layout uit layoutcontroller wel correct doorgevoerd zou worden.
     @Test
     public void testResolvePath() {
         // Test case 1: layout = 2
