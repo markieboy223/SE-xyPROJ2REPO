@@ -17,7 +17,7 @@ public class LoginController{
     @FXML
     private Button loginButton;
     @FXML
-    private Label LoginMessageLabel;
+    public Label LoginMessageLabel;
     @FXML
     private Label usernameLabel;
     @FXML
