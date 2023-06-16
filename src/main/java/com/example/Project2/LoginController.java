@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.sql.*;
 
-public class LoginController{
+public class LoginController {
     @FXML
     public Button closeButton;
     @FXML
@@ -37,27 +37,46 @@ public class LoginController{
     private String password;
     private int layout = 0;
     private String rol = "";
+    private LanguageSelectionHandler languageSelectionHandler;
 
     public void initialize() {
         // Add language options to the ComboBox
         languageComboBox.getItems().addAll("Nederlands", "English");
         // Set the default selected language
         languageComboBox.getSelectionModel().selectFirst();
+
+        String defaultLanguage = languageComboBox.getValue();
+        setLanguageSelectionHandler(defaultLanguage);
     }
 
     public void handleLanguageSelection() {
         String selectedLanguage = languageComboBox.getValue();
+        setLanguageSelectionHandler(selectedLanguage);
+        languageSelectionHandler.handleLanguageSelection(this, selectedLanguage);
+    }
+
+    private void setLanguageSelectionHandler(String selectedLanguage) {
         if (selectedLanguage.equals("Nederlands")) {
-            usernameLabel.setText("Gebruikersnaam");
-            closeButton.setText("Afsluiten");
-            passwordLabel.setText("Wachtwoord");
-            loginButton.setText("Inloggen");
+            languageSelectionHandler = new DutchLanguageSelectionHandler();
         } else if (selectedLanguage.equals("English")) {
-            usernameLabel.setText("Username");
-            closeButton.setText("Close");
-            passwordLabel.setText("Password");
-            loginButton.setText("Login");
+            languageSelectionHandler = new EnglishLanguageSelectionHandler();
         }
+    }
+
+    public void setUsernameLabel(String label) {
+        usernameLabel.setText(label);
+    }
+
+    public void setCloseButtonText(String text) {
+        closeButton.setText(text);
+    }
+
+    public void setPasswordLabel(String label) {
+        passwordLabel.setText(label);
+    }
+
+    public void setLoginButtonText(String text) {
+        loginButton.setText(text);
     }
 
     public void closeButtonOnAction() {
