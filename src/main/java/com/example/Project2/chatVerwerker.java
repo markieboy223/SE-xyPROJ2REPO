@@ -36,7 +36,7 @@ public class chatVerwerker extends chatController{
             }
         }
     }
-    private String formuleer2(DatabaseConnection connection, boolean buitenTermijn, String inputtekst, String fuck){
+    private String formuleer2(parametersAntwoord pa){
         keuzes2.clear();
         keuze2 = true;
         try {
@@ -45,7 +45,7 @@ public class chatVerwerker extends chatController{
                 query = "SELECT " + keuze + " FROM " + onderwerp1 + " WHERE Jaartal = " + jaar;
             } else if (jaar != null && !jaren.contains(jaar + "-01-01")) {
                 query = "SELECT Jaartal FROM " + onderwerp1;
-                buitenTermijn = true;
+                pa.setBuitenTermijn(true);
             } else {
                 query = "SELECT " + keuze + " FROM " + onderwerp1;
             }
@@ -56,20 +56,20 @@ public class chatVerwerker extends chatController{
                 }
             }
             ArrayList<String> results = new ArrayList<>();
-            executeQueryAndGetResults(connection, query, results);
+            executeQueryAndGetResults(pa.getConnection(), query, results);
             keuzes2 = results;
                 for (String x : results) {
-                    fuck = fuck + x + "\n";
+                    pa.setformatText(pa.getformatText() + x + "\n");
                 }
-                vraagS = vraagS + inputtekst;
-                String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
+                vraagS = vraagS + pa.getInputtekst();
+                String betereKeuzes = pa.getformatText().replaceAll("\r", ", ").replaceAll("\n", ", ");
                 antwoordS = antwoordS + betereKeuzes;
 
-            if (!buitenTermijn) {
-                return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+            if (!pa.isBuitenTermijn()) {
+                return ("Q: " + pa.getInputtekst() + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + pa.getformatText() + "\n");
             } else {
-                return ("Q: " + inputtekst + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
-                        + "Alleen deze jaartallen zijn beschikbaar:\n" + fuck + "\n");
+                return ("Q: " + pa.getInputtekst() + "\n" + "A: Gegegevens over dit jaartal bevinden zich niet in de database:\n"
+                        + "Alleen deze jaartallen zijn beschikbaar:\n" + pa.getformatText() + "\n");
             }
         } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -104,14 +104,12 @@ public class chatVerwerker extends chatController{
                             heeftJaar = true;
                         }
                     }
-                    System.out.println("hier?");
 
                     controller.Honderwerp.setText(onderwerp1);
                     controller.chatTab.setText(onderwerp1);
                     vraagS = vraagS + inputtekst;
                     String betereKeuzes = keuzes.replaceAll("\r", ", ").replaceAll("\n", ", ");
                     antwoordS = antwoordS + betereKeuzes;
-                    System.out.println("hier2?");
                     return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes + "\n");
                 }
             }
@@ -120,23 +118,22 @@ public class chatVerwerker extends chatController{
             }
         }
         else{
-            System.out.println("neetoch");
             return formuleerAntwoord_Onderwerp2(inputtekst, connection, antwoord);
         }
     }
 
     public String formuleerAntwoord_Onderwerp2(String inputtekst, DatabaseConnection connection, StringBuilder antwoord){
         if (onderwerp2 && keuze != null && !keuze2){
-            String fuck = "";
+            String formatText = "";
             boolean buitenTermijn = false;
-            return(formuleer2(connection, buitenTermijn, inputtekst, fuck));
+            return(formuleer2(new parametersAntwoord(connection, buitenTermijn, inputtekst, formatText)));
         }
 
         else if (onderwerp2 && keuze != null){
-            String fuck = "";
+            String formatText = "";
             boolean buitenTermijn = false;
             if (!checkDoor){
-                return(formuleer2(connection, buitenTermijn, inputtekst, fuck));
+                return(formuleer2(new parametersAntwoord(connection, buitenTermijn, inputtekst, formatText)));
             }
             else{
                 keuzes2.clear();
@@ -154,16 +151,16 @@ public class chatVerwerker extends chatController{
                             }
                         }
                         for (String x : keuzes2){
-                            fuck = fuck + x + "\n";
+                            formatText = formatText + x + "\n";
                         }
 
                         vraagS = vraagS + inputtekst;
-                        String betereKeuzes = fuck.replaceAll("\r", ", ").replaceAll("\n", ", ");
+                        String betereKeuzes = formatText.replaceAll("\r", ", ").replaceAll("\n", ", ");
                         antwoordS = antwoordS + betereKeuzes;
                         keuzes2.clear();
                         checkDoor = false;
                         keuze2 = false;
-                        return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + fuck + "\n");
+                        return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + formatText + "\n");
                     }
                 }
                 catch (SQLException e) {
@@ -212,13 +209,12 @@ public class chatVerwerker extends chatController{
         for (String dit : lijst){
             help2 =  help2 + dit + "\n";
         }
-        help = help + help2;
+        help = help + help2 + "\n";
         return help;
     }
     public String vindOnderwerp(String input) {
         String[] apart = input.split(" ");
         jaar = validateYear(apart);
-        System.out.println(tabellen.size());
 
         if (!onderwerp2) {
             return findMatchingWord(apart, tabellen);
