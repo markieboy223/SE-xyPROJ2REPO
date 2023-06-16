@@ -104,12 +104,14 @@ public class chatVerwerker extends chatController{
                             heeftJaar = true;
                         }
                     }
+                    System.out.println("hier?");
 
                     controller.Honderwerp.setText(onderwerp1);
                     controller.chatTab.setText(onderwerp1);
                     vraagS = vraagS + inputtekst;
                     String betereKeuzes = keuzes.replaceAll("\r", ", ").replaceAll("\n", ", ");
                     antwoordS = antwoordS + betereKeuzes;
+                    System.out.println("hier2?");
                     return ("Q: " + inputtekst + "\n" + "A: Over dit onderwerp heb ik de volgende gegevens:\n" + keuzes + "\n");
                 }
             }
@@ -118,6 +120,7 @@ public class chatVerwerker extends chatController{
             }
         }
         else{
+            System.out.println("neetoch");
             return formuleerAntwoord_Onderwerp2(inputtekst, connection, antwoord);
         }
     }
@@ -186,33 +189,36 @@ public class chatVerwerker extends chatController{
         else {
             keuze = vindOnderwerp(inputtekst);
         }
-        if (formuleerAntwoord_Onderwerp(inputtekst, connection, antwoord) != null){
-            return formuleerAntwoord_Onderwerp(inputtekst, connection, antwoord);
+        String output = formuleerAntwoord_Onderwerp(inputtekst, connection, antwoord);
+        if (output != null){
+            return output;
         }
 
-        if(!onderwerp2){
-            String help = "Hier heb ik geen informatie over. \nIk heb alleen kennis over de volgende onderwerpen: \n";
-            String help2 = "";
-            for (String dit : tabellen){
-                help2 =  help2 + dit + "\n";
-            }
-            help = help + help2;
-            return help;
+        return geenInformatie();
+    }
+    private String geenInformatie(){
+        ArrayList<String> lijst;
+        if (!onderwerp2){
+            lijst = tabellen;
         }
-        else if(keuze == null){
-            String help = "Hier heb ik geen informatie over. \nIk heb alleen kennis over de volgende onderwerpen: \n";
-            String help2 = "";
-            for (String dit : check){
-                help2 =  help2 + dit + "\n";
-            }
-            help = help + help2;
-            return help;
+        else if(keuze ==  null){
+            lijst = check;
         }
-        return "";
+        else{
+            return "";
+        }
+        String help = "Hier heb ik geen informatie over. \nIk heb alleen kennis over de volgende onderwerpen: \n";
+        String help2 = "";
+        for (String dit : lijst){
+            help2 =  help2 + dit + "\n";
+        }
+        help = help + help2;
+        return help;
     }
     public String vindOnderwerp(String input) {
         String[] apart = input.split(" ");
         jaar = validateYear(apart);
+        System.out.println(tabellen.size());
 
         if (!onderwerp2) {
             return findMatchingWord(apart, tabellen);
