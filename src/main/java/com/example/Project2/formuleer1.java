@@ -13,6 +13,7 @@ public class formuleer1 implements AntwoordStrategie {
 
         cv.keuzes = "";
         cv.check.clear();
+
         try (Connection connectDB = connection.getConnectionDoc()){
             PreparedStatement statement = connectDB.prepareStatement("DESCRIBE " + cv.onderwerp1);
             int teller = 0;
