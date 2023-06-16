@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -15,18 +20,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Project2.chatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Project2.chatController">
     <children>
         <MenuBar layoutY="-1.0" prefHeight="28.0" prefWidth="800.0" style="-fx-background-color: #0e82c9;">
             <menus>
+                <Menu fx:id="Chat" mnemonicParsing="false" text="Chats">
+                    <items>
+                        <MenuItem fx:id="MenuClose" mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu fx:id="Instellingen" mnemonicParsing="false" text="Instellingen">
                 <Menu mnemonicParsing="false" text="Instellingen">
                     <items>
+                        <MenuItem fx:id="MenuDelete" mnemonicParsing="false" text="Delete" />
                         <MenuItem mnemonicParsing="false" onAction="#instellingenScene" text="layouts" />
                         <MenuItem fx:id="register" mnemonicParsing="false" onAction="#createAccountForm" text="Register" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Profiel">
+                <Menu fx:id="Profiel" mnemonicParsing="false" text="Profiel">
                     <items>
+                        <MenuItem fx:id="MenuAbout" mnemonicParsing="false" onAction="#profileScene" text="About" />
                         <MenuItem mnemonicParsing="false" onAction="#profileScene" text="About" />
                     </items>
                 </Menu>
@@ -39,7 +52,12 @@
                         <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="primary-color" stylesheets="@../../../styles/lightMode.css">
                             <children>
                                 <TextField fx:id="inputTekst" layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" />
-                                <Button fx:id="sendButton" defaultButton="true" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Verstuur" textFill="WHITE" />
+                                <Button fx:id="SendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" onAction="#SendButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Verstuur" textFill="WHITE" />
+                                <Label fx:id="outputTekst" layoutX="50.0" layoutY="75.0" prefHeight="50.0" prefWidth="200.0" style="-fx-font-style: #454545;" styleClass="secondary-color" text="Waar kan ik u mee helpen?">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
                                 <Button fx:id="closeButton" layoutX="675.0" layoutY="25.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #0e82c9;" text="Afsluiten" textFill="WHITE" />
                                 <Label fx:id="Honderwerp" layoutX="14.0" layoutY="16.0" prefHeight="18.0" prefWidth="92.0" textFill="WHITE" />
                                 <Button fx:id="Vonderwerp" layoutX="120.0" layoutY="12.0" mnemonicParsing="false" onAction="#VonderwerpOnAction" style="-fx-background-color: #0e82c9;" text="Verander" textFill="WHITE" />
@@ -66,8 +84,8 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <TextField layoutX="50.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" text="Stel uw vraag." />
-                                <Button layoutX="675.0" layoutY="450.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Verstuur" />
-                                <Label layoutX="50.0" layoutY="75.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?">
+                                <Button fx:id="sendButton" layoutX="675.0" layoutY="450.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Verstuur" />
+                                <Label fx:id="outputText" layoutX="50.0" layoutY="75.0" prefHeight="50.0" prefWidth="200.0" text="Waar kan ik u mee helpen?">
                                     <font>
                                         <Font size="16.0" />
                                     </font>

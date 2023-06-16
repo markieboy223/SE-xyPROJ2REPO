@@ -1,5 +1,6 @@
 package com.example.Project2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -13,7 +14,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+public class RegisterController extends LoginController{
+    private String selectedLanguage;
+    private String message;
+    private String errorMessage;
+    private String setErrorMessage;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
 public class RegisterController {
+public class RegisterController extends LoginController{
+    private String selectedLanguage;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
     @FXML
     private Button closeButton;
     @FXML
@@ -44,7 +60,40 @@ public class RegisterController {
         rolBox.getSelectionModel().selectFirst();
     }
 
+    public void handleLanguageSelection() {
+        if (selectedLanguage != null) {
+            if (selectedLanguage.equals("Nederlands")) {
+                closeButton.setText("Afsluiten");
+                usernameLabel.setText("Gebruikersnaam");
+                passwordLabel.setText("Wachtwoord");
+            } else if (selectedLanguage.equals("English")) {
+                closeButton.setText("Close");
+                usernameLabel.setText("Username");
+                passwordLabel.setText("Password");
+
+
+            }
+        }
+    }
+    public void closeButtonOnAction(ActionEvent event) {
     public void closeButtonOnAction() {
+    public void handleLanguageSelection() {
+        if (selectedLanguage != null) {
+            if (selectedLanguage.equals("Nederlands")) {
+                closeButton.setText("Afsluiten");
+                usernameLabel.setText("Gebruikersnaam");
+                passwordLabel.setText("Wachtwoord");
+            } else if (selectedLanguage.equals("English")) {
+                closeButton.setText("Close");
+                usernameLabel.setText("Username");
+                passwordLabel.setText("Password");
+
+
+            }
+        }
+    }
+    public void closeButtonOnAction(ActionEvent event) {
+     {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
