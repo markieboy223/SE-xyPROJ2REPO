@@ -36,7 +36,6 @@ public class onderwerp {
         if (!tabellenNaam.contains(tabNaam)){
             tabellenNaam.add(tabNaam);
         }
-
         String query = "SELECT " + tabNaam + " FROM " + onderwerp;
         fetchTabellen(query, inhoudC);
         tabellenInhoud.add(inhoudC);

@@ -31,8 +31,6 @@ public class chatController extends onderwerp {
     @FXML
     protected TextArea outputTekst;
     @FXML
-    private ScrollPane scrollDing;
-    @FXML
     protected Label Honderwerp;
     @FXML
     private Button sendButton;
