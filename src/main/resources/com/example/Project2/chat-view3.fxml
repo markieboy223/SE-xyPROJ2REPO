@@ -75,7 +75,7 @@
                                         </ImageView>
                            </graphic>
                                 </Button>
-                        <TextArea fx:id="outputTekst" layoutX="131.0" layoutY="133.0" prefHeight="200.0" prefWidth="489.0" />
+                        <TextArea fx:id="outputTekst" blendMode="SRC_ATOP" cache="true" layoutX="206.0" layoutY="79.0" prefHeight="278.0" prefWidth="389.0" styleClass="secondary-color" text="tekst" wrapText="true" />
                             </children>
                         </AnchorPane>
                     </content>

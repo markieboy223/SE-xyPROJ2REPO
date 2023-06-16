@@ -10,7 +10,7 @@
    <bottom>
       <AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="606.0" styleClass="primary-color" stylesheets="@../../../styles/darkMode.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="closeButton" layoutX="692.0" layoutY="26.0" mnemonicParsing="false" onAction="#redirectToChosenLayout" prefHeight="35.0" prefWidth="93.0" style="-fx-background-color: #0e82c9;" text="Afsluiten" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="closeButton" layoutX="692.0" layoutY="26.0" mnemonicParsing="false" onAction="#redirectToChosenLayout" prefHeight="35.0" prefWidth="93.0" style="-fx-background-color: #808080;" text="Afsluiten" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -20,17 +20,17 @@
                   <Font size="42.0" />
                </font>
             </Text>
-            <Button fx:id="layout3Button" layoutX="550.0" layoutY="350.0" mnemonicParsing="false" onAction="#layout3ButtonOnAction" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0e82c9;" text="Layout 3" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="layout3Button" layoutX="550.0" layoutY="350.0" mnemonicParsing="false" onAction="#layout3ButtonOnAction" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #808080;" text="Layout 3" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="layout2Button" layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#layout2ButtonOnAction" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0e82c9;" text="Layout 2" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="layout2Button" layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#layout2ButtonOnAction" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #808080;" text="Layout 2" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="layout1Button" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#layout1ButtonOnAction" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0e82c9;" text="Layout 1" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="layout1Button" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#layout1ButtonOnAction" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #808080;" text="Layout 1" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>

@@ -26,6 +26,7 @@ public class chatController extends onderwerp {
     private Button closeButton;
     @FXML
     private Button Vonderwerp;
+    @FXML
     protected TextField inputTekst;
     @FXML
     protected TextArea outputTekst;
