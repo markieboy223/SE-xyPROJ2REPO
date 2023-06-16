@@ -1,7 +1,6 @@
 package com.example.Project2;
 
 public class parametersAntwoord {
-
     private DatabaseConnection connection;
     private boolean buitenTermijn;
     private String inputtekst;
