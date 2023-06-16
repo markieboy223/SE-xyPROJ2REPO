@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="chatController gesplist m.b.v. chatverwerker.">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/Project2/chat-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,7 @@
         <item itemvalue="JUnit.testChatController.testsetStartText" />
         <item itemvalue="JUnit.testChatController" />
         <item itemvalue="JUnit.testChatController.testsetStartText" />
-        <item itemvalue="JUnit.testChatController.testsetStartText" />
+        <item itemvalue="JUnit.testChatController" />
         <item itemvalue="JUnit.testChatController.testsetStartText" />
       </list>
     </recent_temporary>
