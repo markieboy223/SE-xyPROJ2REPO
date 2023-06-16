@@ -1,11 +1,8 @@
 package com.example.Project2;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -48,16 +45,16 @@ public class ProfileController {
     public void setUser(User user) {
         this.user = user;
     }
-    public void closeButtonOnAction(ActionEvent event) {
+    public void closeButtonOnAction() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-    public void passChangeOnAction(ActionEvent event) {
+    public void passChangeOnAction() {
         pasChangeBtn.setVisible(false);
         passwordField.setVisible(true);
         updatePasBtn.setVisible(true);
     }
-    public void updatePassword(ActionEvent event) {
+    public void updatePassword() {
         String newPassword = passwordField.getText();
         if (!newPassword.isEmpty()) {
             updatePasswordInDatabase(newPassword);

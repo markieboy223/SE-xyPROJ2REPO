@@ -53,11 +53,7 @@ public class chatController extends onderwerp {
     int index;
     public void initialize() {
         if (user != null) {
-            if (user.getRole() != null && user.getRole().equalsIgnoreCase("admin")){
-                register.setVisible(true);
-            } else{
-                register.setVisible(false);
-            }
+            register.setVisible(user.getRole() != null && user.getRole().equalsIgnoreCase("admin"));
             setStartText("Over welk onderwerp wilt u het hebben?");
         }
     }
@@ -67,7 +63,7 @@ public class chatController extends onderwerp {
     public int getUserID() {
         return user.getUserID();
     }
-    public void changeMode(ActionEvent event) {
+    public void changeMode() {
         isLightMode = !isLightMode;
         if (isLightMode) {
             setLightMode();
@@ -168,7 +164,7 @@ public class chatController extends onderwerp {
         outputTekst.appendText(volgende);
     }
 
-    public void VonderwerpOnAction(ActionEvent event){
+    public void VonderwerpOnAction(){
         if (verwerk.vraagS.length() > 0){
             opslaan.opslaan(verwerk.vraagS, verwerk.antwoordS, verwerk.onderwerp1, user.getUserID());
             verwerk.vraagS = "";
@@ -182,7 +178,7 @@ public class chatController extends onderwerp {
         chatTab.setText("chat");
         setStartText("Over welk onderwerp wilt u het hebben?");
     }
-    public void SendButtonOnAction(ActionEvent event){
+    public void SendButtonOnAction(){
             outputTekst.appendText(verwerk.formuleerAntwoord(inputTekst.getText()));
             inputTekst.clear();
     }
