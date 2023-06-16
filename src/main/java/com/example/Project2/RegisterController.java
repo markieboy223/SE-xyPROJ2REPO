@@ -1,6 +1,5 @@
 package com.example.Project2;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -45,7 +44,7 @@ public class RegisterController {
         rolBox.getSelectionModel().selectFirst();
     }
 
-    public void closeButtonOnAction(ActionEvent event) {
+    public void closeButtonOnAction() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }

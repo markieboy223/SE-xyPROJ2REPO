@@ -8,7 +8,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 
 import java.sql.*;
 
@@ -46,7 +45,7 @@ public class LoginController{
         languageComboBox.getSelectionModel().selectFirst();
     }
 
-    public void handleLanguageSelection(ActionEvent event) {
+    public void handleLanguageSelection() {
         String selectedLanguage = languageComboBox.getValue();
         if (selectedLanguage.equals("Nederlands")) {
             usernameLabel.setText("Gebruikersnaam");
@@ -61,7 +60,7 @@ public class LoginController{
         }
     }
 
-    public void closeButtonOnAction(ActionEvent event) {
+    public void closeButtonOnAction() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
@@ -71,7 +70,7 @@ public class LoginController{
         stage.close();
     }
 
-    public void loginButtonOnAction(ActionEvent event){
+    public void loginButtonOnAction(){
         if (!gebruikersnaamTextField.getText().isBlank() && !passwordTextField.getText().isBlank()){
             validateLogin();
         } else {

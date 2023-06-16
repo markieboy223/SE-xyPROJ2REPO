@@ -1,17 +1,9 @@
 package com.example.Project2;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -39,19 +31,19 @@ public class LayoutController {
         selectedLanguage = language;
     }
     @FXML
-    public void layout1ButtonOnAction(ActionEvent event) {
+    public void layout1ButtonOnAction() {
         layout = 0;
         updateLayout();
     }
 
     @FXML
-    public void layout2ButtonOnAction(ActionEvent event) {
+    public void layout2ButtonOnAction() {
         layout = 1;
         updateLayout();
     }
 
     @FXML
-    public void layout3ButtonOnAction(ActionEvent event) {
+    public void layout3ButtonOnAction() {
         layout = 2;
         updateLayout();
     }
