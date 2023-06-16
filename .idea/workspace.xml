@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="chatController gesplist m.b.v. chatverwerker." />
+    <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="chatController gesplist m.b.v. chatverwerker.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/DutchLanguageSelectionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/EnglishLanguageSelectionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LanguageSelectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,14 +78,82 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testChatController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ChatViewPathResolverTest.testResolvePath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="testChatController" />
-      <option name="METHOD_NAME" value="testsetStartText" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Project2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Project2" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.ChatViewPathResolverTest" />
+      <option name="METHOD_NAME" value="testResolvePath" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LayoutControllerTest.testLayout1ButtonOnAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Project2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Project2" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.LayoutControllerTest" />
+      <option name="METHOD_NAME" value="testLayout1ButtonOnAction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginControllerTest.testHandleLanguageSelection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Project2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Project2" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.LoginControllerTest" />
+      <option name="METHOD_NAME" value="testHandleLanguageSelection" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginControllerTest.testSetLoginMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Project2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Project2" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.LoginControllerTest" />
+      <option name="METHOD_NAME" value="testSetLoginMessage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegisterControllerTest.testRegisterButtonOnActionWithValidInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Project2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Project2" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.RegisterControllerTest" />
+      <option name="METHOD_NAME" value="testRegisterButtonOnActionWithValidInput" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -96,35 +170,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testChatController.testsetStartText" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project2" />
-      <selectedOptions>
-        <option name="environmentVariables" visible="false" />
-      </selectedOptions>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-20" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="testChatController" />
-      <option name="METHOD_NAME" value="testsetStartText" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.testChatController" />
-      <item itemvalue="JUnit.testChatController.testsetStartText" />
+      <item itemvalue="JUnit.ChatViewPathResolverTest.testResolvePath" />
+      <item itemvalue="JUnit.LayoutControllerTest.testLayout1ButtonOnAction" />
+      <item itemvalue="JUnit.LoginControllerTest.testHandleLanguageSelection" />
+      <item itemvalue="JUnit.LoginControllerTest.testSetLoginMessage" />
+      <item itemvalue="JUnit.RegisterControllerTest.testRegisterButtonOnActionWithValidInput" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.testChatController.testsetStartText" />
-        <item itemvalue="JUnit.testChatController" />
-        <item itemvalue="JUnit.testChatController.testsetStartText" />
-        <item itemvalue="JUnit.testChatController" />
-        <item itemvalue="JUnit.testChatController.testsetStartText" />
+        <item itemvalue="JUnit.RegisterControllerTest.testRegisterButtonOnActionWithValidInput" />
+        <item itemvalue="JUnit.ChatViewPathResolverTest.testResolvePath" />
+        <item itemvalue="JUnit.LayoutControllerTest.testLayout1ButtonOnAction" />
+        <item itemvalue="JUnit.LoginControllerTest.testHandleLanguageSelection" />
+        <item itemvalue="JUnit.LoginControllerTest.testSetLoginMessage" />
       </list>
     </recent_temporary>
   </component>
