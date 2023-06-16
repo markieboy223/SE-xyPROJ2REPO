@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="">
+    <list default="true" id="3e017f44-f4b4-43f8-95fc-cd6e6c2e1542" name="Changes" comment="idk">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11-6-2023_16_00__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11-6-2023_16_00__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11-6-2023_16_00__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11-6-2023_16_00__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/RegisterController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,13 +26,12 @@
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="origin/main" />
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/Mark" />
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="Bart" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
