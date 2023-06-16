@@ -13,6 +13,7 @@ public class onderwerp {
     protected ArrayList<String> jaren = new ArrayList<>();
 
     public void maakOnderwerpen() {
+        tabellen.clear();
         fetchTabellen("SELECT DISTINCT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'documentatie'", tabellen);
     }
 
