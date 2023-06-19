@@ -1,3 +1,5 @@
+package com.example.Project2;
+
 import com.example.Project2.User;
 import com.example.Project2.chatController;
 import com.example.Project2.opvragenChat;

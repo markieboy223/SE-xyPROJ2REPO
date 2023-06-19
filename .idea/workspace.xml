@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d63786c-bbc6-4269-868c-563a90d2ec04" name="Changes" comment="chatController gesplist m.b.v. chatverwerker.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/DutchLanguageSelectionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/EnglishLanguageSelectionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LanguageSelectionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Project2/LoginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +66,7 @@
       <recent name="C:\Users\markv\IdeaProjects\SE-xyPROJ2REPO\Images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.LoginControllerTest.testHandleFailedLogin">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.example.Project2.Main" />
       <module name="Project2" />
@@ -94,7 +90,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LayoutControllerTest.testLayout1ButtonOnAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginControllerTest.testHandleFailedLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project2" />
       <extension name="coverage">
         <pattern>
@@ -103,8 +99,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.Project2" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Project2.LayoutControllerTest" />
-      <option name="METHOD_NAME" value="testLayout1ButtonOnAction" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.LoginControllerTest" />
+      <option name="METHOD_NAME" value="testHandleFailedLogin" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -126,7 +122,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginControllerTest.testSetLoginMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testopslaanChat.testslaOp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project2" />
       <extension name="coverage">
         <pattern>
@@ -135,14 +131,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.Project2" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Project2.LoginControllerTest" />
-      <option name="METHOD_NAME" value="testSetLoginMessage" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.testopslaanChat" />
+      <option name="METHOD_NAME" value="testslaOp" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterControllerTest.testRegisterButtonOnActionWithValidInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testopvragenChat.testuitvragen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project2" />
       <extension name="coverage">
         <pattern>
@@ -151,41 +147,28 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.Project2" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Project2.RegisterControllerTest" />
-      <option name="METHOD_NAME" value="testRegisterButtonOnActionWithValidInput" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Project2.testopvragenChat" />
+      <option name="METHOD_NAME" value="testuitvragen" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testChatController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="testChatController" />
-      <option name="METHOD_NAME" value="testsetStartText" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="C:\Users\bartv\IdeaProjects\HabanaERPv1\.idea\libraries\javafx-sdk-20.0.1\lib" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.testChatController" />
+      <item itemvalue="JUnit.LoginControllerTest.testHandleFailedLogin" />
+      <item itemvalue="JUnit.testopslaanChat.testslaOp" />
+      <item itemvalue="JUnit.testopvragenChat.testuitvragen" />
       <item itemvalue="JUnit.ChatViewPathResolverTest.testResolvePath" />
-      <item itemvalue="JUnit.LayoutControllerTest.testLayout1ButtonOnAction" />
       <item itemvalue="JUnit.LoginControllerTest.testHandleLanguageSelection" />
-      <item itemvalue="JUnit.LoginControllerTest.testSetLoginMessage" />
-      <item itemvalue="JUnit.RegisterControllerTest.testRegisterButtonOnActionWithValidInput" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RegisterControllerTest.testRegisterButtonOnActionWithValidInput" />
+        <item itemvalue="JUnit.LoginControllerTest.testHandleFailedLogin" />
         <item itemvalue="JUnit.ChatViewPathResolverTest.testResolvePath" />
-        <item itemvalue="JUnit.LayoutControllerTest.testLayout1ButtonOnAction" />
         <item itemvalue="JUnit.LoginControllerTest.testHandleLanguageSelection" />
-        <item itemvalue="JUnit.LoginControllerTest.testSetLoginMessage" />
+        <item itemvalue="JUnit.testopvragenChat.testuitvragen" />
+        <item itemvalue="JUnit.testopslaanChat.testslaOp" />
       </list>
     </recent_temporary>
   </component>
