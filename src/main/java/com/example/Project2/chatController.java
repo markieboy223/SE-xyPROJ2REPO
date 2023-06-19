@@ -1,6 +1,7 @@
 package com.example.Project2;
 import javafx.application.Platform;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,6 +36,10 @@ public class chatController extends onderwerp {
     private Button sendButton;
     @FXML
     protected Tab chatTab;
+    @FXML
+    private MenuItem Delete;
+    @FXML
+    private Menu Chat;
     private User user;
     @FXML
     private Button btnMode;
@@ -66,7 +71,6 @@ public class chatController extends onderwerp {
             setDarkMode();
         }
     }
-
     public void profileScene(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
@@ -116,7 +120,7 @@ public class chatController extends onderwerp {
         anchorPane.getStylesheets().add(getClass().getResource("/styles/darkMode.css").toExternalForm());
         Image image = new Image(getClass().getResource("/Images/ic_light.png").toExternalForm());
         imgMode.setImage(image);
-        outputTekst.setStyle("-fx-text-fill: white ;");
+        outputTekst.setStyle("-fx-control-inner-background: #383838; -fx-background-color: #383838; -fx-text-fill: white");
     }
 
     public void handleLanguageSelection() {

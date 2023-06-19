@@ -17,7 +17,7 @@ public class RegisterController {
     @FXML
     private Button closeButton;
     @FXML
-    private TextField gebruikersnaamTextField;
+    TextField gebruikersnaamTextField;
     @FXML
     private TextField emailTextField;
     @FXML
@@ -27,15 +27,15 @@ public class RegisterController {
     @FXML
     private TextField telefoonTextField;
     @FXML
-    private TextField passwordTextField;
+    TextField passwordTextField;
     @FXML
-    private TextField confirmPasswordTextField;
+    TextField confirmPasswordTextField;
     @FXML
     private ComboBox<String> rolBox;
     @FXML
     private Button registerButton;
     @FXML
-    private Label messageLabel;
+    Label messageLabel;
 
     public void initialize() {
         // Add language options to the ComboBox
