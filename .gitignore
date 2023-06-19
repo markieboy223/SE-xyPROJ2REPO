@@ -1,38 +1,81 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+# Package Files #
+#################
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IntelliJ IDEA #
+#################
+.idea/
 *.iml
-*.ipr
+*.iws
+out/
+gen/
 
-### Eclipse ###
-.apt_generated
+# Eclipse #
+############
 .classpath
-.factorypath
 .project
-.settings
-.springBeans
-.sts4-cache
+.settings/
+bin/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# NetBeans #
+############
+nbproject/
+dist/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
 
-### VS Code ###
+# Visual Studio Code #
+######################
 .vscode/
+*.code-workspace
 
-### Mac OS ###
+# macOS #
+#########
 .DS_Store
+
+# Gradle #
+##########
+.gradle/
+build/
+
+# Maven #
+#########
+target/
+
+# Logs #
+########
+*.log
+logs/
+
+# OS-specific #
+##############
+Thumbs.db
+Desktop.ini
+
+# Ignore files in specific directories #
+#######################################
+# Uncomment the following lines if needed
+
+# Ignore target directories except under src/main/ and src/test/
+# !**/src/main/**
+# !**/src/test/**
+
+# Ignore Maven wrapper JAR
+# !.mvn/wrapper/maven-wrapper.jar
