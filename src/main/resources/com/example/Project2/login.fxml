@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Project2.LoginController">
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #0e82c9;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="244.0" fitWidth="209.0" layoutX="98.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/LogoDocAssistent.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="111.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOC Assistent" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="600.0" prefWidth="398.0" style="-fx-background-color: #454545;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="closeButton" layoutX="292.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="35.0" prefWidth="93.0" style="-fx-background-color: #0e82c9;" text="Afsluiten" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="148.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER">
+               <font>
+                  <Font size="42.0" />
+               </font>
+            </Text>
+            <Label fx:id="usernameLabel" layoutX="57.0" layoutY="232.0" text="Gebruikersnaam" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="gebruikersnaamTextField" layoutX="57.0" layoutY="260.0" prefHeight="26.0" prefWidth="308.0" promptText="markvdburg">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Label fx:id="passwordLabel" layoutX="57.0" layoutY="300.0" text="Wachtwoord" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordTextField" layoutX="57.0" layoutY="327.0" prefHeight="26.0" prefWidth="308.0" promptText="Wachtwoord1!">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="LoginMessageLabel" alignment="CENTER" layoutX="65.0" layoutY="368.0" prefHeight="28.0" prefWidth="275.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="loginButton" defaultButton="true" layoutX="81.0" layoutY="407.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="35.0" prefWidth="243.0" style="-fx-background-color: #0e82c9;" text="Inloggen" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="languageComboBox" layoutX="6.0" layoutY="19.0" onAction="#handleLanguageSelection" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
