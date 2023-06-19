@@ -9,7 +9,7 @@ public class opslaanChat {
     private String vraag;
     private String antwoord;
     private String onderwerp;
-    private int userID;
+    public int userID;
     public void opslaan(String vraag, String antwoord, String onderwerp, int userID) {
         this.vraag = vraag;
         this.antwoord = antwoord;

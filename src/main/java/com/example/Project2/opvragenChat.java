@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class opvragenChat {
-    private ArrayList<String> vragen = new ArrayList<>();
+    public ArrayList<String> vragen = new ArrayList<>();
     private ArrayList<String> antwoorden = new ArrayList<>();
     public void opvragen(int user_id){
         String vraag1;

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class onderwerp {
     protected ArrayList<String> tabellenNaam = new ArrayList<>();
     protected ArrayList<ArrayList<String>> tabellenInhoud = new ArrayList<>();
-    protected ArrayList<String> tabellen = new ArrayList<>();
+    public ArrayList<String> tabellen = new ArrayList<>();
     protected ArrayList<String> jaren = new ArrayList<>();
 
     public void maakOnderwerpen() {
