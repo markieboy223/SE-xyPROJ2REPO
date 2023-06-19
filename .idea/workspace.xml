@@ -172,6 +172,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.testChatController" />
       <item itemvalue="JUnit.ChatViewPathResolverTest.testResolvePath" />
       <item itemvalue="JUnit.LayoutControllerTest.testLayout1ButtonOnAction" />
       <item itemvalue="JUnit.LoginControllerTest.testHandleLanguageSelection" />
